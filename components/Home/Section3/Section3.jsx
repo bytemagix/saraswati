@@ -41,7 +41,7 @@ const Section3 = (props) => {
         <div className={styles['video']}>
           <ReactPlayer
             url="https://www.youtube.com/watch?v=8No-0n4Twbc"
-            playing ={false}
+            playing ={isPlaying}
             width = '100%'
             height = '100%'
           />

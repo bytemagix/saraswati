@@ -52,7 +52,41 @@
     display: none;
 }
 
+.sidenav{
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    animation: sidenavAnimation 2s;
+    z-index: 100;
+}
+
+.backdrop{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.5);
+}
+
+@keyframes sidenavAnimation{
+    0%{
+        transform: translateX(-100%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 @media (min-width : 768px){
+    .navbar{
+        height: 70px;
+    }
     .menu-icon{
         display: none;
     }
@@ -78,7 +112,7 @@
     }
     
     .menu-items li:hover{
-        color: wheat;
+        color: orangered;
         cursor: pointer;
     }
 }

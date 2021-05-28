@@ -18,7 +18,7 @@ const Section5 = (props) => {
       <div className={styles["image-container"]}>
         <img
           className={styles["image"]}
-          src="https://lh3.googleusercontent.com/proxy/kARnzj-wfM_XfR7OZmaMSWCMwu3DJrkLyVZhJ3ZzoamyqMberanrDyHS4DnyWnxBlOAg77VRYypKi3IyKtpsn_n5-T2iGQ"
+          src="https://www.justbaazaar.com/wp-content/uploads/2019/11/got-get-our-tutors-dwarka-more-delhi-home-tutors-8gmezfx7lq.jpg"
         />
       </div>
     </div>
