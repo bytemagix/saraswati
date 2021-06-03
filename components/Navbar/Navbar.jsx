@@ -1,13 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
 import SideNav from "./SideNav/SideNav";
+import NavLink from 'next/link';
+import { cartActions } from '../../store/reducers/cart-reducer';
 
 const Navbar = (props) => {
   const [showSideNav, setShowSideNav] = useState(false);
+  const [btnIsHighlighted , setBtnIsHighlighted] = useState(false);
+  const cartItems = useSelector(state => state.cartReducer.cart);
+
+  const dispatch = useDispatch();
+
+  const openCartHandler = () => {
+    dispatch(cartActions.cartModalOpen());
+  }
 
   const showSideNavHandler = () => {
     setShowSideNav((prevState) => !prevState);
   };
+
+  const btnClasses = `${styles.cart} ${btnIsHighlighted ? styles.bump : ''}`;
+
+  useEffect(()=> {
+    if(cartItems.length === 0){
+      return;
+    }
+    setBtnIsHighlighted(true);
+
+   const timer = setTimeout(()=>{
+    setBtnIsHighlighted(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+
+  }, [cartItems]);
+
+  
 
   return (
     <div className={styles["navbar"]}>
@@ -22,11 +53,16 @@ const Navbar = (props) => {
       </div>
       <div className={styles["menu"]}>
         <ul className={styles["menu-items"]}>
-          <li>Home</li>
+          <li><NavLink href="/">Home</NavLink></li>
           <li>Online Class</li>
           <li>Home Tutor</li>
-          <li>Study Material</li>
+          <li><NavLink href='/study-materials'>Study Materials</NavLink></li>
           <li>Profile</li>
+          <li>
+            <div className={btnClasses} onClick={openCartHandler}>
+              <span>{cartItems.length}</span>
+            </div>
+          </li>
         </ul>
       </div>
       {showSideNav && (

@@ -1,0 +1,29 @@
+.selected{
+    background-color: #ca115e;
+    color: white;
+    border : 1px solid #ca115e;
+    padding: 5px 20px;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.selected:hover{
+    background-color: #a0114c;
+    border: 1px soldi #a0114c;
+    cursor: pointer;
+}
+
+.unselected{
+    background-color: white;
+    color: #ca115e;
+    border : 1px solid #ca115e;
+    padding: 5px 20px;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.unselected:hover{
+    border : 1px solid #a0114c;
+    color: #a0114c;
+    cursor: pointer;
+}

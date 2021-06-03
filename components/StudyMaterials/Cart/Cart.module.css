@@ -1,0 +1,68 @@
+.cart{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    width: 90%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 50;
+}
+
+.actions{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button-close{
+    margin: 5px;
+    background-color: #ce2121;
+    color: white;
+    padding: 5px 20px;
+    font-size: 1.05rem;
+    border-radius: 5px;
+    border: 1px solid #ce2121;
+}
+
+.button-order{
+    margin: 5px;
+    background-color: #510a53;
+    color: white;
+    padding: 5px 20px;
+    font-size: 1.05rem;
+    border-radius: 5px;
+    border: 1px solid #510a53;
+}
+
+.button-close:hover{
+    cursor: pointer;
+    background-color: #9e0808;
+}
+
+.button-order:hover{
+    cursor: pointer;
+    background-color: #38053a;
+}
+
+.backdrop{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.25);
+    z-index: 40;
+}
+
+@media (min-width : 768px){
+    .card{
+        width: 50%;
+    }
+}

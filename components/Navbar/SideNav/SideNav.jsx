@@ -1,4 +1,5 @@
 import styles from "./SideNav.module.css";
+import NavLink from "next/link";
 
 const SideNav = () => {
   return (
@@ -6,10 +7,14 @@ const SideNav = () => {
       <div className={styles["sidenav"]}>
         <div className={styles["menu"]}>
           <ul className={styles["menu-items"]}>
-            <li>Home</li>
+            <li>
+              <NavLink href="/">Home</NavLink>
+            </li>
             <li>Online Class</li>
             <li>Home Tutor</li>
-            <li>Study Material</li>
+            <li>
+              <NavLink href="/study-materials">Study Materials</NavLink>
+            </li>
             <li>Profile</li>
           </ul>
         </div>

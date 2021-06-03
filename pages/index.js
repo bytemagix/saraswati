@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
 import Home from "../components/Home/Home";
 import styles from "../styles/Home.module.css";
 
