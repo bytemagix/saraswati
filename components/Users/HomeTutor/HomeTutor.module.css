@@ -1,0 +1,17 @@
+.grid {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding-top: 90px;
+  padding-bottom: 20px;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 200px));
+    grid-gap: 20px;
+  }
+}

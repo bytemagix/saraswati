@@ -1,0 +1,74 @@
+.add-subject{
+  width: 100%;
+}
+
+.card{
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 2px 2px 2px 2px #333;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.divider{
+    width: 100%;
+}
+
+.form-controls{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-control{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.form-control__label{
+    flex-basis: 40%;
+}
+
+.form-control__input{
+    flex-basis: 60%;
+}
+
+.form-actions{
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-book__button{
+    width: 60%;
+    background-color: #880255;
+    color: white;
+    border: 1px solid #880255;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.add-book__button:hover,
+.add-book__button:active{
+    cursor: pointer;
+    background-color: white;
+    font-weight: bold;
+    color: #880255;
+    border: 1px solid #880255;
+}

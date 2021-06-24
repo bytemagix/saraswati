@@ -1,0 +1,57 @@
+.upload-book{
+    width: 100%;
+}
+
+.header{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.form-controls{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-control{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+}
+
+.form-control__label{
+    flex-basis: 40%;
+}
+
+.form-control__input{
+    flex-basis: 60%;
+}
+
+.form-actions{
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button__submit{
+    width: 60%;
+    background-color: #880255;
+    color: white;
+    border: 1px solid #880255;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.button__submit:hover,
+.button__submit:active{
+    background-color: white;
+    border: 1px solid #880255;
+    color: #880255;
+    cursor: pointer;
+}

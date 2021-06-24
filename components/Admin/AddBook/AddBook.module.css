@@ -1,0 +1,10 @@
+.add-book{
+    width: 80%;
+    box-shadow: 2px 2px 2px 2px #333;
+    padding: 10px;
+    margin: 30px auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

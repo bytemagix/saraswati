@@ -1,0 +1,10 @@
+.courses{
+    width: 100%;
+}
+
+@media (min-width:768px){
+    .courses{
+        width: 80%;
+        margin: auto;
+    }
+}

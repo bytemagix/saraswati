@@ -1,11 +1,12 @@
-import StudyMaterials from "../components/StudyMaterials/StudyMaterails"
+import Layout from "../components/Utils/Layout/Layout";
+import StudyMaterials from "../components/Users/StudyMaterials/StudyMaterails";
 
 const StudyMaterialsPage = props => {
 
     return (
-        <div>
-            <StudyMaterials />            
-        </div>
+        <Layout>
+            <StudyMaterials />
+        </Layout>
     );
 }
 

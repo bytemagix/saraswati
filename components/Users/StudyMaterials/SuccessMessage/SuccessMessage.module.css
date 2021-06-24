@@ -1,0 +1,36 @@
+.success{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.actions{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.button-done{
+    background-color: #027920;
+    border: 1px solid #027920;
+    border-radius: 3px;
+    color: white;
+    padding: 5px 30px;
+}
+
+.button-done:active,
+.button-done:hover{
+    background-color: white;
+    border: 1px solid #027920;
+    color: #027920;
+    font-weight: bold;
+    cursor: pointer;
+}
