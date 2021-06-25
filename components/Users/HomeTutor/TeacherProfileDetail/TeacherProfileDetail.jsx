@@ -1,48 +1,22 @@
 import styles from "./TeacherProfileDetail.module.css";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Course from "../Course/Course";
-import { useEffect } from "react";
-import { homeTutorActions } from "../../../../store/slices/home-tutor-slice";
 import { userActions } from "../../../../store/slices/user-slice";
 
 const TeacherProfileDetail = (props) => {
-  console.log(props.info);
+  const tutorInfo = props.tutorInfo;
+  const courses = props.courses;
+
   const router = useRouter();
   const dispatch = useDispatch();
   const teacherId = router.query.teacherId;
-
-  const teachers = useSelector((state) => state.homeTutorSlice.homeTutors);
-  const info = teachers.find((item) => item.teacherId === teacherId);
-
-  const courses = useSelector(
-    (state) => state.homeTutorSlice.selectedTutorCourses
-  );
-
-  useEffect(() => {
-    fetchData();
-  },[]);
-
-  const fetchData = async () => {
-    const res = await fetch(
-      `https://saraswati-45e10-default-rtdb.firebaseio.com/teachers/courses/${teacherId}.json`
-    );
-    const data = await res.json();
-
-    let courses = [];
-    for (const key in data) {
-      const course = data[key];
-      courses.push(course);
-    }
-
-    dispatch(homeTutorActions.setSelectedTutorCourses(courses));
-  };
 
   const bookingHandler = (courseInfo) => {
     dispatch(
       userActions.setBookHomeTutorInfo({
         course: courseInfo,
-        info: info,
+        info: tutorInfo,
       })
     );
     router.push(`/home-tutor/${teacherId}/booking`);
@@ -52,10 +26,10 @@ const TeacherProfileDetail = (props) => {
     <div className={styles["container"]}>
       <div className={styles["card"]}>
         <div className={styles["details"]}>
-          <span className={styles["name"]}>{props.info.name}</span>
-          <span>{props.info.qualification}</span>
-          <span>{props.info.experience}+ Years of Experience</span>
-          <span>{props.info.subjects}</span>
+          <span className={styles["name"]}>{tutorInfo.name}</span>
+          <span>{tutorInfo.qualification}</span>
+          <span>{tutorInfo.experience}+ Years of Experience</span>
+          <span>{tutorInfo.subjects}</span>
         </div>
 
         <div className={styles["courses-header"]}>
