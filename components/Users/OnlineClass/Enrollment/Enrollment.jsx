@@ -16,7 +16,9 @@ const Enrollment = (props) => {
   const courseId = router.query.courseId;
 
   const courses = useSelector((state) => state.onlineClassSlice.courses);
-  const courseInfo = courses.find((item) => item.courseId === courseId);
+ // const courseInfo = courses.find((item) => item.courseId === courseId);
+
+ const courseInfo = props.data;
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);

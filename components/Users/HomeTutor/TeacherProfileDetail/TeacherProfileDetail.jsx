@@ -7,6 +7,7 @@ import { homeTutorActions } from "../../../../store/slices/home-tutor-slice";
 import { userActions } from "../../../../store/slices/user-slice";
 
 const TeacherProfileDetail = (props) => {
+  console.log(props.info);
   const router = useRouter();
   const dispatch = useDispatch();
   const teacherId = router.query.teacherId;
@@ -20,7 +21,7 @@ const TeacherProfileDetail = (props) => {
 
   useEffect(() => {
     fetchData();
-  });
+  },[]);
 
   const fetchData = async () => {
     const res = await fetch(
@@ -51,10 +52,10 @@ const TeacherProfileDetail = (props) => {
     <div className={styles["container"]}>
       <div className={styles["card"]}>
         <div className={styles["details"]}>
-          <span className={styles["name"]}>{info.name}</span>
-          <span>{info.qualification}</span>
-          <span>{info.experience}+ Years of Experience</span>
-          <span>{info.subjects}</span>
+          <span className={styles["name"]}>{props.info.name}</span>
+          <span>{props.info.qualification}</span>
+          <span>{props.info.experience}+ Years of Experience</span>
+          <span>{props.info.subjects}</span>
         </div>
 
         <div className={styles["courses-header"]}>
