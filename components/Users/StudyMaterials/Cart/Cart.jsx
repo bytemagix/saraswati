@@ -5,12 +5,15 @@ import CartItem from "./CartItem/CartItem";
 import { useRef } from "react";
 import { useState } from "react";
 import SuccessMessage from "../SuccessMessage/SuccessMessage";
+import { useRouter } from "next/router";
+import InputBox from "../../../Utils/UI/InputBox/InputBox";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.userSlice.cartItems);
   const dispatch = useDispatch();
-  const emailRef = useRef();
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
+  const router = useRouter();
 
   const closeCartHandler = () => {
     dispatch(userActions.closeCartModal());
@@ -22,12 +25,10 @@ const Cart = (props) => {
       bookIds.push(item.bookId);
     });
 
-    if (emailRef.current.value.trim().length === 0) {
-      return;
-    }
+    //Email Validation
 
     const formData = new FormData();
-    formData.append("email", emailRef.current.value);
+    formData.append("email", enteredEmail);
     formData.append("bookIds", JSON.stringify(bookIds));
 
     const response = await fetch("http://localhost:3000/api/sendbook", {
@@ -41,6 +42,15 @@ const Cart = (props) => {
     dispatch(userActions.removeAllFromCart());
   };
 
+  const exploreBooksHandler = () => {
+    closeCartHandler();
+    router.push("/study-materials");
+  };
+
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+
   return (
     <div className={styles["cart"]}>
       <div className={styles["card"]}>
@@ -49,6 +59,20 @@ const Cart = (props) => {
             <u>Order Books</u>
           </span>
         </div>
+
+        {cartItems.length === 0 && (
+          <div className={styles["no-cart-item"]}>
+            <span className={styles["no-item-message"]}>
+              No Item Available In Cart
+            </span>
+            <button
+              onClick={exploreBooksHandler}
+              className={styles["explore-btn"]}
+            >
+              Explore Study Materials
+            </button>
+          </div>
+        )}
 
         {!isEmailSent && cartItems.length !== 0 && (
           <>
@@ -66,16 +90,17 @@ const Cart = (props) => {
               <span className={styles["section-header"]}>
                 Communication Detail
               </span>
-              <div className={styles["form-controls"]}>
-                <label className={styles["form-control__label"]}>
-                  Email Id
-                </label>
-                <input
+
+              <div className={styles['input-box']}>
+                <InputBox
+                  label="Email Id"
+                  id="email"
                   type="text"
-                  ref={emailRef}
-                  className={styles["form-control__input"]}
+                  value={enteredEmail}
+                  onChange={emailChangeHandler}
                 />
               </div>
+
               <div className={styles["message-box"]}>
                 <p className={styles["form-message"]}>
                   Your purchased ebook will be sent to this email address

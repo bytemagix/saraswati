@@ -5,18 +5,21 @@
     justify-content: center;
     align-items: center;
     z-index: 50;
+    padding-top: 90px;
 }
 
 .card{
-    width: 90%;
-    height: auto;
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.25);
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
     background-color: white;
     z-index: 50;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
+    z-index: 50;
 }
 
 .modal-header{
@@ -56,24 +59,6 @@
     padding: 5px 20px;
 }
 
-.form-controls{
-    width: 100%;
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-control__label{
-    flex-basis: 30%;
-    font-weight: bold;
-}
-
-.form-control__input{
-    flex-basis: 70%;
-    padding: 5px;
-}
-
 .message-box{
     width: 100%;
     display: flex;
@@ -81,7 +66,9 @@
 }
 
 .form-message{
-    width: 70%;
+    width: 100%;
+    color: #7c251d;
+    font-weight: 600;
 }
 
 .divider{
@@ -103,6 +90,7 @@
     font-size: 1.05rem;
     border-radius: 5px;
     border: 1px solid #ce2121;
+    flex-basis: 50%;
 }
 
 .button-order{
@@ -113,6 +101,7 @@
     font-size: 1.05rem;
     border-radius: 5px;
     border: 1px solid #510a53;
+    flex-basis: 50%;
 }
 
 .button-close:hover{
@@ -138,5 +127,17 @@
 @media (min-width : 768px){
     .card{
         width: 50%;
+    }
+
+    .form-message{
+        width: 70%;
+    }
+
+    .button-close{
+        flex-basis: auto;
+    }
+
+    .button-order{
+        flex-basis: auto;
     }
 }

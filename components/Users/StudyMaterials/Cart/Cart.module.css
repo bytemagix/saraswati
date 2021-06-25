@@ -4,10 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
+    padding-top: 90px;
 }
 
 .card{
-    width: 90%;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -42,24 +46,6 @@
     margin-top: 20px;
 }
 
-.form-controls{
-    width: 100%;
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-control__label{
-    flex-basis: 30%;
-    font-weight: bold;
-}
-
-.form-control__input{
-    flex-basis: 70%;
-    padding: 5px;
-}
-
 .message-box{
     width: 100%;
     display: flex;
@@ -67,7 +53,9 @@
 }
 
 .form-message{
-    width: 70%;
+    width: 100%;
+    color: #7c251d;
+    font-weight: 600;
 }
 
 .actions{
@@ -85,9 +73,11 @@
     font-size: 1.05rem;
     border-radius: 5px;
     border: 1px solid #ce2121;
+    flex-basis: 50%;
 }
 
 .button-order{
+    flex-basis: 50%;
     margin: 5px;
     background-color: #510a53;
     color: white;
@@ -113,12 +103,60 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.5);
     z-index: 40;
+}
+
+.no-cart-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-item-message{
+    text-align: center;
+    padding: 10px;
+    color: #c7323e;
+    font-weight: 600;
+}
+
+.explore-btn{
+    width: 90%;
+    padding: 5px;
+    background-color: #259b7d;
+    border: 1px solid #259b7d;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.explore-btn:hover,
+.explore-btn:active{
+    color: #259b7d;
+    background-color: white;
+    cursor: pointer;
 }
 
 @media (min-width : 768px){
     .card{
         width: 50%;
+    }
+
+    .explore-btn{
+        width: 50%;
+    }
+
+    .form-message{
+        width: 70%;
+        justify-content: flex-end;
+    }
+
+    .button-close{
+        flex-basis: auto;
+    }
+
+    .button-order{
+        flex-basis: auto;
     }
 }
