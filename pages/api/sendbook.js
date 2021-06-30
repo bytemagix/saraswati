@@ -1,32 +1,10 @@
-/*
-const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'newebclients@gmail.com',
-      pass: 'developer@123'
-    }
-  });
-
-export default function sendBookHandler(req,res){
-  console.log(req.body);
-     transporter.sendMail(mailOptions, (error, info) => {
-        if(error){
-            console.log(error);
-        }else{
-            console.log("MAil is sent")
-        }
-     }) 
-
-     return res.status(200).json({message : "Mail Sent"});
-} */
-
 import HttpStatus from "http-status-codes";
 import middleware from "../../middleware/middleware";
 import nextConnect from "next-connect";
 const admin = require("firebase-admin");
 const serviceAccount = require("../../firebaseConfig/saraswati-45e10-firebase-adminsdk-y7dv3-f974d616c5.json");
 const nodemailer = require("nodemailer");
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {

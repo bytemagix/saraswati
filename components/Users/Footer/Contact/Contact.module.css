@@ -1,0 +1,25 @@
+.contact{
+    position: relative;
+}
+
+.actions{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1e8678;
+    border: 1px solid #1e8678;
+    color: white;
+    font-weight: bold;
+}
+
+.button:hover,
+.button:active{
+    background-color: #134942;
+    border: 1px solid #134942;
+    cursor: pointer;
+}

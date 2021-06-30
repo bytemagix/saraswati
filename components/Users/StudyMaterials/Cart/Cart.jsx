@@ -31,7 +31,7 @@ const Cart = (props) => {
     formData.append("email", enteredEmail);
     formData.append("bookIds", JSON.stringify(bookIds));
 
-    const response = await fetch("http://localhost:3000/api/sendbook", {
+    const response = await fetch("https://saraswati-api.herokuapp.com/books/sendbooks", {
       method: "POST",
       body: formData,
     });

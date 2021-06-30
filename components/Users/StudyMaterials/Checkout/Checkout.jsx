@@ -29,11 +29,15 @@ const Checkout = (props) => {
     formData.append("email", enteredEmail);
     formData.append("bookIds", JSON.stringify(bookIds));
 
-    const response = await fetch("http://localhost:3000/api/sendbook", {
+    const response = await fetch("https://saraswati-api.herokuapp.com/books/sendbooks", {
       method: "POST",
       body: formData,
     });
+
     const data = await response.json();
+    /*
+    const response = await fetch('https://us-central1-saraswati-45e10.cloudfunctions.net/sendbooks');
+    const data = await response.json();*/
     setIsEmailSent(true);
 
     console.log(data);
