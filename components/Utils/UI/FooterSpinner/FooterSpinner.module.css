@@ -1,0 +1,24 @@
+.send-data-modal{
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-box{
+    background-color: #111;
+    padding: 50px 10px;
+    box-shadow: 2px 2px 2px 2px #333;
+    border-radius: 10px;
+}
+
+.message{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: white;
+}

@@ -28,10 +28,10 @@ const Checkout = (props) => {
     const formData = new FormData();
     formData.append("email", enteredEmail);
     formData.append("bookIds", JSON.stringify(bookIds));
-//  const response = await fetch("http://localhost:7000/books/sendbooks", {
+    //const response = await fetch("http://localhost:7000/books/sendbooks", {
     const response = await fetch("https://saraswati-api.herokuapp.com/books/sendbooks", {
       method: "POST",
-      body: formData,
+      body: formData
     });
 
     const data = await response.json();

@@ -1,0 +1,23 @@
+import styles from './SendDataModal.module.css';
+import { css } from "@emotion/react";
+import CircleLoader from "react-spinners/CircleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+const SendDataModal = props => {
+    const showMessage = props.showMessage;
+    const message = props.message;
+
+    return (
+        <div className={styles['send-data-modal']}>
+            {showMessage && <span className={styles['message']}>{message}</span>}
+            {!showMessage &&  <CircleLoader color="blue" loading={true} css={override} size={150} />}
+        </div>
+    );
+}
+
+export default SendDataModal;

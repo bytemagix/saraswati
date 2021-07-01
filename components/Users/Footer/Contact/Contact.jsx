@@ -2,12 +2,17 @@ import styles from "./Contact.module.css";
 import InputBox2 from "../../../Utils/UI/InputBox2/InputBox2";
 import TextBox from "../../../Utils/UI/TextBox/TextBox";
 import { useState } from "react";
+import FooterSpinner from '../../../Utils/UI/FooterSpinner/FooterSpinner';
 
 const Contact = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPhoneNo, setEnteredPhoneNo] = useState("");
   const [enteredMessage, setEnteredMessage] = useState("");
+  const [isDataSent, setIsDataSent] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState("Successfully Sent. We will get back to you soon. Thank You");
+
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -30,6 +35,7 @@ const Contact = (props) => {
     event.preventDefault();
 
      //Validation
+     setIsDataSent(true);
 
      const formData = new FormData();
      formData.append("name", enteredName);
@@ -42,14 +48,28 @@ const Contact = (props) => {
   }
   
   const sendData = async (formdata) => {
-    const res = await fetch("http://localhost:7000/feedbacks/enquiry", {
+    const res = await fetch("https://saraswati-api.herokuapp.com/feedbacks/enquiry", {
       method: "POST",
       body: formdata,
     });
 
     const data = await res.json();
-    console.log(data);
+    
+    resetForm();
+    setShowMessage(true);
+    setTimeout(closeLoadingSpinner, 5000);
   }
+
+  const closeLoadingSpinner = () => {
+    setIsDataSent(false);
+  };
+
+  const resetForm = () => {
+    setEnteredName("");
+    setEnteredPhoneNo("");
+    setEnteredEmail("");
+    setEnteredMessage("");
+  };
 
   return (
     <div className={styles['contact']}>
@@ -91,6 +111,14 @@ const Contact = (props) => {
           <button type="submit" className={styles["button"]}>Sumbit</button>
         </div>
       </form>
+
+      {showMessage && <p className={styles['success-message']}>{message}</p>}
+
+      {isDataSent && !showMessage && (
+          <div className={styles["sending"]}>
+            <FooterSpinner />
+          </div>
+        )}
     </div>
   );
 };

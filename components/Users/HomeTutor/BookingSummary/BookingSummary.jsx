@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import styles from "./BookingSummary.module.css";
 import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
+import SendDataModal from "../../../Utils/UI/SendDataModal/SendDataModal";
 
 const BookingSummary = (props) => {
   const bookingInfo = useSelector((state) => state.userSlice.bookHomeTutorInfo);
@@ -14,6 +15,8 @@ const BookingSummary = (props) => {
   const [studentCity, setStudentCity] = useState("");
   const [studentAddress, setStudentAddress] = useState("");
   const [isDataSent, setIsDataSent] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState("Successfully Booked");
 
   const studentNameChangeHandler = (event) => {
     setStudentName(event.target.value);
@@ -46,6 +49,8 @@ const BookingSummary = (props) => {
   const bookingHandler = (event) => {
     event.preventDefault();
 
+    setIsDataSent(true);
+
     //Validation
 
     const formData = new FormData();
@@ -61,16 +66,24 @@ const BookingSummary = (props) => {
   };
 
   const sendData = async (formdata) => {
-    const res = await fetch("http://localhost:7000/home-tutor/book-tutor", {
-      method: "POST",
-      body: formdata,
-    });
+    const res = await fetch(
+      "https://saraswati-api.herokuapp.com/home-tutor/book-tutor",
+      {
+        method: "POST",
+        body: formdata,
+      }
+    );
 
     const data = await res.json();
     console.log(data);
 
     resetForm();
-    setIsDataSent(true);
+    setShowMessage(true);
+    setTimeout(closeLoadingSpinner, 1500);
+  };
+
+  const closeLoadingSpinner = () => {
+    setIsDataSent(false);
   };
 
   return (
@@ -95,12 +108,6 @@ const BookingSummary = (props) => {
             Student Infomation
           </span>
         </div>
-
-        {isDataSent && (
-          <div className={styles['sent-message']}>
-            <p>!!! Booking Request Sent Successfully</p>
-          </div>
-        )}
 
         <div className={styles["form"]}>
           <form onSubmit={bookingHandler} className={styles["form-controls"]}>
@@ -150,6 +157,13 @@ const BookingSummary = (props) => {
             </div>
           </form>
         </div>
+
+        {isDataSent && (
+          <div className={styles["sending"]}>
+            <SendDataModal showMessage={showMessage} message={message} />
+          </div>
+        )}
+
       </div>
     </div>
   );
