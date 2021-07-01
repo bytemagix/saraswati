@@ -25,9 +25,35 @@ const Contact = (props) => {
     setEnteredMessage(event.target.value);
   };
 
+
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+
+     //Validation
+
+     const formData = new FormData();
+     formData.append("name", enteredName);
+     formData.append("mobileNo", enteredPhoneNo);
+     formData.append("email",enteredEmail);
+     formData.append("message",enteredMessage);
+     
+     sendData(formData);
+
+  }
+  
+  const sendData = async (formdata) => {
+    const res = await fetch("http://localhost:7000/feedbacks/enquiry", {
+      method: "POST",
+      body: formdata,
+    });
+
+    const data = await res.json();
+    console.log(data);
+  }
+
   return (
     <div className={styles['contact']}>
-      <form>
+      <form onSubmit={formSubmitHandler}>
         <InputBox2
           label="Name"
           id="name"
@@ -62,7 +88,7 @@ const Contact = (props) => {
         />
 
         <div className={styles["actions"]}>
-          <button className={styles["button"]}>Sumbit</button>
+          <button type="submit" className={styles["button"]}>Sumbit</button>
         </div>
       </form>
     </div>

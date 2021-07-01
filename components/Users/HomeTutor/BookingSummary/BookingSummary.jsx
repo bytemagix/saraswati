@@ -61,7 +61,7 @@ const BookingSummary = (props) => {
   };
 
   const sendData = async (formdata) => {
-    const res = await fetch("/api/bookhometutor", {
+    const res = await fetch("http://localhost:7000/home-tutor/book-tutor", {
       method: "POST",
       body: formdata,
     });

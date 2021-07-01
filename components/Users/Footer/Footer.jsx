@@ -19,11 +19,11 @@ const Footer = () => {
         </div>
         <div className={styles["info"]}>
           <span className={styles['office-address-header']}>Office Address</span>
-          <span style={styles['office-address-line']}>Line 1</span>
-          <span>Line 2</span>
-          <span>Line 3</span>
-          <span>Phone No</span>
-          <span>Email Id</span>
+          <span style={styles['office-address-line']}>Civil Hospital Road</span>
+          <span>Mangaldai</span>
+          <span>Darrang, Assam</span>
+          <span>+91 6026719871</span>
+          <span>saraswatitutorial.mld@gmail.com</span>
         </div>
       </div>
 
