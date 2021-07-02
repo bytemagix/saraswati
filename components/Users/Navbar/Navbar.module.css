@@ -75,6 +75,23 @@
     background-color: #e71f51;
 }
 
+.dashboard{
+    background-color: #2f78d8;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.dashboard:hover{
+    background-color: white;
+    color:  #2f78d8;
+    cursor: pointer;
+}
+
 .bump{
     animation: cartAnimation 1s;
 }
@@ -140,6 +157,12 @@
     .cart{
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .dashboard:hover{
+        background-color: white;
+        color:  #2f78d8;
+        cursor: pointer;
     }
 }
 

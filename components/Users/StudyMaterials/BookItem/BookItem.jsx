@@ -1,11 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./BookItem.module.css";
 import { userActions } from "../../../../store/slices/user-slice";
+import { useRouter } from "next/router";
 
 const BookItem = (props) => {
+  const auth = useSelector(state => state.userSlice.authInfo);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const addCartHandler = () => {
+    if(!auth.isAuthenticated){
+      router.push('/login');
+      return;
+    }
+
     dispatch(
       userActions.addToCart({
         bookId: props.bookId,
@@ -18,6 +26,10 @@ const BookItem = (props) => {
   };
 
   const buyNowHandler = () => {
+    if(!auth.isAuthenticated){
+      router.push('/login');
+      return;
+    }
     dispatch(
       userActions.buyNow({
         bookId: props.bookId,

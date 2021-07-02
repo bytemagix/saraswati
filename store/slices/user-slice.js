@@ -3,6 +3,7 @@ import { createSlice, current } from '@reduxjs/toolkit';
 const initialState = {
     authInfo : {
         isAuthenticated : false,
+        emailId : null,
         localId : null
     },
     profileInfo : {
@@ -11,7 +12,8 @@ const initialState = {
     cartItems : [],
     isCheckoutModalOpen : false,
     isCartModalOpen : false,
-    bookHomeTutorInfo : {}
+    bookHomeTutorInfo : {},
+    downloadableBooks : [],
 }
 
 const userSlice = createSlice({
@@ -19,10 +21,17 @@ const userSlice = createSlice({
     initialState : initialState,
     reducers : {
         login(state,action){
-
+            state.authInfo = {
+                isAuthenticated : true,
+                emailId : action.payload.emailId,
+                localId : action.payload.localId
+            }
         },
         logout(state,action){
-
+            state.authInfo = {
+                isAuthenticated : false,
+                localId : null
+            }
         },
         addToCart(state,action){
             const item = state.cartItems.find(item => item.bookId === action.payload.bookId);
@@ -53,6 +62,9 @@ const userSlice = createSlice({
         setBookHomeTutorInfo(state,action){
             const info = {...action.payload.course,...action.payload.info}
             state.bookHomeTutorInfo = info;
+        },
+        setDownloadableBooks(state,action){
+            state.downloadableBooks = action.payload;
         }
     }
 });

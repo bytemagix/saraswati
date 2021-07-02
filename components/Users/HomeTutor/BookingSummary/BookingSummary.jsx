@@ -5,6 +5,8 @@ import styles from "./BookingSummary.module.css";
 import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
 import SendDataModal from "../../../Utils/UI/SendDataModal/SendDataModal";
+import { baseUrl } from '../../../../constants/urls';
+import { localUrl } from '../../../../constants/urls';
 
 const BookingSummary = (props) => {
   const bookingInfo = useSelector((state) => state.userSlice.bookHomeTutorInfo);
@@ -67,7 +69,7 @@ const BookingSummary = (props) => {
 
   const sendData = async (formdata) => {
     const res = await fetch(
-      "https://saraswati-api.herokuapp.com/home-tutor/book-tutor",
+      `${baseUrl}/home-tutor/book-tutor`,
       {
         method: "POST",
         body: formdata,

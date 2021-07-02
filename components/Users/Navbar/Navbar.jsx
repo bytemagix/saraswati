@@ -9,6 +9,7 @@ const Navbar = (props) => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartItems = useSelector((state) => state.userSlice.cartItems);
+  const auth = useSelector((state) => state.userSlice.authInfo);
 
   const dispatch = useDispatch();
 
@@ -62,12 +63,26 @@ const Navbar = (props) => {
           <li>
             <NavLink href="/study-materials">Study Materials</NavLink>
           </li>
-          <li>Profile</li>
+          {!auth.isAuthenticated && (
+            <li className={styles["dashboard"]}>
+              <NavLink href="/login">Login</NavLink>
+            </li>
+          )}
+
+          {auth.isAuthenticated && (
+            <li className={styles["dashboard"]}>
+              <NavLink href="/student-dashboard">Student Dashboard</NavLink>
+            </li>
+          )}
         </ul>
       </div>
-      <div className={btnClasses} onClick={openCartHandler}>
-        <span>{cartItems.length}</span>
-      </div>
+
+      {auth.isAuthenticated && (
+        <div className={btnClasses} onClick={openCartHandler}>
+          <span>{cartItems.length}</span>
+        </div>
+      )}
+
       {showSideNav && (
         <div className={styles["sidenav"]}>
           <SideNav />

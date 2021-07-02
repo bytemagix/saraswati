@@ -6,6 +6,8 @@ import SuccessMessage from "../SuccessMessage/SuccessMessage";
 import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
 import SendDataModal from "../../../Utils/UI/SendDataModal/SendDataModal";
+import { baseUrl } from '../../../../constants/urls';
+import { localUrl } from '../../../../constants/urls';
 
 const Enrollment = (props) => {
   const router = useRouter();
@@ -72,7 +74,7 @@ const Enrollment = (props) => {
 
   const sendData = async (formdata) => {
     const res = await fetch(
-      "https://saraswati-api.herokuapp.com/online-class/enroll-online-class",
+      `${baseUrl}/online-class/enroll-online-class`,
       {
         method: "POST",
         body: formdata,

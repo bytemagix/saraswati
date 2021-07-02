@@ -52,16 +52,16 @@ const Contact = (props) => {
       method: "POST",
       body: formdata,
     });
-
     const data = await res.json();
     
     resetForm();
     setShowMessage(true);
-    setTimeout(closeLoadingSpinner, 5000);
-  }
+    setTimeout(closeLoadingSpinner, 2000);
+  }    
 
   const closeLoadingSpinner = () => {
     setIsDataSent(false);
+    setShowMessage(false);
   };
 
   const resetForm = () => {
