@@ -32,6 +32,22 @@
     background-color: white;
 }
 
+.list-item-logout{
+    background-color: tomato;
+    border: 1px solid tomato;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.list-item-logout:hover{
+    background-color: #bb3017;
+    border-color: #bb3017;
+    cursor: pointer;
+}
+
 .background{
     position: absolute;
     top: 0;

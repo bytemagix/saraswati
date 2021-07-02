@@ -30,6 +30,7 @@ const userSlice = createSlice({
         logout(state,action){
             state.authInfo = {
                 isAuthenticated : false,
+                emailId : null,
                 localId : null
             }
         },

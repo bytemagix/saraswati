@@ -40,9 +40,12 @@ const Login = (props) => {
     const data = await res.json();
     if (data.idToken) {
       dispatch(userActions.login({
-        emailId : data.emailId,
+        emailId : data.email,
         localId : data.localId
       }));
+
+      localStorage.setItem("authToken",data.localId);
+      localStorage.setItem("emailId",data.email); 
     }
     console.log(data);
     router.push("/student-dashboard");
