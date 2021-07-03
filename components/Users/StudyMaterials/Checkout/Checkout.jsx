@@ -24,7 +24,7 @@ const Checkout = (props) => {
 
     //Validate PhoneNo
 
-    const res = await fetch(`${localUrl}/payments/getorderid`);
+    const res = await fetch(`${baseUrl}/payments/getorderid`);
     const order = await res.json();
     const orderId = order.id;
     console.log(orderId);
