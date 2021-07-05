@@ -26,3 +26,17 @@
     cursor: pointer;
     color: orangered;
 }
+
+.dashboard{
+    background-color: #2f78d8;
+    color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.dashboard:hover{
+    background-color: white;
+    color:  #2f78d8;
+    cursor: pointer;
+}

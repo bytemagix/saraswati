@@ -1,0 +1,42 @@
+.course-item{
+    margin: 10px;
+    box-shadow: 2px 2px 2px 2px #333;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.course-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.actions{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-enroll{
+    width: 100%;
+    background-color: #94155f;
+    color: white;
+    border: 1px solid  #94155f;
+    padding: 8px 30px;
+    border-radius: 5px;
+}
+.btn-enroll:hover{
+    background-color: white;
+    border: 1px solid  #94155f;
+    color: #94155f;
+    cursor: pointer;
+}
+
+@media (min-width:768px){
+    .actions{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-enroll{
+        width: 200px;
+    }
+}

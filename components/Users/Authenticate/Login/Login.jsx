@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Login.module.css";
 import { userActions } from "../../../../store/slices/user-slice";
@@ -49,9 +49,9 @@ const Login = (props) => {
         localStorage.setItem("emailId", data.email);
       }
       console.log(data);
-      router.push("/student-dashboard");
+      router.back();
     } catch (err) {
-      console.log(error);
+      console.log(err);
     }
   };
 
@@ -62,6 +62,26 @@ const Login = (props) => {
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
   };
+
+  const autoLogin = () => {
+    const localId = localStorage.getItem("authToken");
+    const emailId = localStorage.getItem("emailId");
+
+    if (localId) {
+      dispatch(
+        userActions.login({
+          emailId: emailId,
+          localId: localId,
+        })
+      );
+
+      router.back();
+    }
+  }
+
+  useEffect(()=>{
+    autoLogin();
+  },[]);
 
   return (
     <div className={styles["sign-up"]}>

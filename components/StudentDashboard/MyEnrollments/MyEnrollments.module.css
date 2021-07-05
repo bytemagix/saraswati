@@ -1,0 +1,17 @@
+.my-enrollments{
+    margin: 10px;
+}
+
+.header{
+    width: 100%;
+    background-color: #237db9;
+    padding: 10px;
+}
+
+.header-title{
+    display: block;
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,12 +1,9 @@
 import styles from "./Courses.module.css";
-import CourseItem from "../CourseItem/CourseItem";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { onlineClassActions } from '../../../../store/slices/online-class-slice';
+import CourseItem from "./CourseItem/CourseItem";
+import { useEffect, useState } from "react";
 
 const Courses = (props) => {
-  const courses = useSelector(state => state.onlineClassSlice.courses);
-  const dispatch = useDispatch();
+  const [courses, setCourses] = useState([]);
 
   useEffect(()=>{
     fetChCourses();
@@ -25,8 +22,7 @@ const Courses = (props) => {
     }
 
     console.log(courses);
-
-    dispatch(onlineClassActions.setCourses(courses));
+    setCourses(courses);
   }
 
   return (

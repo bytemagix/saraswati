@@ -1,0 +1,29 @@
+.course-item{
+    margin: 10px;
+    box-shadow: 2px 2px 2px 2px #333;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.course-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.upcoming-class-info{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-upcoming-class{
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+@media (min-width:768px){
+    .actions{
+        display: flex;
+        justify-content: flex-end;
+    }
+}

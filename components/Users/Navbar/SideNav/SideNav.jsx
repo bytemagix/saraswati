@@ -1,7 +1,9 @@
 import styles from "./SideNav.module.css";
 import NavLink from "next/link";
+import { useSelector } from "react-redux";
 
 const SideNav = () => {
+  const auth = useSelector((state) => state.userSlice.authInfo);
   return (
     <>
       <div className={styles["sidenav"]}>
@@ -20,6 +22,17 @@ const SideNav = () => {
               <NavLink href="/study-materials">Study Materials</NavLink>
             </li>
             <li>Profile</li>
+            {!auth.isAuthenticated && (
+              <li className={styles["dashboard"]}>
+                <NavLink href="/login">Login</NavLink>
+              </li>
+            )}
+
+            {auth.isAuthenticated && (
+              <li className={styles["dashboard"]}>
+                <NavLink href="/student-dashboard">Student Dashboard</NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>

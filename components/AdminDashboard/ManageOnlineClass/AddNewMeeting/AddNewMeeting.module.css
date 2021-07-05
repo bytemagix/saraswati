@@ -1,0 +1,13 @@
+.add-new-course{
+    width: 100%;
+    color: white;
+}
+
+.card{
+    width: 50%;
+    margin: auto;
+    background-color: #333;
+    box-shadow: 2px 2px 2px 2px #333;
+    padding: 10px;
+    border-radius: 10px;
+}

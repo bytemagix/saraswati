@@ -2,21 +2,6 @@ import Head from "next/head";
 import Enrollment from "../../../components/Users/OnlineClass/Enrollment/Enrollment";
 import Layout from "../../../components/Utils/Layout/Layout";
 
-const courses = [
-  {
-    courseId: "id1",
-    title: "Engineering Physics",
-    tutor: "B Nath",
-    description: "Complete Engineering Physics Course",
-  },
-  {
-      courseId: "id2",
-      title: "Engineering Chemistry",
-      tutor: "B Nath",
-      description: "Complete Engineering Chemistry Course",
-    }
-];
-
 export default function HomePage(props) {
   return (
     <Layout>
@@ -30,6 +15,47 @@ export default function HomePage(props) {
   );
 }
 
+export async function getStaticPaths() {
+  const res = await fetch(
+    "https://saraswati-45e10-default-rtdb.firebaseio.com/OnlineClass/Courses.json"
+  );
+  const data = await res.json();
+
+  let courses = [];
+  for (const key in data) {
+    const course = data[key];
+    courses.push(course);
+  }
+
+  const paths = courses.map((item) => {
+    return {
+      params: { courseId: item.courseId },
+    };
+  });
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
+  const courseId = context.params.courseId;
+
+  const courseRes = await fetch(
+    `https://saraswati-45e10-default-rtdb.firebaseio.com/OnlineClass/Courses/${courseId}.json`
+  );
+  const item = await courseRes.json();
+
+  return {
+    props: {
+      data : item
+    },
+    revalidate : 10,
+  };
+}
+
+/*
 export const getStaticPaths = async () => {
   return {
     paths: [
@@ -54,4 +80,4 @@ export const getStaticProps = async (context) => {
       data: item
     },
   };
-};
+}; */

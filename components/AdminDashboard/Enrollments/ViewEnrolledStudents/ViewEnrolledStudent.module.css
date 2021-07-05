@@ -1,0 +1,22 @@
+.view-enrolled-student{
+    background-color: #ffd8d6;
+    margin: 10px;
+}
+
+.header{
+    width: 100%;
+    background-color: teal;
+    padding: 10px;
+}
+
+.header-title{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.student-list{
+    padding: 10px;
+}

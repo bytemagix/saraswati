@@ -1,20 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  courses: [
-    {
-      courseId: "id1",
-      title: "Engineering Physics",
-      tutor: "B Nath",
-      description: "Complete Engineering Physics Course",
-    },
-    {
-        courseId: "id2",
-        title: "Engineering Chemistry",
-        tutor: "B Nath",
-        description: "Complete Engineering Chemistry Course",
-      }
-  ],
+  courses: [],
 };
 
 const onlineClassSlice = createSlice({
@@ -22,7 +9,7 @@ const onlineClassSlice = createSlice({
     initialState : initialState,
     reducers : {
         setCourses(state,action){
-
+          state.courses = action.payload;
         }
     }
 });

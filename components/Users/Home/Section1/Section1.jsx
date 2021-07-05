@@ -7,10 +7,17 @@ const Section1 = (props) => {
         <div className={styles["text-container__box"]}>
           <h2 className={styles["header"]}>SARASWATI TUTORIALS</h2>
           <p className={styles["description"]}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-            vitae quod illo aspernatur natus sunt officiis deserunt nostrum
-            tenetur maiores corrupti sequi consectetur dignissimos, earum
-            quisquam at minima! Fugiat, qui.
+            Saraswati Tutorial Home is one of the premier Coaching Institute in
+            Assam with a record of many success stories, the institute has
+            streaming ahead setting up a new standard in today's competitive
+            world. After the successful establishment at Mangaldai the HQ of
+            DARRANG District. we now established at Guwahati also the HQ of
+            North Eastern States. Besides classroom activities, we also provide
+            online classes, where students can take their classes in Vernacular
+            Languages also. Our Faculty is dedicated to enhancing the
+            credibility and integrity of the field of coaching and practice. The
+            institute has a unique skill set designed to maximize the
+            performance of the students.
           </p>
           <button className={styles["button"]}>Learn More</button>
         </div>

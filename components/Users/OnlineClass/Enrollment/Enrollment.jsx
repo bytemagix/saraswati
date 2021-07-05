@@ -1,7 +1,7 @@
 import styles from "./Enrollment.module.css";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SuccessMessage from "../SuccessMessage/SuccessMessage";
 import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
@@ -11,6 +11,8 @@ import { localUrl } from '../../../../constants/urls';
 
 const Enrollment = (props) => {
   const router = useRouter();
+
+  const auth = useSelector(state => state.userSlice.authInfo);
 
   const [enteredName, setEnteredName] = useState("");
   const [enteredMobileNo, setEnteredMobileNo] = useState("");
@@ -60,10 +62,11 @@ const Enrollment = (props) => {
 
     const formData = new FormData();
     formData.append("courseId", courseId);
-    formData.append("courseTitle", courseInfo.title);
-    formData.append("courseTutor", courseInfo.tutor);
-    formData.append("courseDescription", courseInfo.description);
-    formData.append("name", enteredEmail);
+    formData.append("userId",auth.localId);
+    formData.append("courseTitle", courseInfo.courseTitle);
+    formData.append("courseTutor", courseInfo.courseTutor);
+    formData.append("courseDescription", courseInfo.courseDescription);
+    formData.append("name", enteredName);
     formData.append("mobileNo", enteredMobileNo);
     formData.append("email", enteredEmail);
     formData.append("prevSchool", enteredPrevSchool);
@@ -101,6 +104,13 @@ const Enrollment = (props) => {
     setEnteredAddress("");
   };
 
+
+  useEffect(() => {
+    if (!auth.isAuthenticated) {
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <div className={styles["enrollment"]}>
       <div className={styles["card"]}>
@@ -114,9 +124,9 @@ const Enrollment = (props) => {
           <span className={styles["form-header-title"]}>
             Course Information
           </span>
-          <span>{courseInfo.title}</span>
-          <span>{courseInfo.tutor}</span>
-          <span>{courseInfo.description}</span>
+          <span>{courseInfo.courseTitle}</span>
+          <span>{courseInfo.courseTutor}</span>
+          <span>{courseInfo.courseDescription}</span>
         </div>
         <div className={styles["form"]}>
           <div className={styles["form-header"]}>
