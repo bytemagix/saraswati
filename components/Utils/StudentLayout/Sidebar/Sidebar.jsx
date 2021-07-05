@@ -14,30 +14,32 @@ const Sidebar = (props) => {
 
   return (
     <div className={styles["sidebar"]}>
-      <div className={styles["menu"]}>
-        <ul className={styles["list-items"]}>
-          <li className={styles["list-item"]}>
-            <NavLink href="/student-dashboard">Student Home</NavLink>
-          </li>
-          <li className={styles["list-item"]}>
-            <NavLink href="/student-dashboard/profile">Profile</NavLink>
-          </li>
-          <li className={styles["list-item"]}>
-            <NavLink href="/student-dashboard/download-materials">
-              Download Materials
-            </NavLink>
-          </li>
-          <li className={styles["list-item"]}>
-            <NavLink href="/student-dashboard/my-enrollments">
-              My Enrollments
-            </NavLink>
-          </li>
-          <li onClick={logoutHandler} className={styles["list-item-logout"]}>
-            Logout
-          </li>
-        </ul>
+      <div className={styles["navbar"]}>
+        <div className={styles["menu"]}>
+          <ul className={styles["list-items"]}>
+            <li className={styles["list-item"]}>
+              <NavLink href="/student-dashboard">Student Home</NavLink>
+            </li>
+            <li className={styles["list-item"]}>
+              <NavLink href="/student-dashboard/profile">Profile</NavLink>
+            </li>
+            <li className={styles["list-item"]}>
+              <NavLink href="/student-dashboard/download-materials">
+                Download Materials
+              </NavLink>
+            </li>
+            <li className={styles["list-item"]}>
+              <NavLink href="/student-dashboard/my-enrollments">
+                My Enrollments
+              </NavLink>
+            </li>
+            <li onClick={logoutHandler} className={styles["list-item-logout"]}>
+              Logout
+            </li>
+          </ul>
+        </div>
+        <div className={styles["background"]}></div>
       </div>
-      <div className={styles["background"]}></div>
     </div>
   );
 };

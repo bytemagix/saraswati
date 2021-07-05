@@ -1,5 +1,5 @@
 import styles from "./Section5.module.css";
-import NavLink from 'next/link';
+import NavLink from "next/link";
 
 const Section5 = (props) => {
   return (
@@ -8,12 +8,14 @@ const Section5 = (props) => {
         <div className={styles["text-container__box"]}>
           <h2 className={styles["header"]}>BOOK OUR EXPERT HOME TUTOR</h2>
           <p className={styles["description"]}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-            vitae quod illo aspernatur natus sunt officiis deserunt nostrum
-            tenetur maiores corrupti sequi consectetur dignissimos, earum
-            quisquam at minima! Fugiat, qui.
+            You can hire our expert home tutor avaialable in your city. Our
+            tutor goes through special eligibility test before featuring in our
+            website. Our Goal is to provide best eduction for our students. So,
+            We don't compromise on quality.
           </p>
-          <button className={styles["button"]}><NavLink href="/home-tutor">Hire Today</NavLink></button>
+          <button className={styles["button"]}>
+            <NavLink href="/home-tutor">Coming Soon</NavLink>
+          </button>
         </div>
       </div>
       <div className={styles["image-container"]}>

@@ -22,7 +22,6 @@ const StudentLayout = (props) => {
           <Cart />
         </div>
       )}
-      <Footer />
     </>
   );
 };

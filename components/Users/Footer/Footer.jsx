@@ -6,7 +6,7 @@ import {
   faInstagram,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMap } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
@@ -31,7 +31,7 @@ const Footer = () => {
       <div className={styles["bottom"]}>
         <div className={styles["social"]}>
           <span> <FontAwesomeIcon icon={faFacebook}  className={styles["icon"]} /></span>
-          <span> <FontAwesomeIcon icon={faTrash} className={styles["icon"]} /></span>
+          <span> <FontAwesomeIcon icon={faInstagram} className={styles["icon"]} /></span>
           <span> <FontAwesomeIcon icon={faGoogle} className={styles["icon"]} /></span>
         </div>
         <p className={styles["copyright"]}>Saraswati Tutorials @ 2021</p>

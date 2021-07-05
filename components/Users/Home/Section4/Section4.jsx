@@ -9,12 +9,9 @@ const Section4 = (props) => {
       </div>
       <div className={styles["text-container"]}>
         <div className={styles["text-container__box"]}>
-          <h2 className={styles['header']}>GET HANDCRAFTED STUDY MATERIAL</h2>
+          <h2 className={styles['header']}>GET HANDPICKED STUDY MATERIAL</h2>
           <p className={styles['description']}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-            vitae quod illo aspernatur natus sunt officiis deserunt nostrum
-            tenetur maiores corrupti sequi consectetur dignissimos, earum
-            quisquam at minima! Fugiat, qui.
+            Get best handpicked study materials from our website chosen by our experts. 
           </p>
           <button className={styles["button"]}><NavLink href="/study-materials">BUY NOW</NavLink></button>
         </div>

@@ -37,10 +37,7 @@ const Section2 = (props) => {
         <div className={styles["text-container__box"]}>
           <h2 className={styles['header']}>VISIT OUR COACHING CENTRE</h2>
           <p className={styles['description']}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-            vitae quod illo aspernatur natus sunt officiis deserunt nostrum
-            tenetur maiores corrupti sequi consectetur dignissimos, earum
-            quisquam at minima! Fugiat, qui.
+           Our Coaching institue are currently avaialable in Mangaldai & Guwahati.
           </p>
           <button className={styles["button"]}>Learn More</button>
         </div>
