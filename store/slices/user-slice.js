@@ -9,7 +9,10 @@ const initialState = {
     profileInfo : {
 
     },
-    cartItems : [],
+    cart : {
+        cartItems : [],
+        totalPrice : 0
+    },
     isCheckoutModalOpen : false,
     isCartModalOpen : false,
     bookHomeTutorInfo : {},
@@ -35,21 +38,26 @@ const userSlice = createSlice({
             }
         },
         addToCart(state,action){
-            const item = state.cartItems.find(item => item.bookId === action.payload.bookId);
+            const item = state.cart.cartItems.find(item => item.bookId === action.payload.bookId);
             if(!item){
-                state.cartItems.push(action.payload);
+                state.cart.cartItems.push(action.payload);
+                state.cart.totalPrice = state.cart.totalPrice + (+action.payload.price);
             }
         },
         buyNow(state,action){
             console.log(action.payload);
-            state.cartItems = [action.payload];
+            state.cart.cartItems = [action.payload];
+            state.cart.totalPrice = (+action.payload.price);
             state.isCheckoutModalOpen = true;
         },
         removeItemFromCart(state,action){
 
         },
         removeAllFromCart(state,action){
-            state.cartItems = []
+            state.cart = {
+                cartItems : [],
+                totalPrice : 0
+            }
         },
         closeCheckoutModal(state,action){
             state.isCheckoutModalOpen = false;

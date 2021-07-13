@@ -6,7 +6,7 @@ const DownloadItem = props => {
         <div className={styles["card"]}>
           <div
             className={styles["image-container"]}
-            style={{ backgroundImage: `url(${props.imageUrl})` }}
+            style={{ backgroundImage: `url(${props.coverUrl})` }}
           ></div>
           <div className={styles["text-container"]}>
             <span className={styles["title"]}>{props.title}</span>

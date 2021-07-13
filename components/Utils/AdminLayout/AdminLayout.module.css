@@ -13,6 +13,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
 }
 
 .navbar-header{
@@ -28,9 +29,13 @@
 
 .sidebar{
     flex-basis: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .content{
-    flex-basis: 80%;
+    width: 80%;
+    margin-left: 20%;
     padding-top: 90px;
 }

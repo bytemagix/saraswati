@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   books: [],
-  subjects: [],
+  categories: [],
   filteredBooks: [],
 };
 
@@ -14,15 +14,15 @@ const bookSlice = createSlice({
       state.books = action.payload;
       state.filteredBooks = action.payload;
     },
-    setSubjects(state, action) {
-      state.subjects = action.payload;
+    setCategories(state, action) {
+      state.categories = action.payload;
     },
-    toogleSubject(state, action) {
-      const subFilterIndex = state.subjects.findIndex(
-        (item) => item.subId === action.payload.id
+    toogleCategory(state, action) {
+      const catFilterIndex = state.categories.findIndex(
+        (item) => item.catId === action.payload.id
       );
-      state.subjects[subFilterIndex].selected =
-        !state.subjects[subFilterIndex].selected;
+      state.categories[catFilterIndex].selected =
+        !state.categories[catFilterIndex].selected;
 
       
     },

@@ -18,25 +18,25 @@ const StudyMaterials = (props) => {
   },[]);
 
   const fetchData = async () => {
-    const subRes = await fetch('https://saraswati-45e10-default-rtdb.firebaseio.com/subjects.json');
-    const subData = await subRes.json();
+    const catRes = await fetch('https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Categories.json');
+    const catData = await catRes.json();
 
-    let subjects = [];
-    for(const key in subData){
-      const sub = {...subData[key],selected : false}
-      subjects.push(sub);
+    let categories = [];
+    for(const key in catData){
+      const cat = {...catData[key],selected : false}
+      categories.push(cat);
     }
-    dispatch(booksActions.setSubjects(subjects));
+    dispatch(booksActions.setCategories(categories));
 
         // BookS
-    const bookRes = await fetch('https://saraswati-45e10-default-rtdb.firebaseio.com/books.json');
+    const bookRes = await fetch('https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Ebooks.json');
     const bookData = await bookRes.json();
     console.log(bookData);
 
     let books = [];
 
     for(const key in bookData){
-      const book = bookData[key].bookInfo;
+      const book = bookData[key].BookInfo;
       books.push(book);
     }
 

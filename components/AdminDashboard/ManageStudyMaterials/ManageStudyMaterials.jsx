@@ -1,11 +1,13 @@
 import styles from './ManageStudyMaterials.module.css';
-import ManageSubjects from './ManageSubjects/ManageSubjects';
+import ManageCategories from './ManageCategories/ManageCategories';
+import ManageBooks from './ManageBooks/ManageBooks';
 
 const ManageStudyMaterials = props => {
 
     return (
         <div className={styles['manage-study-materials']}>
-            <ManageSubjects />
+            <ManageCategories />
+            <ManageBooks />
         </div>
     )
 }

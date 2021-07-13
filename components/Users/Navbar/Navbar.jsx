@@ -8,7 +8,7 @@ import { userActions } from "../../../store/slices/user-slice";
 const Navbar = (props) => {
   const [showSideNav, setShowSideNav] = useState(false);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
-  const cartItems = useSelector((state) => state.userSlice.cartItems);
+  const cartItems = useSelector((state) => state.userSlice.cart.cartItems);
   const auth = useSelector((state) => state.userSlice.authInfo);
 
   const dispatch = useDispatch();

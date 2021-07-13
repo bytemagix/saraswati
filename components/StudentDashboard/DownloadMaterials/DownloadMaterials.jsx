@@ -45,7 +45,7 @@ const DownloadMaterials = (props) => {
         {downloadableBooks.map((item) => (
           <DownloadItem
             key={item.bookingId}
-            imageUrl={item.imageUrl}
+            coverUrl={item.coverUrl}
             title={item.title}
             author={item.author}
             downloadUrl={item.downnloadUrl}

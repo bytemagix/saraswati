@@ -2,17 +2,16 @@ import styles from "./Enrollment.module.css";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import SuccessMessage from "../SuccessMessage/SuccessMessage";
 import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
 import SendDataModal from "../../../Utils/UI/SendDataModal/SendDataModal";
-import { baseUrl } from '../../../../constants/urls';
-import { localUrl } from '../../../../constants/urls';
+import { baseUrl } from "../../../../constants/urls";
+import { localUrl } from "../../../../constants/urls";
 
 const Enrollment = (props) => {
   const router = useRouter();
 
-  const auth = useSelector(state => state.userSlice.authInfo);
+  const auth = useSelector((state) => state.userSlice.authInfo);
 
   const [enteredName, setEnteredName] = useState("");
   const [enteredMobileNo, setEnteredMobileNo] = useState("");
@@ -29,6 +28,88 @@ const Enrollment = (props) => {
   // const courseInfo = courses.find((item) => item.courseId === courseId);
 
   const courseInfo = props.data;
+
+  const coursePrice = 4999;
+
+  // Payment
+  const startPayment = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("amount", coursePrice);
+
+    //Phone No Validation
+    const res = await fetch(`${baseUrl}/payments/getorderid`, {
+      method: "POST",
+      body: formData,
+    });
+    const order = await res.json();
+    const orderId = order.id;
+    console.log(orderId);
+
+    const options = {
+      key: "rzp_test_ZJe7NCNHW5fVOQ", // Enter the Key ID generated from the Dashboard
+      amount: "" + coursePrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "Saraswati Tutorials",
+      description: "Course Enrollment Fee",
+      image:
+        "https://static.wixstatic.com/media/bbc6b5_4d48047f9def41adb4ca0e1b06eb0ff9~mv2.jpeg/v1/fill/w_140,h_140,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202020-10-19%20at%204_02_51%20PM_.webp",
+      order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      handler: function (response) {
+        paymentSuccess(response);
+      },
+      prefill: {
+        name: auth.emailId,
+        email: auth.emailId,
+        contact: enteredMobileNo,
+      },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    const razor = new Razorpay(options);
+    razor.open();
+
+    razor.on("payment.failed", function (response) {
+      paymentFailure(response);
+    });
+  };
+
+  const paymentSuccess = async (response) => {
+    console.log(response.razorpay_payment_id);
+    console.log(response.razorpay_order_id);
+    console.log(response.razorpay_signature);
+
+    const formData = new FormData();
+    formData.append("paymentId",response.razorpay_payment_id);
+    formData.append("orderId",response.razorpay_order_id);
+    formData.append("paymentSignature",response.razorpay_signature);
+
+    const res = await fetch(`${baseUrl}/payments/store-transaction`,{
+      method : "POST",
+      body : formData
+    })
+
+    const data = await res.json();
+    console.log(data);
+
+    enrollmentHandler();
+  };
+
+  const paymentFailure = (response) => {
+    console.log(response.error.code);
+    console.log(response.error.description);
+    console.log(response.error.source);
+    console.log(response.error.step);
+    console.log(response.error.reason);
+    console.log(response.error.metadata.order_id);
+    console.log(response.error.metadata.payment_id);
+  }
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -62,7 +143,7 @@ const Enrollment = (props) => {
 
     const formData = new FormData();
     formData.append("courseId", courseId);
-    formData.append("userId",auth.localId);
+    formData.append("userId", auth.localId);
     formData.append("courseTitle", courseInfo.courseTitle);
     formData.append("courseTutor", courseInfo.courseTutor);
     formData.append("courseDescription", courseInfo.courseDescription);
@@ -76,17 +157,14 @@ const Enrollment = (props) => {
   };
 
   const sendData = async (formdata) => {
-    const res = await fetch(
-      `${baseUrl}/online-class/enroll-online-class`,
-      {
-        method: "POST",
-        body: formdata,
-      }
-    );
+    const res = await fetch(`${baseUrl}/online-class/enroll-online-class`, {
+      method: "POST",
+      body: formdata,
+    });
 
     const data = await res.json();
     console.log(data);
-    
+
     resetForm();
     setShowMessage(true);
     setTimeout(closeLoadingSpinner, 1500);
@@ -103,7 +181,6 @@ const Enrollment = (props) => {
     setEnteredPrevSchool("");
     setEnteredAddress("");
   };
-
 
   useEffect(() => {
     if (!auth.isAuthenticated) {
@@ -127,6 +204,7 @@ const Enrollment = (props) => {
           <span>{courseInfo.courseTitle}</span>
           <span>{courseInfo.courseTutor}</span>
           <span>{courseInfo.courseDescription}</span>
+          <span>Course Price</span>
         </div>
         <div className={styles["form"]}>
           <div className={styles["form-header"]}>
@@ -134,10 +212,7 @@ const Enrollment = (props) => {
               Student Infomation
             </span>
           </div>
-          <form
-            onSubmit={enrollmentHandler}
-            className={styles["form-controls"]}
-          >
+          <form onSubmit={startPayment} className={styles["form-controls"]}>
             <InputBox
               label="Name"
               id="name"

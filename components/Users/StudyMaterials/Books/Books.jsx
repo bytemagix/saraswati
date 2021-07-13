@@ -14,7 +14,7 @@ const Books = (props) => {
           title={item.title}
           price={item.price}
           author={item.author}
-          image={item.imageUrl}
+          image={item.coverUrl}
           stdId={item.stdId}
         />
       ))}

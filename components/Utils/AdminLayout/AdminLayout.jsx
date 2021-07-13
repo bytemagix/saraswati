@@ -15,7 +15,6 @@ const AdminLayout = (props) => {
         </div>
         <main className={styles["content"]}>{props.children}</main>
       </div>
-      <Footer />
     </>
   );
 };

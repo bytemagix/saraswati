@@ -6,10 +6,6 @@ const ManageOnlineClass = (props) => {
   return (
     <div className={styles["manage-online-class"]}>
       <Courses />
-
-      <div className={styles["modal"]}>
-        <AddMeetingModal />
-      </div>
     </div>
   );
 };

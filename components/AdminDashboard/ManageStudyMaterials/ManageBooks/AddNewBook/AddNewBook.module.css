@@ -1,0 +1,80 @@
+.add-book{
+    width: 50%;
+    background-color: #333;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.header-title{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    color: white;
+}
+
+.upload-file{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.upload-file-title{
+    padding-bottom: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.upload-file-inputbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upload-file-inputbox input{
+    color: white;
+}
+
+.upload-success-message{
+    margin-top: 10px;
+    color: white;
+}
+
+.form-control{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control__label{
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control__select{
+    padding: 10px;
+}
+
+.actions{
+    margin-top: 20px;
+    display: flex;
+}
+
+.clear{
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+.submit{
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+.divider{
+    margin-top: 20px;
+}
