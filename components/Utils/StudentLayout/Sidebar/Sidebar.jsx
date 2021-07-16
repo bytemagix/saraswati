@@ -2,14 +2,17 @@ import styles from "./Sidebar.module.css";
 import NavLink from "next/link";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../../../store/slices/user-slice";
+import { useRouter } from "next/router";
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const logoutHandler = () => {
     dispatch(userActions.logout());
     localStorage.removeItem("authToken");
     localStorage.removeItem("emailId");
+    router.push("/");
   };
 
   return (

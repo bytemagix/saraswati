@@ -41,9 +41,10 @@ const ManageCategories= (props) => {
 
   const deleteCategory = async (catId) => {
     const formData = new FormData();
+    formData.append('token', auth.token);
     formData.append("catId", catId);
 
-    const res = await fetch(`${baseUrl}/study-materials/delete-category`, {
+    const res = await fetch(`${baseUrl}/admin/delete-category`, {
       method: "POST",
       body: formData,
     });

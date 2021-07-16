@@ -14,13 +14,15 @@ const Layout = (props) => {
     const localId = localStorage.getItem("authToken");
     const emailId = localStorage.getItem("emailId");
 
-    console.log(localId);
-    console.log(emailId);
-
     if (localId) {
       dispatch(userActions.login({ localId, emailId }));
     }
   }, []);
+
+  
+  const checkAuth = async () => {
+
+  }
 
   return (
     <>

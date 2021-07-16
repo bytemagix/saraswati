@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import styles from "./Login.module.css";
-import { userActions } from "../../../../store/slices/user-slice";
+import styles from "./AdminLogin.module.css";
+import { adminActions } from "../../store/slices/admin-slice";
 import NavLink from "next/link";
 import { useRouter } from "next/router";
-import InputBox2 from "../../../Utils/UI/InputBox2/InputBox2";
-import FooterSpinner from "../../../Utils/UI/FooterSpinner/FooterSpinner";
-import WhiteCircleLoader from "../../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
+import InputBox2 from "../Utils/UI/InputBox2/InputBox2";
+import FooterSpinner from "../Utils/UI/FooterSpinner/FooterSpinner";
+import WhiteCircleLoader from "../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
+import { localUrl } from '../../constants/urls';
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -17,57 +18,30 @@ const Login = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const submitFormHandler = () => {
+  const submitFormHandler = async () => {
     setIsLoading(true);
 
-    const reqBody = {
-      email: enteredEmail,
-      password: enteredPassword,
-      returnSecureToken: true,
-    };
-    const data = JSON.stringify(reqBody);
+    const formData = new FormData();
+    formData.append('email',enteredEmail);
+    formData.append('password',enteredPassword);
+
+    //API
+    const res = await fetch(`${localUrl}/admin/login`,{
+      method : "POST",
+      body : formData
+    });
+
+    const data = await res.json();
     console.log(data);
-    userLogin(data);
-  };
+    setIsLoading(false);
 
-  const userLogin = async (formData) => {
-    try {
-      const res = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAOXb4C0jvnF_vSnf6JCUGk_0JmZ1_Lo4Q",
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = await res.json();
-      console.log(data);
-
-      if (data.error) {
-        setIsError(true);
-        setError(data.error.message);
-      } else {
-        if (data.idToken) {
-          dispatch(
-            userActions.login({
-              emailId: data.email,
-              localId: data.localId,
-            })
-          );
-
-          localStorage.setItem("authToken", data.localId);
-          localStorage.setItem("emailId", data.email);
-        }
-        router.replace("/student-dashboard");
-      }
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-      console.log(err);
+    if(data.token){
+      dispatch(adminActions.login(data.token));
+    }else{
+      setIsError(true);
+      setError("UnAuthorized");
     }
+
   };
 
   const emailChangeHandler = (event) => {
@@ -112,19 +86,6 @@ const Login = (props) => {
                 </span>
               </div>
             </form>
-          </div>
-          <div className={styles["external"]}>
-            <div className={styles["message"]}>
-              <span className={styles["message-title"]}>
-                {" "}
-                Don't have an account ?
-              </span>
-            </div>
-            <div className={styles["signup"]}>
-              <span className={styles["signup-btn"]}>
-                <NavLink href="/signup">SignUp Now</NavLink>
-              </span>
-            </div>
           </div>
         </div>
 

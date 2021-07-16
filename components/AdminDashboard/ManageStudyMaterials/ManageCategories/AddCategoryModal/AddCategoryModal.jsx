@@ -2,8 +2,10 @@ import styles from "./AddCategoryModal.module.css";
 import InputBox2 from "../../../../Utils/UI/InputBox2/InputBox2";
 import { useState } from "react";
 import { baseUrl, localUrl } from "../../../../../constants/urls";
+import { useSelector } from "react-redux";
 
 const AddCategoryModal = (props) => {
+  const auth = useSelector(state => state.adminSlice.authInfo );
   const [enteredCategory, setEnteredCategory] = useState("");
 
   const categoryChangeHandler = (event) => {
@@ -15,15 +17,16 @@ const AddCategoryModal = (props) => {
 
     //Validation
     const formData = new FormData();
+    formData.append('token',auth.token);
     formData.append("title",enteredCategory);
 
     addCategory(formData);
   };
 
   const addCategory = async (formdata) => {
-    const res = await fetch(`${baseUrl}/study-materials/add-category`,{
+    const res = await fetch(`${baseUrl}/admin/add-category`,{
       method : "POST",
-      body : formdata
+      body : formdata,
     });
 
     const data = await res.json();

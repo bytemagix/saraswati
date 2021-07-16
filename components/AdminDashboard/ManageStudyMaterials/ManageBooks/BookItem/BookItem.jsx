@@ -5,9 +5,10 @@ const BookItem = (props) => {
 
   const deleteBookHandler = async () => {
     const formData = new FormData();
+    formData.append('token', auth.token);
     formData.append('bookId',props.bookId);
 
-    const res = await fetch(`${baseUrl}/study-materials/delete-book`,{
+    const res = await fetch(`${baseUrl}/admin/delete-book`,{
         method : "POST",
         body : formData
     });

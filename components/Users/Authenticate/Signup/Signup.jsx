@@ -4,14 +4,22 @@ import NavLink from "next/link";
 import InputBox2 from "../../../Utils/UI/InputBox2/InputBox2";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../../../store/slices/user-slice";
+import { useRouter } from "next/router";
+import WhiteCircleLoader from "../../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
 
 const SignUp = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
+  const router = useRouter();
+
   const submitFormHandler = () => {
+    setIsLoading(true);
     const reqBody = {
       email: enteredEmail,
       password: enteredPassword,
@@ -38,20 +46,27 @@ const SignUp = (props) => {
       const data = await res.json();
       console.log(data);
 
-      if (data.idToken) {
-        dispatch(
-          userActions.login({
-            emailId: data.email,
-            localId: data.localId,
-          })
-        );
+      if (data.error) {
+        setIsError(true);
+        setError(data.error.message);
+      } else {
+        if (data.idToken) {
+          dispatch(
+            userActions.login({
+              emailId: data.email,
+              localId: data.localId,
+            })
+          );
 
-        localStorage.setItem("authToken", data.localId);
-        localStorage.setItem("emailId", data.email);
+          localStorage.setItem("authToken", data.localId);
+          localStorage.setItem("emailId", data.email);
+        }
+        router.replace("/student-dashboard");
       }
-      console.log(data);
-      router.push("/student-dashboard");
+
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -123,6 +138,18 @@ const SignUp = (props) => {
             </div>
           </div>
         </div>
+
+        {isError && (
+          <div>
+            <p className={styles["error-message"]}> SIGNUP FAILED : {error} </p>
+          </div>
+        )}
+
+        {isLoading && (
+          <div className={styles["loading"]}>
+            <WhiteCircleLoader />
+          </div>
+        )}
       </div>
       <div className={styles["background"]}></div>
     </div>

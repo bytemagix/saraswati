@@ -8,12 +8,6 @@ const StudentDashboard = (props) => {
   const auth = useSelector((state) => state.userSlice.authInfo);
   const router = useRouter();
 
-  useEffect(() => {
-    if (!auth.isAuthenticated) {
-      router.replace("/");
-    }
-  }, []);
-
   return (
     <>
       <div className={styles["dashboard"]}>

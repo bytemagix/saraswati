@@ -15,8 +15,7 @@ const adminSlice = createSlice({
     login(state, action) {
       state.authInfo = {
         isAuthenticated: true,
-        emailId: action.payload.emailId,
-        localId: action.payload.localId,
+        token : action.payload
       };
     },
     logout(state, action) {

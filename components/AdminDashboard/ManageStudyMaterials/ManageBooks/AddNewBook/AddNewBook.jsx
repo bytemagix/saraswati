@@ -2,12 +2,14 @@ import styles from "./AddNewBook.module.css";
 import InputBox2 from "../../../../Utils/UI/InputBox2/InputBox2";
 import TextBox from "../../../../Utils/UI/TextBox/TextBox";
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 import { localUrl, baseUrl } from "../../../../../constants/urls";
 import ButtonOrange from "../../../../Utils/UI/Buttons/ButtonOrange/ButtonOrange";
 import ButtonSubmit from "../../../../Utils/UI/Buttons/ButtonSubmit/ButtonSubmit";
 import ButtonClear from "../../../../Utils/UI/Buttons/ButtonClear/ButtonClear";
 
 const AddNewBook = (props) => {
+  const auth = useSelector(state => state.adminSlice.authInfo);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
   const [enteredSubject, setEnteredSubject] = useState("");
@@ -66,9 +68,10 @@ const AddNewBook = (props) => {
     }
 
     const formData = new FormData();
+    formData.append('token', auth.token);
     formData.append("file", choosenCoverFile);
 
-    const res = await fetch(`${baseUrl}/study-materials/upload-book-cover`, {
+    const res = await fetch(`${baseUrl}/admin/upload-book-cover`, {
       method: "POST",
       body: formData,
     });
@@ -91,9 +94,10 @@ const AddNewBook = (props) => {
     }
 
     const formData = new FormData();
+    formData.append('token', auth.token);
     formData.append("file", choosenBookFile);
 
-    const res = await fetch(`${baseUrl}/study-materials/upload-book`, {
+    const res = await fetch(`${baseUrl}/admin/upload-book`, {
       method: "POST",
       body: formData,
     });
@@ -118,6 +122,7 @@ const AddNewBook = (props) => {
     }
 
     const formData = new FormData();
+    formData.append('token', auth.token);
     formData.append("title", enteredTitle);
     formData.append("author", enteredAuthor);
     formData.append("subId", enteredSubId);
@@ -127,7 +132,7 @@ const AddNewBook = (props) => {
     formData.append("coverUrl", coverUrl);
     formData.append("bookUrl", bookUrl);
 
-    const res = await fetch(`${baseUrl}/study-materials/add-book`, {
+    const res = await fetch(`${baseUrl}/admin/add-book`, {
       method: "POST",
       body: formData,
     });

@@ -104,6 +104,19 @@
   opacity: 0.5;
 }
 
+.loading{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.error-message{
+  color: #df5863;
+  font-weight: bold;
+}
+
 @media (min-width: 768px){
   .card{
     width: 50%;
