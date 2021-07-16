@@ -10,26 +10,6 @@ import FooterSpinner from "../UI/FooterSpinner/FooterSpinner";
 
 const StudentLayout = (props) => {
   const isCartOpen = useSelector((state) => state.userSlice.isCartModalOpen);
-  const auth = useSelector((state) => state.userSlice.authInfo);
-  const router = useRouter();
-
-  useEffect(() => {
-    checkAuth();
-  });
-
-  const checkAuth = async () => {
-    if (!auth.isAuthenticated) {
-      router.push("/login");
-    }
-  };
-
-  if (!auth.isAuthenticated) {
-    return (
-      <div className={styles['loading']}>
-        <FooterSpinner />
-      </div>
-    );
-  }
 
   return (
     <>

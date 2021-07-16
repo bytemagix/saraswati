@@ -78,6 +78,28 @@ const Login = (props) => {
     setEnteredPassword(event.target.value);
   };
 
+  const autoLogin = () => {
+    console.log("AutoLogin");
+    const localId = localStorage.getItem('authToken');
+    const email = localStorage.getItem('email');
+
+    console.log(localId);
+    if(!localId){
+      return;
+    }
+
+    dispatch(
+      userActions.login({
+        emailId: email,
+        localId: localId,
+      })
+    );
+  }
+
+  useEffect(()=>{
+    autoLogin();
+  },[]);
+
   return (
     <div className={styles["sign-up"]}>
       <div className={styles["card"]}>

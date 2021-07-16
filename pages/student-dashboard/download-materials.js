@@ -1,8 +1,16 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
+import Login from "../../components/Users/Authenticate/Login/Login";
 import DownloadMaterials from "../../components/StudentDashboard/DownloadMaterials/DownloadMaterials";
 import StudentLayout from '../../components/Utils/StudentLayout/StudentLayout';
 
 export default function HomePage(props) {
+
+  const auth = useSelector((state) => state.userSlice.authInfo);
+  if(!auth.isAuthenticated){
+    return <Login />
+  }
+
   return (
     <StudentLayout>
       <Head>

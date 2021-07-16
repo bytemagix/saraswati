@@ -77,7 +77,7 @@ const Navbar = (props) => {
         </ul>
       </div>
 
-      {auth.isAuthenticated && (
+      {(auth.isAuthenticated && cartItems.length !== 0) && (
         <div className={btnClasses} onClick={openCartHandler}>
           <span>{cartItems.length}</span>
         </div>

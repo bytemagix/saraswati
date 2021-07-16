@@ -75,14 +75,14 @@ const Cart = (props) => {
     console.log(response.razorpay_signature);
 
     const formData = new FormData();
-    formData.append("paymentId",response.razorpay_payment_id);
-    formData.append("orderId",response.razorpay_order_id);
-    formData.append("paymentSignature",response.razorpay_signature);
+    formData.append("paymentId", response.razorpay_payment_id);
+    formData.append("orderId", response.razorpay_order_id);
+    formData.append("paymentSignature", response.razorpay_signature);
 
-    const res = await fetch(`${baseUrl}/payments/store-transactions`,{
-      method : "POST",
-      body : formData
-    })
+    const res = await fetch(`${baseUrl}/payments/store-transactions`, {
+      method: "POST",
+      body: formData,
+    });
 
     const data = await res.json();
     console.log(data);
@@ -98,8 +98,7 @@ const Cart = (props) => {
     console.log(response.error.reason);
     console.log(response.error.metadata.order_id);
     console.log(response.error.metadata.payment_id);
-  }
-
+  };
 
   const orderHandler = async () => {
     const bookIds = [];
@@ -124,7 +123,7 @@ const Cart = (props) => {
     dispatch(userActions.removeAllFromCart());
 
     closeCartHandler();
-    router.push('/student-dashboard/download-materials');
+    router.push("/student-dashboard/download-materials");
   };
 
   const exploreBooksHandler = () => {
@@ -176,6 +175,24 @@ const Cart = (props) => {
                 />
               ))}
 
+              {cartData.cartItems.map((item) => (
+                <CartItem
+                  key={item.bookId}
+                  title={item.title}
+                  author={item.author}
+                  price={item.price}
+                />
+              ))}
+
+              {cartData.cartItems.map((item) => (
+                <CartItem
+                  key={item.bookId}
+                  title={item.title}
+                  author={item.author}
+                  price={item.price}
+                />
+              ))}
+
               <div className={styles["total"]}>
                 <span>Total Price</span>
                 <span className={styles["total-amount"]}>
@@ -200,7 +217,10 @@ const Cart = (props) => {
                 >
                   Close
                 </button>
-                <button className={styles["button-order"]} onClick={startPayment}>
+                <button
+                  className={styles["button-order"]}
+                  onClick={startPayment}
+                >
                   Order Now
                 </button>
               </div>

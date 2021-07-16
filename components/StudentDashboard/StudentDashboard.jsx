@@ -5,7 +5,6 @@ import styles from "./StudentDashboard.module.css";
 import Footer from "../Users/Footer/Footer";
 
 const StudentDashboard = (props) => {
-  const auth = useSelector((state) => state.userSlice.authInfo);
   const router = useRouter();
 
   return (

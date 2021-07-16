@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./AdminLogin.module.css";
 import { adminActions } from "../../store/slices/admin-slice";
-import NavLink from "next/link";
 import { useRouter } from "next/router";
 import InputBox2 from "../Utils/UI/InputBox2/InputBox2";
-import FooterSpinner from "../Utils/UI/FooterSpinner/FooterSpinner";
 import WhiteCircleLoader from "../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
-import { localUrl } from '../../constants/urls';
+import { baseUrl, localUrl } from '../../constants/urls';
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -26,7 +24,7 @@ const Login = (props) => {
     formData.append('password',enteredPassword);
 
     //API
-    const res = await fetch(`${localUrl}/admin/login`,{
+    const res = await fetch(`${baseUrl}/admin/login`,{
       method : "POST",
       body : formData
     });
@@ -56,7 +54,7 @@ const Login = (props) => {
     <div className={styles["sign-up"]}>
       <div className={styles["card"]}>
         <div className={styles["header"]}>
-          <span className={styles["header-title"]}>Log In</span>
+          <span className={styles["header-title"]}>Admin LogIn</span>
         </div>
         <hr />
         <div className={styles["main"]}>

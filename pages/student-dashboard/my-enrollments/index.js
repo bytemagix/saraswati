@@ -1,8 +1,16 @@
 import Head from "next/head";
+import { useSelector } from "react-redux";
+import Login from "../../../components/Users/Authenticate/Login/Login";
 import MyEnrollments from "../../../components/StudentDashboard/MyEnrollments/MyEnrollments";
 import StudentLayout from '../../../components/Utils/StudentLayout/StudentLayout';
 
 export default function MyEnrollmentsPage(props) {
+
+  const auth = useSelector((state) => state.userSlice.authInfo);
+  if(!auth.isAuthenticated){
+    return <Login />
+  }
+
   return (
     <StudentLayout>
       <Head>

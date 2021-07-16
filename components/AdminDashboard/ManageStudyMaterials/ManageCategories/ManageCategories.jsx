@@ -3,8 +3,11 @@ import { baseUrl, localUrl } from "../../../../constants/urls";
 import AddCategoryModal from "./AddCategoryModal/AddCategoryModal";
 import styles from "./ManageCategories.module.css";
 import CatItem from "./CatItem/CatItem";
+import { useSelector } from "react-redux";
 
 const ManageCategories= (props) => {
+  const auth = useSelector(state => state.adminSlice.authInfo);
+  
   const [allCategories, setAllCategories] = useState([]);
   const [isAddCatModalOpen, setIsAddCatModalOpen] = useState(false);
 

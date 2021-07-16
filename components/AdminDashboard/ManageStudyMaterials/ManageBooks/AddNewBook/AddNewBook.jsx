@@ -7,9 +7,11 @@ import { localUrl, baseUrl } from "../../../../../constants/urls";
 import ButtonOrange from "../../../../Utils/UI/Buttons/ButtonOrange/ButtonOrange";
 import ButtonSubmit from "../../../../Utils/UI/Buttons/ButtonSubmit/ButtonSubmit";
 import ButtonClear from "../../../../Utils/UI/Buttons/ButtonClear/ButtonClear";
+import WhiteCircleLoader from '../../../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader';
 
 const AddNewBook = (props) => {
   const auth = useSelector(state => state.adminSlice.authInfo);
+  const [isLoading, setIsLoading] = useState(false);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
   const [enteredSubject, setEnteredSubject] = useState("");
@@ -61,11 +63,12 @@ const AddNewBook = (props) => {
   };
 
   const uploadCoverPhotoHandler = async () => {
-
     if(!choosenCoverFile){
       setSuccessCoverFile("Error Uploading");
       return;
     }
+
+    setIsLoading(true);
 
     const formData = new FormData();
     formData.append('token', auth.token);
@@ -85,6 +88,8 @@ const AddNewBook = (props) => {
     } else {
       setSuccessCoverFile("Error Uploading");
     }
+
+    setIsLoading(false);
   };
 
   const uploadBookHandler = async () => {
@@ -92,6 +97,8 @@ const AddNewBook = (props) => {
       setSuccessBookFile("Error Uploading");
       return;
     }
+
+    setIsLoading(true);
 
     const formData = new FormData();
     formData.append('token', auth.token);
@@ -111,6 +118,8 @@ const AddNewBook = (props) => {
     } else {
       setSuccessBookFile("Error Uploading");
     }
+
+    setIsLoading(false);
   };
 
   const addBookHandler = async (event) => {
@@ -120,6 +129,8 @@ const AddNewBook = (props) => {
     if(enteredTitle.length === 0){
       return;
     }
+
+    setIsLoading(true);
 
     const formData = new FormData();
     formData.append('token', auth.token);
@@ -140,6 +151,7 @@ const AddNewBook = (props) => {
     const data = await res.json();
     console.log(data);
     resetFormHandler();
+    setIsLoading(false);
   };
 
   const resetFormHandler = () => {
@@ -177,7 +189,7 @@ const AddNewBook = (props) => {
   let selectOptions;
   selectOptions = subjects.map((item) => {
     return (
-      <option key={item.subId} value={item.subId}>
+      <option key={item.catId} value={item.catId}>
         {item.title}
       </option>
     );
@@ -188,6 +200,7 @@ const AddNewBook = (props) => {
   }, []);
 
   return (
+    <div className={styles['container']}>
     <div className={styles["add-book"]}>
       <div className={styles['header']}>
         <span className={styles['header-title']}>Add New Book</span>
@@ -293,6 +306,14 @@ const AddNewBook = (props) => {
           </div>
         </form>
       </div>
+    </div>
+
+    {isLoading && (
+          <div className={styles["loading"]}>
+            <WhiteCircleLoader />
+          </div>
+        )}
+
     </div>
   );
 };

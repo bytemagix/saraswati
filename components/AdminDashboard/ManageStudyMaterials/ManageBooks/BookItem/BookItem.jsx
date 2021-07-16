@@ -1,7 +1,9 @@
 import styles from "./BookItem.module.css";
 import { localUrl, baseUrl } from "../../../../../constants/urls";
+import { useSelector } from "react-redux";
 
 const BookItem = (props) => {
+  const auth = useSelector(state => state.adminSlice.authInfo);
 
   const deleteBookHandler = async () => {
     const formData = new FormData();
