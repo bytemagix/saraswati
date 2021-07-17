@@ -11,13 +11,15 @@ import { baseUrl } from "../../../../constants/urls";
 import { localUrl } from "../../../../constants/urls";
 import Modal from "../../../Utils/UI/Modal/Modal";
 import Card from "../../../Utils/UI/Card/Card";
+import ButtonSubmit from "../../../Utils/UI/Buttons/ButtonSubmit/ButtonSubmit";
+import ButtonOrange from "../../../Utils/UI/Buttons/ButtonOrange/ButtonOrange";
 
 const Cart = (props) => {
   const cartData = useSelector((state) => state.userSlice.cart);
   const auth = useSelector((state) => state.userSlice.authInfo);
   const [enteredPhoneNo, setEnteredPhoneNo] = useState("");
   const dispatch = useDispatch();
-  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const closeCartHandler = () => {
@@ -51,7 +53,6 @@ const Cart = (props) => {
       prefill: {
         name: auth.emailId,
         email: auth.emailId,
-        contact: enteredMobileNo,
       },
       notes: {
         address: "Razorpay Corporate Office",
@@ -79,7 +80,7 @@ const Cart = (props) => {
     formData.append("orderId", response.razorpay_order_id);
     formData.append("paymentSignature", response.razorpay_signature);
 
-    const res = await fetch(`${baseUrl}/payments/store-transactions`, {
+    const res = await fetch(`${baseUrl}/payments/store-transaction`, {
       method: "POST",
       body: formData,
     });
@@ -112,12 +113,12 @@ const Cart = (props) => {
     formData.append("bookIds", JSON.stringify(bookIds));
     formData.append("userId", auth.localId);
 
-    const response = await fetch(`${baseUrl}/study-materials/orderbooks`, {
+    const response = await fetch(`${baseUrl}/study-materials/order-books`, {
       method: "POST",
       body: formData,
     });
     const data = await response.json();
-    setIsEmailSent(true);
+    setIsLoading(true);
 
     console.log(data);
     dispatch(userActions.removeAllFromCart());
@@ -140,93 +141,25 @@ const Cart = (props) => {
   };
 
   return (
-    <Modal onModalClose={closeCartHandler}>
-      <div className={styles["card-container"]}>
-        <Card>
-          <div className={styles["header-c"]}>
-            <span className={styles["header"]}>
-              <u>Order Books</u>
-            </span>
+    <Modal
+      header="Order Books"
+      startPayment={startPayment}
+      amount={cartData.totalPrice}
+      onModalClose={closeCartHandler}
+    >
+      <div className={styles["cart"]}>
+        {!isLoading && cartData.cartItems.length !== 0 && (
+          <div className={styles["cart-list"]}>
+            {cartData.cartItems.map((item) => (
+              <CartItem
+                key={item.bookId}
+                title={item.title}
+                author={item.author}
+                price={item.price}
+              />
+            ))}
           </div>
-
-          {cartData.cartItems.length === 0 && (
-            <div className={styles["no-cart-item"]}>
-              <span className={styles["no-item-message"]}>
-                No Item Available In Cart
-              </span>
-              <button
-                onClick={exploreBooksHandler}
-                className={styles["explore-btn"]}
-              >
-                Explore Study Materials
-              </button>
-            </div>
-          )}
-
-          {!isEmailSent && cartData.cartItems.length !== 0 && (
-            <>
-              <span className={styles["section-header"]}>Book Infomation</span>
-              {cartData.cartItems.map((item) => (
-                <CartItem
-                  key={item.bookId}
-                  title={item.title}
-                  author={item.author}
-                  price={item.price}
-                />
-              ))}
-
-              {cartData.cartItems.map((item) => (
-                <CartItem
-                  key={item.bookId}
-                  title={item.title}
-                  author={item.author}
-                  price={item.price}
-                />
-              ))}
-
-              {cartData.cartItems.map((item) => (
-                <CartItem
-                  key={item.bookId}
-                  title={item.title}
-                  author={item.author}
-                  price={item.price}
-                />
-              ))}
-
-              <div className={styles["total"]}>
-                <span>Total Price</span>
-                <span className={styles["total-amount"]}>
-                  Rs. {cartData.totalPrice}
-                </span>
-              </div>
-
-              <div className={styles["contact-box"]}>
-                <InputBox
-                  label="Mobile No"
-                  id="mobile"
-                  type="number"
-                  value={enteredPhoneNo}
-                  onChange={phoneNoChangeHandler}
-                />
-              </div>
-
-              <div className={styles["actions"]}>
-                <button
-                  className={styles["button-close"]}
-                  onClick={closeCartHandler}
-                >
-                  Close
-                </button>
-                <button
-                  className={styles["button-order"]}
-                  onClick={startPayment}
-                >
-                  Order Now
-                </button>
-              </div>
-            </>
-          )}
-        </Card>
+        )}
       </div>
     </Modal>
   );

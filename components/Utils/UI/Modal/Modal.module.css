@@ -1,22 +1,71 @@
 .modal{
-    width: 100%;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    max-height: 80vh;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 2px 2px 2px 2px #333;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.modal-header{
+    background-color: #2f78d8;
+    color: white;
+    padding: 15px;
+}
+
+.modal-header-title{
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
 }
 
 .modal-content{
     width: 100%;
-    min-height: 100vh;
+    height: 70%;
+    overflow-y: scroll;
+}
+
+.footer{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    z-index: 100;
+    background-color: white;
+}
+
+.payable{
+    padding-right: 20px;
+}
+
+.payable-label{
+    padding-right: 10px;
+}
+
+.payable-amount{
+    font-weight: bold;
+}
+
+.actions{
+    margin-right: 10px;
 }
 
 .backdrop{
     width: 100%;
     height: 100vh;
-    z-index: 50;
-    background-color: rgba(0,0,0,0.25);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    background-color: rgba(0,0,0,0.5);
 }

@@ -5,6 +5,7 @@ import Checkout from "./Checkout/Checkout";
 import FilterBooks from "./FilterBooks/FilterBooks";
 import styles from "./StudyMaterials.module.css";
 import { booksActions } from "../../../store/slices/book-slice";
+import { enableBodyScroll, disableBodyScroll, clearAllBodyScrollLocks} from 'body-scroll-lock';
 
 const StudyMaterials = (props) => {
   const dispatch = useDispatch();
@@ -15,7 +16,15 @@ const StudyMaterials = (props) => {
 
   useEffect(()=>{
     fetchData();
-  },[]);
+
+    // Toogle Body Scroll
+    const checkOutBody = document.querySelector("#checkoutbody");
+    if (isCheckoutOpen) {
+      disableBodyScroll(checkOutBody);
+    } else {
+      enableBodyScroll(checkOutBody);
+    }
+  },[isCheckoutOpen]);
 
   const fetchData = async () => {
     const catRes = await fetch('https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Categories.json');
@@ -44,7 +53,7 @@ const StudyMaterials = (props) => {
   }
 
   return (
-    <div className={styles["study"]}>
+    <div className={styles["study"]} id="checkoutbody">
       <FilterBooks />
       <Books />
       {isCheckoutOpen && (

@@ -3,8 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   authInfo: {
     isAuthenticated: false,
-    emailId: null,
-    localId: null,
+    token : null
   },
 };
 
@@ -21,8 +20,7 @@ const adminSlice = createSlice({
     logout(state, action) {
       state.authInfo = {
         isAuthenticated: false,
-        emailId: null,
-        localId: null,
+        token: null,
       };
     },
   },

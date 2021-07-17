@@ -1,15 +1,13 @@
 import styles from "./Sidebar.module.css";
 import NavLink from 'next/link';
 import { useDispatch } from "react-redux";
-import { userActions } from "../../../../store/slices/user-slice";
+import { adminActions } from '../../../../store/slices/admin-slice';
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    dispatch(userActions.logout());
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('emailId');
+    dispatch(adminActions.logout());
   }
 
   return (

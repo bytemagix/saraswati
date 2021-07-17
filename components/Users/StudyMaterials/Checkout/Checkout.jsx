@@ -10,6 +10,7 @@ import { localUrl } from "../../../../constants/urls";
 import Modal from "../../../Utils/UI/Modal/Modal";
 import Card from "../../../Utils/UI/Card/Card";
 import { useRouter } from "next/router";
+import CartItem from "../Cart/CartItem/CartItem";
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Checkout = (props) => {
 
   const router = useRouter();
 
-  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isLoading, setIsLoding] = useState(false);
   const [enteredPhoneNo, setEnteredPhoneNo] = useState("");
 
   const modalCloseHandler = () => {
@@ -78,14 +79,14 @@ const Checkout = (props) => {
     console.log(response.razorpay_signature);
 
     const formData = new FormData();
-    formData.append("paymentId",response.razorpay_payment_id);
-    formData.append("orderId",response.razorpay_order_id);
-    formData.append("paymentSignature",response.razorpay_signature);
+    formData.append("paymentId", response.razorpay_payment_id);
+    formData.append("orderId", response.razorpay_order_id);
+    formData.append("paymentSignature", response.razorpay_signature);
 
-    const res = await fetch(`${baseUrl}/payments/store-transaction`,{
-      method : "POST",
-      body : formData
-    })
+    const res = await fetch(`${baseUrl}/payments/store-transaction`, {
+      method: "POST",
+      body: formData,
+    });
 
     const data = await res.json();
     console.log(data);
@@ -101,7 +102,7 @@ const Checkout = (props) => {
     console.log(response.error.reason);
     console.log(response.error.metadata.order_id);
     console.log(response.error.metadata.payment_id);
-  }
+  };
 
   const orderHandler = async () => {
     const bookIds = [];
@@ -121,12 +122,12 @@ const Checkout = (props) => {
     });
     const data = await response.json();
 
-    setIsEmailSent(true);
+    setIsLoding(true);
 
     console.log(data);
     dispatch(userActions.removeAllFromCart());
     modalCloseHandler();
-    router.push('/student-dashboard/download-materials');
+    router.push("/student-dashboard/download-materials");
   };
 
   const phoneNoChangeHandler = (event) => {
@@ -134,62 +135,21 @@ const Checkout = (props) => {
   };
 
   return (
-    <Modal onModalClose={modalCloseHandler}>
-      <div className={styles["card-container"]}>
-        <Card>
-          <header className={styles["modal-header"]}>
-            <u>Order Book</u>
-          </header>
-          {!isEmailSent && cartData.cartItems.length !== 0 && (
-            <>
-              <div className={styles["book-info"]}>
-                <span className={styles["header"]}>Book Infomation</span>
-                <span className={styles["title"]}>
-                  {cartData.cartItems[0].title}
-                </span>
-                <span className={styles["price"]}>
-                  {cartData.cartItems[0].author}
-                </span>
-                <span className={styles["price"]}>
-                  Rs. {cartData.cartItems[0].price}
-                </span>
-              </div>
-              <div className="divider">
-                <hr />
-              </div>
-
-              <div className={styles["total"]}>
-                <span>Total Price</span>
-                <span className={styles["total-amount"]}>
-                  Rs. {cartData.totalPrice}
-                </span>
-              </div>
-
-              <div className={styles["contact-box"]}>
-                <InputBox
-                  label="Mobile No"
-                  id="mobile"
-                  type="number"
-                  value={enteredPhoneNo}
-                  onChange={phoneNoChangeHandler}
-                />
-              </div>
-
-              <div className={styles["actions"]}>
-                <button
-                  className={styles["button-close"]}
-                  onClick={modalCloseHandler}
-                >
-                  Close
-                </button>
-                <button className={styles["button-order"]} onClick={startPayment}>
-                  Order Now
-                </button>
-              </div>
-            </>
-          )}
-        </Card>
-      </div>
+    <Modal
+      header="Order Book"
+      startPayment={startPayment}
+      amount={cartData.totalPrice}
+      onModalClose={modalCloseHandler}
+    >
+      {!isLoading && cartData.cartItems.length !== 0 && (
+        <div className={styles["cart"]}>
+          <CartItem
+            title={cartData.cartItems[0].title}
+            author={cartData.cartItems[0].author}
+            price={cartData.cartItems[0].price}
+          />
+        </div>
+      )}
     </Modal>
   );
 };

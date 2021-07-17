@@ -1,6 +1,7 @@
 .cart-item{
     width: 100%;
     display: flex;
+    padding: 0px 10px;
     justify-content: space-between;
     align-items: center;
 }
@@ -8,11 +9,11 @@
 .cart-info{
     display: flex;
     flex-direction: column;
+    padding: 0 10px;
 }
 
 .title{
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .author{
@@ -20,5 +21,9 @@
 }
 
 .price{
+    font-weight: bold;
+}
 
+.divider{
+    padding: 0px 10px;
 }

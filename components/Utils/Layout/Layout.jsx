@@ -5,6 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../Users/Footer/Footer";
 import { userActions } from "../../../store/slices/user-slice";
 import { useEffect } from "react";
+import {
+  enableBodyScroll,
+  disableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 
 const Layout = (props) => {
   const isCartOpen = useSelector((state) => state.userSlice.isCartModalOpen);
@@ -17,17 +22,25 @@ const Layout = (props) => {
     if (localId) {
       dispatch(userActions.login({ localId, emailId }));
     }
-  }, []);
 
-  
-  const checkAuth = async () => {
+    // Toogle Body Scroll
+    const mainBody = document.querySelector("#mainbody");
 
-  }
+    if (isCartOpen) {
+      disableBodyScroll(mainBody);
+    } else {
+      enableBodyScroll(mainBody);
+    }
+  }, [isCartOpen]);
+
+  const checkAuth = async () => {};
 
   return (
     <>
       <Navbar />
-      <main className={styles["main"]}>{props.children}</main>
+      <main className={styles["main"]} id="mainbody">
+        {props.children}
+      </main>
       {isCartOpen && (
         <div className={styles["cart"]}>
           <Cart />
