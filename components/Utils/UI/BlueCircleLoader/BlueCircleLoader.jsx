@@ -1,4 +1,4 @@
-import styles from './WhiteCircleLoader.module.css';
+import styles from './BlueCircleLoader.module.css'
 import { css } from "@emotion/react";
 import CircleLoader from "react-spinners/CircleLoader";
 
@@ -8,13 +8,13 @@ const override = css`
   border-color: red;
 `;
 
-const WhiteCircleLoader = props => {
+const BlueCircleLoader = props => {
 
     return (
         <div className={styles['loader']}>
-            <CircleLoader color="white" loading={true} css={override} size={150} />
+            <CircleLoader color="blue" loading={true} css={override} size={150} />
         </div>
     );
 }
 
-export default WhiteCircleLoader;
+export default BlueCircleLoader;

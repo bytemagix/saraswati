@@ -2,17 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
 import { userActions } from "../../../../store/slices/user-slice";
 import CartItem from "./CartItem/CartItem";
-import { useRef } from "react";
 import { useState } from "react";
-import SuccessMessage from "../SuccessMessage/SuccessMessage";
 import { useRouter } from "next/router";
-import InputBox from "../../../Utils/UI/InputBox/InputBox";
 import { baseUrl } from "../../../../constants/urls";
 import { localUrl } from "../../../../constants/urls";
 import Modal from "../../../Utils/UI/Modal/Modal";
-import Card from "../../../Utils/UI/Card/Card";
-import ButtonSubmit from "../../../Utils/UI/Buttons/ButtonSubmit/ButtonSubmit";
-import ButtonOrange from "../../../Utils/UI/Buttons/ButtonOrange/ButtonOrange";
 
 const Cart = (props) => {
   const cartData = useSelector((state) => state.userSlice.cart);
@@ -27,6 +21,7 @@ const Cart = (props) => {
   };
 
   const startPayment = async () => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("amount", cartData.totalPrice);
 
@@ -118,7 +113,7 @@ const Cart = (props) => {
       body: formData,
     });
     const data = await response.json();
-    setIsLoading(true);
+    setIsLoading(false);
 
     console.log(data);
     dispatch(userActions.removeAllFromCart());
@@ -146,9 +141,10 @@ const Cart = (props) => {
       startPayment={startPayment}
       amount={cartData.totalPrice}
       onModalClose={closeCartHandler}
+      isLoading={isLoading}
     >
       <div className={styles["cart"]}>
-        {!isLoading && cartData.cartItems.length !== 0 && (
+        {cartData.cartItems.length !== 0 && (
           <div className={styles["cart-list"]}>
             {cartData.cartItems.map((item) => (
               <CartItem

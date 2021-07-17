@@ -42,6 +42,7 @@ const HomeTutor = (props) => {
           />
         ))}
       </div>
+      <div className={styles['background']}></div>
     </>
   );
 };

@@ -11,6 +11,7 @@ import Modal from "../../../Utils/UI/Modal/Modal";
 import Card from "../../../Utils/UI/Card/Card";
 import { useRouter } from "next/router";
 import CartItem from "../Cart/CartItem/CartItem";
+import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Checkout = (props) => {
 
   const startPayment = async () => {
     //Validate PhoneNo
-
+    setIsLoding(true);
     const formData = new FormData();
     formData.append("amount", cartData.totalPrice);
 
@@ -122,7 +123,7 @@ const Checkout = (props) => {
     });
     const data = await response.json();
 
-    setIsLoding(true);
+    setIsLoding(false);
 
     console.log(data);
     dispatch(userActions.removeAllFromCart());
@@ -140,8 +141,9 @@ const Checkout = (props) => {
       startPayment={startPayment}
       amount={cartData.totalPrice}
       onModalClose={modalCloseHandler}
+      isLoading={isLoading}
     >
-      {!isLoading && cartData.cartItems.length !== 0 && (
+      {cartData.cartItems.length !== 0 && (
         <div className={styles["cart"]}>
           <CartItem
             title={cartData.cartItems[0].title}

@@ -1,5 +1,8 @@
 import ButtonOrange from "../Buttons/ButtonOrange/ButtonOrange";
 import styles from "./Modal.module.css";
+import MakePaymentButton from "../Buttons/MakePaymentButton/MakePaymentButton";
+import FooterSpinner from '../../UI/FooterSpinner/FooterSpinner';
+import BlueCircleLoader from "../BlueCircleLoader/BlueCircleLoader";
 
 const Modal = (props) => {
   return (
@@ -17,9 +20,16 @@ const Modal = (props) => {
                 <span className={styles['payable-amount']}>Rs. {props.amount}</span>
             </div>
             <div className={styles['actions']}>
-                <ButtonOrange title="Make Payment" onClick={props.startPayment} />
+                <MakePaymentButton title="Make Payment" onClick={props.startPayment} />
             </div>
         </div>
+        
+        {props.isLoading && (
+          <div className={styles["loading"]}>
+            <BlueCircleLoader />
+          </div>
+        )}
+
       </div>
       <div className={styles["backdrop"]} onClick={props.onModalClose}></div>
     </>
