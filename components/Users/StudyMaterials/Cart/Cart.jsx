@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { baseUrl } from "../../../../constants/urls";
 import { localUrl } from "../../../../constants/urls";
 import Modal from "../../../Utils/UI/Modal/Modal";
+import { RAZOR_LIVE_KEY_ID } from "../../../../constants/keys";
 
 const Cart = (props) => {
   const cartData = useSelector((state) => state.userSlice.cart);
@@ -34,7 +35,7 @@ const Cart = (props) => {
     const orderId = order.id;
 
     const options = {
-      key: "rzp_test_ZJe7NCNHW5fVOQ", // Enter the Key ID generated from the Dashboard
+      key: RAZOR_LIVE_KEY_ID, // Enter the Key ID generated from the Dashboard
       amount: "" + cartData.totalPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Saraswati Tutorials",

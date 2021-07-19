@@ -5,7 +5,7 @@ export default class SaraswatiDocument extends Document {
     return (
       <Html>
         <Head>
-            <script src="https://checkout.razorpay.com/v1/checkout.js" />
+          <script src="https://checkout.razorpay.com/v1/checkout.js" />
         </Head>
         <body>
           <Main />

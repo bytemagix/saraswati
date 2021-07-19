@@ -7,6 +7,7 @@ import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
 import SendDataModal from "../../../Utils/UI/SendDataModal/SendDataModal";
 import { baseUrl } from "../../../../constants/urls";
 import { localUrl } from "../../../../constants/urls";
+import { RAZOR_LIVE_KEY_ID } from "../../../../constants/keys";
 
 const Enrollment = (props) => {
   const router = useRouter();
@@ -48,7 +49,7 @@ const Enrollment = (props) => {
     console.log(orderId);
 
     const options = {
-      key: "rzp_test_ZJe7NCNHW5fVOQ", // Enter the Key ID generated from the Dashboard
+      key: RAZOR_LIVE_KEY_ID, // Enter the Key ID generated from the Dashboard
       amount: "" + coursePrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Saraswati Tutorials",

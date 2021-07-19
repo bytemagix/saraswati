@@ -12,6 +12,7 @@ import Card from "../../../Utils/UI/Card/Card";
 import { useRouter } from "next/router";
 import CartItem from "../Cart/CartItem/CartItem";
 import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
+import { RAZOR_LIVE_KEY_ID } from "../../../../constants/keys";
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const Checkout = (props) => {
     const orderId = order.id;
 
     const options = {
-      key: "rzp_test_ZJe7NCNHW5fVOQ", // Enter the Key ID generated from the Dashboard
+      key: RAZOR_LIVE_KEY_ID, // Enter the Key ID generated from the Dashboard
       amount: "" + cartData.totalPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Saraswati Tutorials",
