@@ -1,28 +1,33 @@
-.dashboard{
-    margin: 20px;
-    padding: 20px;
-    background-color: #f5ecf4;
+@font-face {
+  font-family: "noto-serif";
+  src: url("/fonts/Noto_Serif/NotoSerif-Bold.ttf");
 }
 
-.section{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+.dashboard {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5ecf4;
 }
 
-.section-header{
-    display: block;
-    font-size: 1.3rem;
-    font-weight: bold;
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-.feature{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+.section-header {
+  display: block;
+  font-family: "noto-serif", sans-serif;
+  font-size: 1.3rem;
 }
 
-.feature-header{
-    font-size: 1.1rem;
-    font-weight: bold;
+.feature {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-header {
+  font-family: "noto-serif", sans-serif;
+  font-size: 1.3rem;
 }
