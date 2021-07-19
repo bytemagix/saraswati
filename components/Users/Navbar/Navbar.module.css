@@ -11,9 +11,10 @@
 }
 
 .brand{
+    width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -34,15 +35,15 @@
 }
 
 .brand img{
-    display: none;
+    display: block;
     width: auto;
-    height: 100%;
-    padding: 5px 20px;
+    height: 80%;
+    padding: 5px 10px;
     border-radius: 10px;
 }
 
 .brand span{
-    display: block;
+    display: none;
     color: white;
     font-weight: bold;
     margin-left: 20px;
@@ -52,16 +53,37 @@
     display: none;
 }
 
+.drawer{
+    width: 70%;
+    position: relative;
+    background-color: white;
+}
+
 .sidenav{
     width: 70%;
+    position: fixed;
+    overflow-y: auto;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    animation: sidenavAnimation 1s;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.background {
+    width: 70%;
     height: 100vh;
-    background-color: white;
     position: fixed;
     top: 70px;
     left: 0;
+    z-index: -5;
     animation: sidenavAnimation 1s;
-    z-index: 100;
-}
+    background-image: url("/images/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 
 .cart{
     border: 1px solid #e71f51;
@@ -124,10 +146,6 @@
         display: none;
     }
 
-    .brand img{
-        display: block;
-    }
-
     .menu{
         display: block;
         flex-grow: 1;
@@ -150,7 +168,21 @@
         cursor: pointer;
     }
 
+    .brand{
+        width: unset;
+        justify-content: flex-start;
+    }
+
+    .brand img{
+        display: block;
+        width: auto;
+        height: 100%;
+        padding: 5px 20px;
+        border-radius: 10px;
+    }
+
     .brand span{
+        display: block;
         font-size: 1.3rem;
     }
 

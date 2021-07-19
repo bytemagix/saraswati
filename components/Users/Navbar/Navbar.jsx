@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
-import SideNav from "./SideNav/SideNav";
 import NavLink from "next/link";
 import { userActions } from "../../../store/slices/user-slice";
+import SideDrawer from "./SideDrawer/SideDrawer";
 
 const Navbar = (props) => {
-  const [showSideNav, setShowSideNav] = useState(false);
+  const [showSideDrawer, setShowSideDrawer] = useState(false);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartItems = useSelector((state) => state.userSlice.cart.cartItems);
   const auth = useSelector((state) => state.userSlice.authInfo);
@@ -18,7 +18,7 @@ const Navbar = (props) => {
   };
 
   const showSideNavHandler = () => {
-    setShowSideNav((prevState) => !prevState);
+    setShowSideDrawer((prevState) => !prevState);
   };
 
   const btnClasses = `${styles.cart} ${btnIsHighlighted ? styles.bump : ""}`;
@@ -46,7 +46,9 @@ const Navbar = (props) => {
           <div className={styles["menu-icon__line"]}></div>
           <div className={styles["menu-icon__line"]}></div>
         </div>
-        <img src="https://static.wixstatic.com/media/bbc6b5_4d48047f9def41adb4ca0e1b06eb0ff9~mv2.jpeg/v1/fill/w_140,h_140,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202020-10-19%20at%204_02_51%20PM_.webp" />
+        {!showSideDrawer && (
+          <img src="https://static.wixstatic.com/media/bbc6b5_4d48047f9def41adb4ca0e1b06eb0ff9~mv2.jpeg/v1/fill/w_140,h_140,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202020-10-19%20at%204_02_51%20PM_.webp" />
+        )}
         <span>SARASWATI TUTORIALS</span>
       </div>
       <div className={styles["menu"]}>
@@ -63,6 +65,7 @@ const Navbar = (props) => {
           <li>
             <NavLink href="/study-materials">Study Materials</NavLink>
           </li>
+
           {!auth.isAuthenticated && (
             <li className={styles["dashboard"]}>
               <NavLink href="/login">Login</NavLink>
@@ -77,18 +80,22 @@ const Navbar = (props) => {
         </ul>
       </div>
 
-      {(auth.isAuthenticated && cartItems.length !== 0) && (
+      {auth.isAuthenticated && cartItems.length !== 0 && (
         <div className={btnClasses} onClick={openCartHandler}>
           <span>{cartItems.length}</span>
         </div>
       )}
 
-      {showSideNav && (
-        <div className={styles["sidenav"]}>
-          <SideNav />
+      {showSideDrawer && (
+        <div className={styles["drawer"]}>
+          <div className={styles["sidenav"]}>
+            <SideDrawer />
+          </div>
+          <div className={styles["background"]}></div>
         </div>
       )}
-      {showSideNav && (
+
+      {showSideDrawer && (
         <div className={styles["backdrop"]} onClick={showSideNavHandler}></div>
       )}
     </div>
