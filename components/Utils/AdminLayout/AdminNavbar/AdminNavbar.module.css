@@ -1,0 +1,103 @@
+.navbar{
+    width: 100%;
+    height: 70px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;
+}
+
+.menu-icon{
+    height: 20px;
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.menu-icon__line{
+    width: 32px;
+    height: 2px;
+    background-color: white;
+}
+
+.header{
+    width: 100%;
+}
+
+.header-title{
+    display: block;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 20px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.drawer{
+    width: 70%;
+    position: relative;
+    background-color: white;
+}
+
+.sidenav{
+    width: 70%;
+    position: fixed;
+    overflow-y: auto;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    color: white;
+    animation: sidenavAnimation 1s;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.backdrop{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.background {
+    width: 70%;
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    z-index: -5;
+    animation: sidenavAnimation 1s;
+    background-image: url("/images/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+
+@keyframes sidenavAnimation{
+    0%{
+        transform: translateX(-100%);
+    }
+
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+@media (min-width : 768px){
+    .menu-icon{
+        display: none;
+    }
+
+    .header-title{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}

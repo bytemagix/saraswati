@@ -22,8 +22,7 @@ const bookSlice = createSlice({
         (item) => item.catId === action.payload.id
       );
       state.categories[catFilterIndex].selected =
-        !state.categories[catFilterIndex].selected;
-
+        !state.categories[catFilterIndex].selected;   
       
     },
   },

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Books from "./Books/Books";
 import Checkout from "./Checkout/Checkout";
@@ -11,7 +11,11 @@ import {
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
+import WhiteCircleLoader from "../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
+import BlueCircleLoader from "../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
+
 const StudyMaterials = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   const isCheckoutOpen = useSelector(
@@ -58,13 +62,20 @@ const StudyMaterials = (props) => {
     }
 
     dispatch(booksActions.setBooks(books));
+    setIsLoading(false);
   };
 
   return (
     <>
       <div className={styles["study"]} id="checkoutbody">
-        <FilterBooks />
-        <Books />
+        {isLoading && <div className={styles['loading']}><WhiteCircleLoader /></div>}
+        {!isLoading && (
+          <>
+            <FilterBooks />
+            <Books />
+          </>
+        )}
+
         {isCheckoutOpen && (
           <div className={styles["checkout"]}>
             <Checkout />

@@ -2,19 +2,19 @@ import styles from "./AdminLayout.module.css";
 import { useSelector } from "react-redux";
 import Footer from "../../Users/Footer/Footer";
 import Sidebar from "./Sidebar/Sidebar";
+import AdminNavbar from "./AdminNavbar/AdminNavbar";
 
 const AdminLayout = (props) => {
   return (
     <>
-      <div className={styles['navbar']}>
-        <span className={styles['navbar-header']}>Admin Dashboard</span>
-      </div>
+      <AdminNavbar />
       <div className={styles["main"]}>
         <div className={styles['sidebar']}>
             <Sidebar />
         </div>
         <main className={styles["content"]}>{props.children}</main>
       </div>
+      <div className={styles["background"]}></div>
     </>
   );
 };

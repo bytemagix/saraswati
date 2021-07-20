@@ -2,15 +2,15 @@ import styles from "./AddNewBook.module.css";
 import InputBox2 from "../../../../Utils/UI/InputBox2/InputBox2";
 import TextBox from "../../../../Utils/UI/TextBox/TextBox";
 import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { localUrl, baseUrl } from "../../../../../constants/urls";
 import ButtonOrange from "../../../../Utils/UI/Buttons/ButtonOrange/ButtonOrange";
 import ButtonSubmit from "../../../../Utils/UI/Buttons/ButtonSubmit/ButtonSubmit";
 import ButtonClear from "../../../../Utils/UI/Buttons/ButtonClear/ButtonClear";
-import WhiteCircleLoader from '../../../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader';
+import WhiteCircleLoader from "../../../../Utils/UI/WhiteCircleLoader/WhiteCircleLoader";
 
 const AddNewBook = (props) => {
-  const auth = useSelector(state => state.adminSlice.authInfo);
+  const auth = useSelector((state) => state.adminSlice.authInfo);
   const [isLoading, setIsLoading] = useState(false);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
@@ -63,7 +63,7 @@ const AddNewBook = (props) => {
   };
 
   const uploadCoverPhotoHandler = async () => {
-    if(!choosenCoverFile){
+    if (!choosenCoverFile) {
       setSuccessCoverFile("Error Uploading");
       return;
     }
@@ -71,7 +71,7 @@ const AddNewBook = (props) => {
     setIsLoading(true);
 
     const formData = new FormData();
-    formData.append('token', auth.token);
+    formData.append("token", auth.token);
     formData.append("file", choosenCoverFile);
 
     const res = await fetch(`${baseUrl}/admin/upload-book-cover`, {
@@ -93,7 +93,7 @@ const AddNewBook = (props) => {
   };
 
   const uploadBookHandler = async () => {
-    if(!choosenBookFile){
+    if (!choosenBookFile) {
       setSuccessBookFile("Error Uploading");
       return;
     }
@@ -101,7 +101,7 @@ const AddNewBook = (props) => {
     setIsLoading(true);
 
     const formData = new FormData();
-    formData.append('token', auth.token);
+    formData.append("token", auth.token);
     formData.append("file", choosenBookFile);
 
     const res = await fetch(`${baseUrl}/admin/upload-book`, {
@@ -126,14 +126,14 @@ const AddNewBook = (props) => {
     event.preventDefault();
 
     //Validate Data
-    if(enteredTitle.length === 0){
+    if (enteredTitle.length === 0) {
       return;
     }
 
     setIsLoading(true);
 
     const formData = new FormData();
-    formData.append('token', auth.token);
+    formData.append("token", auth.token);
     formData.append("title", enteredTitle);
     formData.append("author", enteredAuthor);
     formData.append("subId", enteredSubId);
@@ -155,20 +155,20 @@ const AddNewBook = (props) => {
   };
 
   const resetFormHandler = () => {
-  setEnteredTitle("")
-  setEnteredAuthor(""); 
-  setEnteredSubject("");
-  setEnteredSubId("");
-  setEnteredPrice("");
-  setEnteredDescription("");
-  setCoverUrl("")
-  setBookUrl("");
-  
-  setChoosenCoverFile(null);
-  setSuccessCoverFile("");
+    setEnteredTitle("");
+    setEnteredAuthor("");
+    setEnteredSubject("");
+    setEnteredSubId("");
+    setEnteredPrice("");
+    setEnteredDescription("");
+    setCoverUrl("");
+    setBookUrl("");
 
-  setChoosenBookFile(null);
-  setSuccessBookFile("");
+    setChoosenCoverFile(null);
+    setSuccessCoverFile("");
+
+    setChoosenBookFile(null);
+    setSuccessBookFile("");
   };
 
   const fetchSubjects = async () => {
@@ -200,120 +200,129 @@ const AddNewBook = (props) => {
   }, []);
 
   return (
-    <div className={styles['container']}>
-    <div className={styles["add-book"]}>
-      <div className={styles['header']}>
-        <span className={styles['header-title']}>Add New Book</span>
+    <div className={styles["container"]}>
+      <div className={styles["add-book"]}>
+        <div className={styles["header"]}>
+          <span className={styles["header-title"]}>Add New Book</span>
+        </div>
+        <div className={styles["divider"]}>
+          <hr />
+        </div>
+        <div>
+          <form onSubmit={addBookHandler}>
+            <InputBox2
+              label="Title"
+              id="title"
+              type="text"
+              value={enteredTitle}
+              onChange={titleChangeHandler}
+            />
+
+            <InputBox2
+              label="Author"
+              id="author"
+              type="text"
+              value={enteredAuthor}
+              onChange={authorChangeHandler}
+            />
+
+            <div className={styles["form-control"]}>
+              <label className={styles["form-control__label"]}>
+                Categories
+              </label>
+              <select
+                onChange={subjectChangeHandler}
+                value={enteredSubId}
+                className={styles["form-control__select"]}
+              >
+                {selectOptions}
+              </select>
+            </div>
+
+            <InputBox2
+              label="Price"
+              id="price"
+              type="number"
+              value={enteredPrice}
+              onChange={priceChangeHandler}
+            />
+
+            <TextBox
+              label="Description"
+              id="description"
+              type="text"
+              rows="4"
+              value={enteredDescription}
+              onChange={descriptionChangeHandler}
+            />
+
+            <div className={styles["upload-file"]}>
+              <div className={styles["upload-file-title"]}>
+                <span>Upload Cover Photo</span>
+              </div>
+              <div className={styles["upload-file-inputbox"]}>
+                <input type="file" onChange={coverPhotoChangeHandler} />
+                <div className={styles["upload-btn"]}>
+                  <ButtonOrange
+                    type="button"
+                    title="Upload"
+                    onClick={uploadCoverPhotoHandler}
+                  />
+                </div>
+              </div>
+              <div>
+                <span className={styles["upload-success-message"]}>
+                  {successCoverFile}
+                </span>
+              </div>
+            </div>
+
+            <div className={styles["upload-file"]}>
+              <div className={styles["upload-file-title"]}>
+                <span>Upload Book</span>
+              </div>
+              <div className={styles["upload-file-inputbox"]}>
+                <input type="file" onChange={bookFileChangeHandler} />
+                <div className={styles["upload-btn"]}>
+                  <ButtonOrange
+                    type="button"
+                    title="Upload"
+                    onClick={uploadBookHandler}
+                  />
+                </div>
+              </div>
+              <div>
+                <span className={styles["upload-success-message"]}>
+                  {successBookFile}
+                </span>
+              </div>
+            </div>
+
+            <div className={styles["divider"]}>
+              <hr />
+            </div>
+
+            <div className={styles["actions"]}>
+              <div className={styles["clear"]}>
+                <ButtonClear
+                  type="button"
+                  title="Clear"
+                  onClick={resetFormHandler}
+                />
+              </div>
+              <div className={styles["submit"]}>
+                <ButtonSubmit type="submit" title="Add Book" />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className={styles['divider']}>
-        <hr />
-      </div>
-      <div>
-        <form onSubmit={addBookHandler}>
-          <InputBox2
-            label="Title"
-            id="title"
-            type="text"
-            value={enteredTitle}
-            onChange={titleChangeHandler}
-          />
 
-          <InputBox2
-            label="Author"
-            id="author"
-            type="text"
-            value={enteredAuthor}
-            onChange={authorChangeHandler}
-          />
-
-          <div className={styles["form-control"]}>
-            <label className={styles["form-control__label"]}>Categories</label>
-            <select onChange={subjectChangeHandler} value={enteredSubId} className={styles['form-control__select']}>
-              {selectOptions}
-            </select>
-          </div>
-
-          <InputBox2
-            label="Price"
-            id="price"
-            type="number"
-            value={enteredPrice}
-            onChange={priceChangeHandler}
-          />
-
-          <TextBox
-            label="Description"
-            id="description"
-            type="text"
-            rows="4"
-            value={enteredDescription}
-            onChange={descriptionChangeHandler}
-          />
-
-          <div className={styles["upload-file"]}>
-            <div className={styles["upload-file-title"]}>
-              <span>Upload Cover Photo</span>
-            </div>
-            <div className={styles["upload-file-inputbox"]}>
-              <input type="file" onChange={coverPhotoChangeHandler} />
-              <ButtonOrange
-                type="button"
-                title="Upload"
-                onClick={uploadCoverPhotoHandler}
-              />
-            </div>
-            <div>
-              <span className={styles["upload-success-message"]}>
-                {successCoverFile}
-              </span>
-            </div>
-          </div>
-
-          <div className={styles["upload-file"]}>
-            <div className={styles["upload-file-title"]}>
-              <span>Upload Book</span>
-            </div>
-            <div className={styles["upload-file-inputbox"]}>
-              <input type="file" onChange={bookFileChangeHandler} />
-              <ButtonOrange
-                type="button"
-                title="Upload"
-                onClick={uploadBookHandler}
-              />
-            </div>
-            <div>
-              <span className={styles["upload-success-message"]}>
-                {successBookFile}
-              </span>
-            </div>
-          </div>
-
-          <div className={styles['divider']}>
-            <hr />
-          </div>
-
-          <div className={styles["actions"]}>
-            <div className={styles["clear"]}>
-              <ButtonClear
-                type="button"
-                title="Clear"
-                onClick={resetFormHandler}
-              />
-            </div>
-            <div className={styles["submit"]}>
-              <ButtonSubmit type="submit" title="Add Book" />
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    {isLoading && (
-          <div className={styles["loading"]}>
-            <WhiteCircleLoader />
-          </div>
-        )}
-
+      {isLoading && (
+        <div className={styles["loading"]}>
+          <WhiteCircleLoader />
+        </div>
+      )}
     </div>
   );
 };

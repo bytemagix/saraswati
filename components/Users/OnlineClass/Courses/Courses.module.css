@@ -1,10 +1,40 @@
-.courses{
-    width: 100%;
+.courses {
+  width: 100%;
 }
 
-@media (min-width:768px){
-    .courses{
-        width: 80%;
-        margin: auto;
-    }
+.no-courses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 95%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  color: red;
+}
+
+.no-courses p {
+  text-align: center;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .courses {
+    width: 80%;
+    margin: auto;
+  }
+
+  .no-courses {
+    width: 50%;
+    margin: auto;
+  }
 }

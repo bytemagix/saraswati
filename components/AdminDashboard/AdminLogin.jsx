@@ -35,6 +35,7 @@ const Login = (props) => {
 
     if(data.token){
       dispatch(adminActions.login(data.token));
+      localStorage.setItem("adminToken", data.token);
     }else{
       setIsError(true);
       setError("UnAuthorized");
@@ -49,6 +50,24 @@ const Login = (props) => {
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
   };
+
+  const autoLogin = () => {
+    console.log("AutoLogin");
+    const token = localStorage.getItem('adminToken');
+
+    console.log(token);
+    if(!token){
+      return;
+    }
+
+    dispatch(
+      adminActions.login(token)
+    );
+  }
+
+  useEffect(()=>{
+    autoLogin();
+  },[]);
 
   return (
     <div className={styles["sign-up"]}>
