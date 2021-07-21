@@ -1,0 +1,27 @@
+.section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 90px;
+    background-color: #93cae4;;
+}
+
+.slider{
+    width: 95%;
+    height: auto;
+    box-shadow: 2px 2px 2px 2px #333;
+    border-radius: 10px;
+}
+
+@media (min-width : 768px){
+    .section{
+        height: 100vh;
+    }
+
+    .slider{
+        width: 90%;
+        height: 80vh;
+    }
+}

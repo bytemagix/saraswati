@@ -8,6 +8,7 @@ import Section6 from "./Section6/Section6";
 const Home = (props) => {
   return (
     <>
+      <Section1 />
       <Section2 />
       <Section3 />
       <Section4 />
