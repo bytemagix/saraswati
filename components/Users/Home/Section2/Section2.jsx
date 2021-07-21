@@ -1,46 +1,32 @@
 import styles from "./Section2.module.css";
-import { useScrollPercentage } from 'react-scroll-percentage';
-import { useState } from "react";
 
 const Section2 = (props) => {
-  const [ref, percentage] = useScrollPercentage({
-    threshold: 0
-  });
-
-  const [titleClass, setTitleClass] = useState(false);
-
-  const animateHandler = (value) => {
-    if (value !== titleClass) {
-      setTitleClass((prevState) => !prevState);
-    }
-  }
-
-  if(percentage > 0.3 && percentage < 0.8){
-    animateHandler(true)
-  }else{
-    animateHandler(false);
-  }
-
-  let titleClasses;
-  if(titleClass){
-    titleClasses = 'title';
-  }else{
-    titleClasses = 'title animate'
-  }
-
   return (
-    <div className={styles["section"]} ref={ref}>
-      <div className={styles["image-container"]}>
-        <img className={styles['image']} src="https://www.torsh.co/wp-content/uploads/2019/12/classroom-observation.jpg" />
-      </div>
+    <div className={styles["section"]}>
       <div className={styles["text-container"]}>
         <div className={styles["text-container__box"]}>
-          <h2 className={styles['header']}>VISIT OUR COACHING CENTRE</h2>
-          <p className={styles['description']}>
-           Our Coaching institue are currently avaialable in Mangaldai & Guwahati.
+          <h2 className={styles["header"]}>SARASWATI TUTORIALS</h2>
+          <p className={styles["description"]}>
+            Saraswati Tutorial Home is one of the premier Coaching Institute in
+            Assam with a record of many success stories, the institute has
+            streaming ahead setting up a new standard in today's competitive
+            world. After the successful establishment at Mangaldai the HQ of
+            DARRANG District. we now established at Guwahati also the HQ of
+            North Eastern States. Besides classroom activities, we also provide
+            online classes, where students can take their classes in Vernacular
+            Languages also. Our Faculty is dedicated to enhancing the
+            credibility and integrity of the field of coaching and practice. The
+            institute has a unique skill set designed to maximize the
+            performance of the students.
           </p>
           <button className={styles["button"]}>Learn More</button>
         </div>
+      </div>
+      <div className={styles["image-container"]}>
+        <img
+          src="https://mk0digitallearn7ttjx.kinstacdn.com/wp-content/uploads/2019/12/Why-School-education-crucial-for-child-development.jpg"
+          className={styles["image"]}
+        />
       </div>
     </div>
   );

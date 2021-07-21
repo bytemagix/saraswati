@@ -24,8 +24,8 @@ const AdminSideDrawer = () => {
 
   const logoutHandler = () => {
     dispatch(adminActions.logout());
-    /*localStorage.removeItem("authToken");
-    localStorage.removeItem("emailId"); */
+    localStorage.removeItem("adminToken");
+    router.push("/admin");
   };
 
   return (

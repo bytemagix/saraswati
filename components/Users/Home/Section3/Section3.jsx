@@ -1,52 +1,45 @@
 import styles from "./Section3.module.css";
-import YouTube from "react-youtube";
-import { useScrollPercentage } from "react-scroll-percentage";
-import ReactPlayer from "react-player";
+import { useScrollPercentage } from 'react-scroll-percentage';
 import { useState } from "react";
-import NavLink from "next/link";
 
 const Section3 = (props) => {
   const [ref, percentage] = useScrollPercentage({
-    threshold: 0,
+    threshold: 0
   });
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [titleClass, setTitleClass] = useState(false);
 
-  const changePlayerHandler = (value) => {
-    if (value !== isPlaying) {
-      setIsPlaying((prevState) => !prevState);
+  const animateHandler = (value) => {
+    if (value !== titleClass) {
+      setTitleClass((prevState) => !prevState);
     }
-  };
+  }
 
-  if (percentage > 0.3 && percentage < 0.8) {
-    changePlayerHandler(true);
-  } else {
-    changePlayerHandler(false);
+  if(percentage > 0.3 && percentage < 0.8){
+    animateHandler(true)
+  }else{
+    animateHandler(false);
+  }
+
+  let titleClasses;
+  if(titleClass){
+    titleClasses = 'title';
+  }else{
+    titleClasses = 'title animate'
   }
 
   return (
     <div className={styles["section"]} ref={ref}>
+      <div className={styles["image-container"]}>
+        <img className={styles['image']} src="https://www.torsh.co/wp-content/uploads/2019/12/classroom-observation.jpg" />
+      </div>
       <div className={styles["text-container"]}>
         <div className={styles["text-container__box"]}>
-          <h2 className={styles["header"]}>Online Classes</h2>
-          <p className={styles["description"]}>
-            We also provide online classes. Get yourself enrolled to our online
-            classes batch & Enjoy the experience of learning from anywhere from
-            our highly experienced faculty.
+          <h2 className={styles['header']}>VISIT OUR COACHING CENTRE</h2>
+          <p className={styles['description']}>
+           Our Coaching institue are currently avaialable in Mangaldai & Guwahati.
           </p>
-          <button className={styles["button"]}>
-            <NavLink href="/online-class">Enroll Today</NavLink>
-          </button>
-        </div>
-      </div>
-      <div className={styles["image-container"]}>
-        <div className={styles["video"]}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=8No-0n4Twbc"
-            playing={false}
-            width="100%"
-            height="100%"
-          />
+          <button className={styles["button"]}>Learn More</button>
         </div>
       </div>
     </div>
