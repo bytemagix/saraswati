@@ -108,7 +108,7 @@ const Contact = (props) => {
         />
 
         <div className={styles["actions"]}>
-          <button type="submit" className={styles["button"]}>Sumbit</button>
+          <button type="submit" className={styles["button"]}>SUBMIT</button>
         </div>
       </form>
 

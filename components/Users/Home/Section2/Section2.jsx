@@ -5,7 +5,7 @@ const Section2 = (props) => {
     <div className={styles["section"]}>
       <div className={styles["text-container"]}>
         <div className={styles["text-container__box"]}>
-          <h2 className={styles["header"]}>SARASWATI TUTORIALS</h2>
+          <h2 className={styles["header"]}>SARASWATI TUTORIAL</h2>
           <p className={styles["description"]}>
             Saraswati Tutorial Home is one of the premier Coaching Institute in
             Assam with a record of many success stories, the institute has

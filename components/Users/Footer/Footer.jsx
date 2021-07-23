@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
 import ContactForm from "./ContactForm/ContactForm";
 import AddressItem from "./AddressItem/AddressItem";
+import SiteMap from "./Sitemap/Sitemap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -41,6 +42,8 @@ const Footer = () => {
         </div>
       </div>
 
+      <SiteMap />
+      
       <div className={styles["bottom"]}>
         <div className={styles["social"]}>
           <span>

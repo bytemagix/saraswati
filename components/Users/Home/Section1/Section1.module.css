@@ -11,6 +11,7 @@
 .slider{
     width: 95%;
     height: auto;
+    margin: auto;
     box-shadow: 2px 2px 2px 2px #333;
     border-radius: 10px;
 }

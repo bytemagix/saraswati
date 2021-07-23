@@ -47,9 +47,9 @@ const Navbar = (props) => {
           <div className={styles["menu-icon__line"]}></div>
         </div>
         {!showSideDrawer && (
-          <img src="https://static.wixstatic.com/media/bbc6b5_4d48047f9def41adb4ca0e1b06eb0ff9~mv2.jpeg/v1/fill/w_140,h_140,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202020-10-19%20at%204_02_51%20PM_.webp" />
+          <img src="/images/logo.webp" alt="Logo" />
         )}
-        <span>SARASWATI TUTORIALS</span>
+        <span>SARASWATI TUTORIAL</span>
       </div>
       <div className={styles["menu"]}>
         <ul className={styles["menu-items"]}>
