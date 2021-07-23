@@ -1,0 +1,26 @@
+.contact-box{
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-item{
+    padding: 5px 10px;
+  }
+  
+  .info{
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+  
+  .office-address-header{
+    padding: 10px 0px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color:#2394b1;;
+    font-family: sans-serif;
+  }
+  
+  @media (min-width: 768px) {
+  }

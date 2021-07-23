@@ -18,6 +18,9 @@ const SiteMap = (props) => {
               <NavLink href="/study-materials">Study Materials</NavLink>
             </li>
             <li className={styles["menu-item"]}>
+              <NavLink href="/classroom-courses">Classroom Courses</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
               <NavLink href="/online-class">Online Class</NavLink>
             </li>
             <li className={styles["menu-item"]}>

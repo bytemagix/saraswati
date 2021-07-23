@@ -57,13 +57,16 @@ const Navbar = (props) => {
             <NavLink href="/">Home</NavLink>
           </li>
           <li>
+            <NavLink href="/study-materials">Study Materials</NavLink>
+          </li>
+          <li>
+            <NavLink href="/classroom-courses">Classroom Courses</NavLink>
+          </li>
+          <li>
             <NavLink href="/online-class">Online Class</NavLink>
           </li>
           <li>
             <NavLink href="/home-tutor">Home Tutor</NavLink>
-          </li>
-          <li>
-            <NavLink href="/study-materials">Study Materials</NavLink>
           </li>
 
           {!auth.isAuthenticated && (

@@ -14,8 +14,8 @@ const AddNewBook = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
-  const [enteredSubject, setEnteredSubject] = useState("");
-  const [enteredSubId, setEnteredSubId] = useState("");
+  const [enteredCategory, setEnteredCategory] = useState("");
+  const [enteredCatId, setEnteredCatId] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDescription, setEnteredDescription] = useState("");
   const [coverUrl, setCoverUrl] = useState("");
@@ -27,7 +27,7 @@ const AddNewBook = (props) => {
   const [choosenBookFile, setChoosenBookFile] = useState(null);
   const [successBookFile, setSuccessBookFile] = useState("");
 
-  const [subjects, setSubjects] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -37,11 +37,11 @@ const AddNewBook = (props) => {
     setEnteredAuthor(event.target.value);
   };
 
-  const subjectChangeHandler = (event) => {
-    setEnteredSubId(event.target.value);
+  const categoryChangeHandler = (event) => {
+    setEnteredCatId(event.target.value);
 
-    const sub = subjects.find((item) => item.subId === event.target.value);
-    setEnteredSubject(sub.title);
+    const category = categories.find((item) => item.catId === event.target.value);
+    setEnteredCategory(category.title);
   };
 
   const priceChangeHandler = (event) => {
@@ -136,8 +136,8 @@ const AddNewBook = (props) => {
     formData.append("token", auth.token);
     formData.append("title", enteredTitle);
     formData.append("author", enteredAuthor);
-    formData.append("subId", enteredSubId);
-    formData.append("subject", enteredSubject);
+    formData.append("catId", enteredCatId);
+    formData.append("category", enteredCategory);
     formData.append("price", enteredPrice);
     formData.append("description", enteredDescription);
     formData.append("coverUrl", coverUrl);
@@ -157,8 +157,8 @@ const AddNewBook = (props) => {
   const resetFormHandler = () => {
     setEnteredTitle("");
     setEnteredAuthor("");
-    setEnteredSubject("");
-    setEnteredSubId("");
+    setEnteredCategory("");
+    setEnteredCatId("");
     setEnteredPrice("");
     setEnteredDescription("");
     setCoverUrl("");
@@ -171,23 +171,28 @@ const AddNewBook = (props) => {
     setSuccessBookFile("");
   };
 
-  const fetchSubjects = async () => {
+  const fetchCategories = async () => {
     const res = await fetch(
       "https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Categories.json"
     );
     const data = await res.json();
     console.log(data);
 
-    let subjects = [];
+    let categories = [];
     for (const key in data) {
-      const sub = data[key];
-      subjects.push(sub);
+      const cat = data[key];
+      categories.push(cat);
     }
-    setSubjects(subjects);
+    setCategories(categories);
+    
+    if(categories.length !== 0){
+      setEnteredCatId(categories[0].catId);
+      setEnteredCategory(categories[0].title);
+    }
   };
 
   let selectOptions;
-  selectOptions = subjects.map((item) => {
+  selectOptions = categories.map((item) => {
     return (
       <option key={item.catId} value={item.catId}>
         {item.title}
@@ -196,7 +201,7 @@ const AddNewBook = (props) => {
   });
 
   useEffect(() => {
-    fetchSubjects();
+    fetchCategories();
   }, []);
 
   return (
@@ -231,8 +236,8 @@ const AddNewBook = (props) => {
                 Categories
               </label>
               <select
-                onChange={subjectChangeHandler}
-                value={enteredSubId}
+                onChange={categoryChangeHandler}
+                value={enteredCatId}
                 className={styles["form-control__select"]}
               >
                 {selectOptions}

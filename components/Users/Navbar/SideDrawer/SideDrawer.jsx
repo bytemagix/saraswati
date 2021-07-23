@@ -14,6 +14,7 @@ import {
   FaFileDownload,
   FaGraduationCap,
   FaLock,
+  FaBookReader
 } from "react-icons/fa";
 
 const SideDrawer = () => {
@@ -40,6 +41,21 @@ const SideDrawer = () => {
               </span>
               <NavLink href="/">Home</NavLink>
             </li>
+
+            <li>
+              <span className={styles["icon"]}>
+                <FaBook />
+              </span>
+              <NavLink href="/study-materials">Study Materials</NavLink>
+            </li>
+
+            <li>
+              <span className={styles["icon"]}>
+                <FaBookReader />
+              </span>
+              <NavLink href="/classroom-courses">Classroom Courses</NavLink>
+            </li>
+
             <li>
               <span className={styles["icon"]}>
                 <FaTv />
