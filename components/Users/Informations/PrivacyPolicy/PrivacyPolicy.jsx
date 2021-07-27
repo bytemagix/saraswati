@@ -1,12 +1,12 @@
-import styles from "./Policies.module.css";
+import styles from "./PrivacyPolicy.module.css";
 
-const Policies = (props) => {
+const PrivacyPolicy = (props) => {
   return (
     <>
       <div className={styles["policies"]}>
         <div className={styles["container"]}>
           <div className={styles["header"]}>
-            <span className={styles["header-title"]}>Terms & Conditions</span>
+            <span className={styles["header-title"]}>Privacy Policy</span>
           </div>
           <hr />
           <div>
@@ -90,48 +90,12 @@ const Policies = (props) => {
             </div>
 
             <div className={styles["section"]}>
-              <span className={styles["sub-header"]}>Terms of use</span>
-              <p>
-                1. There is no special permission needed to use our website.
-                <br />
-                <br />
-                2. There the few paid services in our website & all the
-                necessary details regarding payment & pricing are clearly
-                mentioned against the particular service.
-                <br />
-                <br />
-                3. There is no hidden charges to use our website. we only charge
-                for our paid services you chooses to purchase or enroll.
-              </p>
-            </div>
-
-            <div className={styles["section"]}>
-              <span className={styles["sub-header"]}>Refund Policy</span>
-              <p>
-                1. In case of any canceled services from our side. We will
-                provide full refund to the user.
-                <br />
-                <br />
-                2. In case of user want to discontinue our online classes, home
-                tutor service we will provide 75% refund with 5 days of
-                enrollment.
-                <br />
-                <br />
-                3. There will be no refund in case of successfull order of study
-                materials.
-                <br />
-                <br />
-                4. Refund may take upto 3-4 bussiness days to complete.
-              </p>
-            </div>
-
-            <div className={styles["section"]}>
               <span className={styles["sub-header"]}>
                 More on Terms & Conditions
               </span>
               <p>
-                Saraswati Tutorial may change or amend this Terms & Conditions, Privacy Policy Or Refund Policy from time
-                to time to incorporate necessary future changes. For more details on terms and condition.
+                Saraswati Tutorial may change or amend this Privacy Policy from time
+                to time to incorporate necessary future changes. For more details on Privacy Policy.
                 You can contact us on saraswatitutorial.mld@gmail.com.
               </p>
             </div>
@@ -143,4 +107,4 @@ const Policies = (props) => {
   );
 };
 
-export default Policies;
+export default PrivacyPolicy;

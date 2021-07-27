@@ -53,7 +53,22 @@ const SiteMap = (props) => {
         <div className={styles["flex-item"]}>
           <ul className={styles["menu-items"]}>
             <li className={styles["menu-item"]}>
-              <NavLink href="/terms-and-conditions">Terms & Conditions</NavLink>
+              <NavLink href="/informations/about-us">About Us</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
+              <NavLink href="/informations/contact-us">Contact Us</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
+              <NavLink href="/informations/pricing">Pricing</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
+              <NavLink href="/informations/privacy-policy">Privacy Policy</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
+              <NavLink href="/informations/terms-and-conditions">Terms & Conditions</NavLink>
+            </li>
+            <li className={styles["menu-item"]}>
+              <NavLink href="/informations/cancellation-and-refund">Cancellation & Refund Policy</NavLink>
             </li>
           </ul>
         </div>
