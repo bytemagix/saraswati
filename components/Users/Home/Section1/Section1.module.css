@@ -5,7 +5,9 @@
     justify-content: center;
     align-items: center;
     padding-top: 90px;
-    background-color: #93cae4;;
+    background-color: #93cae4;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .slider{
