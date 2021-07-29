@@ -24,6 +24,21 @@ const bookSlice = createSlice({
       state.categories[catFilterIndex].selected =
         !state.categories[catFilterIndex].selected;   
       
+        if(action.payload.type === "ADD_FILTER"){
+          const toBeAddedBooks = state.books.filter(item => item.catId === action.payload.id);
+          if(state.filteredBooks.length < state.books.length){
+            state.filteredBooks = state.filteredBooks.concat(toBeAddedBooks);
+          }else{
+              state.filteredBooks = toBeAddedBooks;
+          }
+        }else{
+          const toBeAddedBooks = state.filteredBooks.filter(item => item.catId !== action.payload.id);
+          if(toBeAddedBooks.length === 0){
+            state.filteredBooks = state.books;
+          }else{
+            state.filteredBooks = toBeAddedBooks;
+          }
+        }
     },
   },
 });
