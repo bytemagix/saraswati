@@ -46,7 +46,7 @@ const Layout = (props) => {
           <Cart />
         </div>
       )}
-      <Footer />
+      <div className={styles['footer']}><Footer /></div>
     </>
   );
 };
