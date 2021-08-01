@@ -11,7 +11,6 @@ const DownloadItem = props => {
           <div className={styles["text-container"]}>
             <span className={styles["title"]}>{props.title}</span>
             <span className={styles["price"]}>{props.author}</span>
-            <span>Order Date</span>
           </div>
           <div className={styles["actions"]}>
             <button className={styles["download-button"]}>

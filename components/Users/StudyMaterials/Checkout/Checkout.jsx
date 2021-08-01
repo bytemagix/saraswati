@@ -56,7 +56,7 @@ const Checkout = (props) => {
     }
   }
 
-  const startPayment = async () => {
+  /*const startPayment = async () => {
     //Validate PhoneNo
     setIsLoding(true);
     const formData = new FormData();
@@ -158,7 +158,7 @@ const Checkout = (props) => {
     dispatch(userActions.removeAllFromCart());
     modalCloseHandler();
     router.push("/student-dashboard/download-materials");
-  };
+  };*/
 
   const phoneNoChangeHandler = (event) => {
     setEnteredPhoneNo(event.target.value);

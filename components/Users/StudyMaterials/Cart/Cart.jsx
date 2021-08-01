@@ -49,7 +49,7 @@ const Cart = (props) => {
     }
   }
 
-  const startPayment = async () => {
+  /*const startPayment = async () => {
     setIsLoading(true);
     const formData = new FormData();
     formData.append("amount", cartData.totalPrice);
@@ -158,7 +158,7 @@ const Cart = (props) => {
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-  };
+  }; */
 
   const phoneNoChangeHandler = (event) => {
     setEnteredPhoneNo(event.target.value);
