@@ -52,7 +52,6 @@ const StudyMaterials = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Ebooks.json"
     );
     const bookData = await bookRes.json();
-    console.log(bookData);
 
     let books = [];
 

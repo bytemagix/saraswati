@@ -21,6 +21,34 @@ const Cart = (props) => {
     dispatch(userActions.closeCartModal());
   };
 
+  const startMojo = async () => {
+    setIsLoading(true);
+    const bookIds = [];
+    cartData.cartItems.forEach((item) => {
+      bookIds.push(item.bookId);
+    });
+
+    const formData = new FormData();
+    formData.append("amount", cartData.totalPrice);
+    formData.append("emailId",auth.emailId);
+    formData.append("localId",auth.localId);
+    formData.append("bookIds",JSON.stringify(bookIds));
+
+    const res = await fetch(`${baseUrl}/payments/create-mojo-request`,{
+      method : "POST",
+      body: formData
+    });
+    
+    const data = await res.json();
+    const jsondata = JSON.parse(data);
+    console.log(jsondata);
+
+    if(jsondata.success){
+      console.log(jsondata.payment_request.longurl);
+      Instamojo.open(jsondata.payment_request.longurl);
+    }
+  }
+
   const startPayment = async () => {
     setIsLoading(true);
     const formData = new FormData();
@@ -139,7 +167,7 @@ const Cart = (props) => {
   return (
     <Modal
       header="Order Books"
-      startPayment={startPayment}
+      startPayment={startMojo}
       amount={cartData.totalPrice}
       onModalClose={closeCartHandler}
       isLoading={isLoading}
