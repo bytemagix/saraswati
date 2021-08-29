@@ -20,7 +20,7 @@ const Sidebar = (props) => {
       <div className={styles["menu"]}>
         <ul className={styles["list-items"]}>
           <li className={styles["list-item"]}><NavLink href="/home-tutor-dashboard/profile">Profile</NavLink></li>
-          <li className={styles["list-item"]}><NavLink href="/home-tutor-dashboard/manage-online-class">Manage Courses</NavLink></li>
+          <li className={styles["list-item"]}><NavLink href="/home-tutor-dashboard/manage-courses">Manage Courses</NavLink></li>
           <li className={styles["list-item"]}><NavLink href="/admin/enrollments">Enrolled Students</NavLink></li>
           <li onClick={logoutHandler} className={styles['list-item-logout']}>Logout</li>
         </ul>

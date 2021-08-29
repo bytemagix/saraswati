@@ -7,7 +7,7 @@ import WhiteCircleLoader from "../../Utils/UI/WhiteCircleLoader/WhiteCircleLoade
 
 const HomeTutorProfile = (props) => {
   const auth = useSelector(state => state.homeTutorUserSlice.authInfo);
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [profileData, setProfileData] = useState({});
 
@@ -29,7 +29,7 @@ const HomeTutorProfile = (props) => {
     <>
     {isLoading && <div className={styles['loading']}><WhiteCircleLoader /></div>}
     <div className={styles["profile"]}>
-      {(!isEditMode && !isLoading) && (
+      {(isEditMode && !isLoading) && (
         <div className={styles["view-profile"]}>
           <ViewProfile data={profileData} />
         </div>

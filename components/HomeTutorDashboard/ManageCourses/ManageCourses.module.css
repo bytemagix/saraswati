@@ -1,0 +1,10 @@
+.manage-study-materials{
+    width: 95%;
+    margin: auto;
+}
+
+@media (min-width : 768px){
+    .manage-study-materials{
+        width: 80%;
+    }
+}

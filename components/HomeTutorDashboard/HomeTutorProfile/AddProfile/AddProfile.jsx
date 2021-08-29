@@ -116,7 +116,6 @@ const AddProfile = (props) => {
     formData.append("tutorEmail", enteredEmail);
     formData.append("tutorQualification", enteredQualification);
     formData.append("tutorProfilePhotoUrl", profilePhotoUrl);
-    formData.append("subjectList",JSON.stringify(subjectList));
 
     const res = await fetch(`${localUrl}/home-tutor/add-profile`, {
       method: "POST",
@@ -143,7 +142,7 @@ const AddProfile = (props) => {
 
   const fetchCategories = async () => {
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Categories.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Subjects.json"
     );
     const data = await res.json();
     console.log(data);
@@ -154,18 +153,13 @@ const AddProfile = (props) => {
       categories.push(cat);
     }
     setCategories(categories);
-
-    if (categories.length !== 0) {
-      setEnteredCatId(categories[0].catId);
-      setEnteredCategory(categories[0].title);
-    }
   };
 
   let selectOptions;
   selectOptions = categories.map((item) => {
     return (
-      <option key={item.catId} value={item.catId}>
-        {item.title}
+      <option key={item.subId} value={item.subId}>
+        {item.subject}
       </option>
     );
   });
@@ -219,33 +213,9 @@ const AddProfile = (props) => {
               onChange={qualificationChangeHandler}
             />
 
-            <div className={styles["form-control"]}>
-              <label className={styles["form-control__label"]}>Subjects</label>
-              <div className={styles["select-box"]}>
-                <select
-                  onChange={categoryChangeHandler}
-                  value={enteredCatId}
-                  className={styles["form-control__select"]}
-                >
-                  {selectOptions}
-                </select>
-                <button
-                  type="button"
-                  className={styles["add-subject-btn"]}
-                  onClick={addSubjectHandler}
-                >
-                  Add
-                </button>
-              </div>
-              <div className={styles["subject-list"]}>
-                {subjectList.map((item) => (
-                  <p key={item.subId}>{item.title}</p>
-                ))}
-              </div>
-            </div>
 
             <TextBox
-              label="Description"
+              label="About Me"
               id="description"
               type="text"
               rows="4"
