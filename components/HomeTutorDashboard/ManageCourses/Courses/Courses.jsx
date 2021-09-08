@@ -13,7 +13,7 @@ const Courses = (props) => {
 
   const getCatgories = async () => {
     const catRes = await fetch(
-      `https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Courses/${auth.localId}.json`
+      `https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Profiles/${auth.localId}/Courses.json`
     );
     const catData = await catRes.json();
     console.log(auth.localId);
