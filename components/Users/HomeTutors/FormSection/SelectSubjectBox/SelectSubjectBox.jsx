@@ -1,6 +1,7 @@
 import styles from "./SelectSubjectBox.module.css";
 
 const SelectSubjectBox = props => {
+  console.log(props.data, "In Select Subject Box");
   return (
     <div className={styles["select-box"]}>
       <label className={styles["select-box__label"]}>{props.label}</label>
