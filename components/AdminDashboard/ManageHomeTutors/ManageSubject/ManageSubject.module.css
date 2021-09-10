@@ -1,0 +1,49 @@
+.subjects{
+    background-color: #fda;
+    padding: 10px;
+}
+
+.subject-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.subject-header-title{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.add-subject-btn{
+    background-color: teal;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.add-subject-btn:hover{
+    background-color: #125252;
+    cursor: pointer;
+    color: white;
+}
+
+.sub-grid{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat( auto-fit, minmax(auto,200px));
+}
+
+.modal{
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media (min-width : 768px){
+    .add-subject-btn{
+        padding: 5px 30px;
+    }
+}

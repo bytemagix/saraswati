@@ -5,6 +5,7 @@ import homeTutorSlice from './slices/home-tutor-slice';
 import onlineClassSlice from './slices/online-class-slice';
 import paymentSlice from './slices/payment-slice';
 import adminSlice from './slices/admin-slice';
+import homeTutorUserSlice from './slices/home-tutor-user-slice';
 
 const store = configureStore({
     reducer : {
@@ -13,7 +14,8 @@ const store = configureStore({
         homeTutorSlice : homeTutorSlice.reducer,
         onlineClassSlice : onlineClassSlice.reducer,
         paymentSlice : paymentSlice.reducer,
-        adminSlice : adminSlice.reducer
+        adminSlice : adminSlice.reducer,
+        homeTutorUserSlice: homeTutorUserSlice.reducer,
     }
 });
 

@@ -21,6 +21,7 @@ const Sidebar = (props) => {
           <li className={styles["list-item"]}><NavLink href="/admin/manage-study-materials">Manage Study Materials</NavLink></li>
           <li className={styles["list-item"]}><NavLink href="/admin/manage-online-class">Manage Online Class</NavLink></li>
           <li className={styles["list-item"]}><NavLink href="/admin/enrollments">Enrollments</NavLink></li>
+          <li className={styles["list-item"]}><NavLink href="/admin/manage-home-tutors">Manage Home Tutors</NavLink></li>
           <li onClick={logoutHandler} className={styles['list-item-logout']}>Logout</li>
         </ul>
       </div>

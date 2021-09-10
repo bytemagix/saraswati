@@ -1,0 +1,15 @@
+.select-box{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center
+}
+
+.select-box__label{
+    padding: 5px 0px;
+}
+
+.select-box__select{
+    padding: 8px;
+}

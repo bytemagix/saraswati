@@ -1,0 +1,10 @@
+.manage-home-tutors{
+    width: 95%;
+    margin: auto;
+}
+
+@media (min-width : 768px){
+    .manage-home-tutors{
+        width: 90%;
+    }
+}
