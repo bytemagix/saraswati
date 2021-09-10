@@ -24,7 +24,7 @@ const AddCategoryModal = (props) => {
   };
 
   const addCategory = async (formdata) => {
-    const res = await fetch(`${localUrl}/admin/add-home-tutor-city`,{
+    const res = await fetch(`${baseUrl}/admin/add-home-tutor-city`,{
       method : "POST",
       body : formdata,
     });

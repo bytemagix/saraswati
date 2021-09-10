@@ -13,7 +13,7 @@ const Courses = (props) => {
 
   const getCatgories = async () => {
     const catRes = await fetch(
-      `https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Profiles/${auth.localId}/Courses.json`
+      `https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles/${auth.localId}/Courses.json`
     );
     const catData = await catRes.json();
     console.log(auth.localId);
@@ -49,7 +49,7 @@ const Courses = (props) => {
     formData.append('tutorId', auth.localId);
     formData.append("courseId", catId);
 
-    const res = await fetch(`${localUrl}/home-tutor/delete-course`, {
+    const res = await fetch(`${baseUrl}/home-tutor/delete-course`, {
       method: "POST",
       body: formData,
     });

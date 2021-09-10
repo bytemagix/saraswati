@@ -9,7 +9,7 @@ const TutorList = (props) => {
 
   const fetchTutorList = async () => {
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Profiles.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles.json"
     );
     const data = await res.json();
     console.log(data);

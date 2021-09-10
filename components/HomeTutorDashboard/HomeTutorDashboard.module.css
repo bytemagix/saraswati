@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "noto-serif";
+  src: url("/fonts/Noto_Serif/NotoSerif-Bold.ttf");
+}
+
+.dashboard {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5ecf4;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.section-header {
+  display: block;
+  font-family: "noto-serif", sans-serif;
+  font-size: 1.3rem;
+}
+
+.feature {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-header {
+  font-family: "noto-serif", sans-serif;
+  font-size: 1.3rem;
+}

@@ -1,7 +1,6 @@
 import styles from "./SelectCityBox.module.css";
 
 const SelectCityBox = props => {
-  console.log(props.data, "In Select City Box");
   return (
     <div className={styles["select-box"]}>
       <label className={styles["select-box__label"]}>{props.label}</label>

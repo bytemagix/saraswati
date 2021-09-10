@@ -13,7 +13,7 @@ const ManageCity = (props) => {
 
   const getCatgories = async () => {
     const catRes = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Cities.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Cities.json"
     );
     const catData = await catRes.json();
 
@@ -47,7 +47,7 @@ const ManageCity = (props) => {
     formData.append('token', auth.token);
     formData.append("cityId", cityId);
 
-    const res = await fetch(`${localUrl}/admin/delete-home-tutor-city`, {
+    const res = await fetch(`${baseUrl}/admin/delete-home-tutor-city`, {
       method: "POST",
       body: formData,
     });

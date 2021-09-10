@@ -13,7 +13,7 @@ const HomeTutorProfile = props => {
 
   const fetchData = async () => {
     const res = await fetch(
-      `https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Profiles/${auth.localId}.json`
+      `https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles/${auth.localId}.json`
     );
     const data = await res.json();
     console.log(data);

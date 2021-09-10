@@ -1,5 +1,4 @@
 import styles from "./AddSubjectModal.module.css";
-import InputBox2 from "../../../../Utils/UI/InputBox2/InputBox2";
 import { useState } from "react";
 import { baseUrl, localUrl } from "../../../../../constants/urls";
 import { useSelector } from "react-redux";
@@ -24,7 +23,7 @@ const AddSubjectModal = (props) => {
   };
 
   const addCategory = async (formdata) => {
-    const res = await fetch(`${localUrl}/admin/add-subject`,{
+    const res = await fetch(`${baseUrl}/admin/add-subject`,{
       method : "POST",
       body : formdata,
     });

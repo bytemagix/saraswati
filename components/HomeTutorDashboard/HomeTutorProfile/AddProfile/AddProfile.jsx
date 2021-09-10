@@ -85,7 +85,7 @@ const AddProfile = (props) => {
     formData.append("tutorId", auth.localId);
     formData.append("file", choosenProfilePhoto);
 
-    const res = await fetch(`${localUrl}/home-tutor/upload-dp`, {
+    const res = await fetch(`${baseUrl}/home-tutor/upload-dp`, {
       method: "POST",
       body: formData,
     });
@@ -117,7 +117,7 @@ const AddProfile = (props) => {
     formData.append("tutorQualification", enteredQualification);
     formData.append("tutorProfilePhotoUrl", profilePhotoUrl);
 
-    const res = await fetch(`${localUrl}/home-tutor/add-profile`, {
+    const res = await fetch(`${baseUrl}/home-tutor/add-profile`, {
       method: "POST",
       body: formData,
     });
@@ -142,7 +142,7 @@ const AddProfile = (props) => {
 
   const fetchCategories = async () => {
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Subjects.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Subjects.json"
     );
     const data = await res.json();
     console.log(data);

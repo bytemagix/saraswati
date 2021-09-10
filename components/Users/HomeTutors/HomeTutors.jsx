@@ -1,6 +1,5 @@
 import styles from "./HomeTutors.module.css";
 import TutorList from "./TutorList/TutorList";
-import BookTutorForm from "./BookTutorForm/BookTutorForm";
 import FormSection from "./FormSection/FormSection";
 
 const HomeTutors = props => {

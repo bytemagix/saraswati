@@ -13,7 +13,7 @@ const ManageAgeGroup = (props) => {
 
   const getCatgories = async () => {
     const catRes = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/AgeGroups.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/AgeGroups.json"
     );
     const catData = await catRes.json();
 
@@ -47,7 +47,7 @@ const ManageAgeGroup = (props) => {
     formData.append('token', auth.token);
     formData.append("ageGroupId", ageGroupId);
 
-    const res = await fetch(`${localUrl}/admin/delete-age-group`, {
+    const res = await fetch(`${baseUrl}/admin/delete-age-group`, {
       method: "POST",
       body: formData,
     });

@@ -24,7 +24,7 @@ const AddAgeGroupModal = (props) => {
   };
 
   const addCategory = async (formdata) => {
-    const res = await fetch(`${localUrl}/admin/add-age-group`,{
+    const res = await fetch(`${baseUrl}/admin/add-age-group`,{
       method : "POST",
       body : formdata,
     });
@@ -45,7 +45,7 @@ const AddAgeGroupModal = (props) => {
           <form onSubmit={formSubmitHandler}>
             <input type="text" id="category" value={enteredCategory} onChange={categoryChangeHandler} className={styles['input']} />
             <div className={styles["actions"]}>
-              <button type="submit" className={styles['button-order']}>Add City</button>
+              <button type="submit" className={styles['button-order']}>Add Age Group</button>
             </div>
           </form>
         </div>

@@ -1,12 +1,8 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import styles from "./StudentDashboard.module.css";
 import Footer from "../Users/Footer/Footer";
 
 const StudentDashboard = (props) => {
-  const router = useRouter();
-
   return (
     <>
       <div className={styles["dashboard"]}>

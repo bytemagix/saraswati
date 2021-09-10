@@ -51,7 +51,7 @@ const AddCourseModal = (props) => {
   };
 
   const addCategory = async (formdata) => {
-    const res = await fetch(`${localUrl}/home-tutor/add-course`, {
+    const res = await fetch(`${baseUrl}/home-tutor/add-course`, {
       method: "POST",
       body: formdata,
     });
@@ -63,7 +63,7 @@ const AddCourseModal = (props) => {
 
   const fetchCategories = async () => {
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Subjects.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Subjects.json"
     );
     const data = await res.json();
     console.log(data);
@@ -83,7 +83,7 @@ const AddCourseModal = (props) => {
 
   const fetchLevels = async () => {
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/AgeGroups.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/AgeGroups.json"
     );
     const data = await res.json();
     console.log(data);
@@ -100,24 +100,6 @@ const AddCourseModal = (props) => {
       setEnteredAgeGroup(ageGroups[0].ageGroup);
     }
   };
-
-  /*let selectOptions;
-  selectOptions = categories.map((item) => {
-    return (
-      <option key={item.subId} value={item.subId}>
-        {item.ageGroup}
-      </option>
-    );
-  });
-
-  let selectOptionsAgeGroup;
-  selectOptionsAgeGroup = ageGroups.map((item) => {
-    return (
-      <option key={item.ageGroupId} value={item.ageGroupId}>
-        {item.ageGroup}
-      </option>
-    );
-  });*/
 
   useEffect(() => {
     fetchCategories();

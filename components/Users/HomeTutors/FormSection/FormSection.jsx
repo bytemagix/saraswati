@@ -3,10 +3,9 @@ import InputBox3 from "../../../Utils/UI/InputBox3/InputBox3";
 import { useState, useEffect } from "react";
 import SelectCityBox from "./SelectCityBox/SelectCityBox";
 import SelectSubjectBox from "./SelectSubjectBox/SelectSubjectBox";
-import TextAreaBox from "../../../Utils/UI/TextAreaBox/TextAreaBox";
 import AddressBox from "./AddressBox/AddressBox";
 import DescriptionBox from "./DescriptionBox/DescriptionBox";
-import { localUrl } from "../../../../constants/urls";
+import { baseUrl, localUrl } from "../../../../constants/urls";
 import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
 
 const FormSection = (props) => {
@@ -67,13 +66,13 @@ const FormSection = (props) => {
     formData.append("description", description);
     formData.append("address", address);
 
-    const res = await fetch(`${localUrl}/home-tutor/request-home-tutor`, {
+    const res = await fetch(`${baseUrl}/home-tutor/request-home-tutor`, {
       method: "POST",
       body: formData,
     });
 
     const data = await res.json();
-    console.log(data);
+
     if(data.name === "OK"){
       setStatus("SEND");
       resetForm();
@@ -93,18 +92,15 @@ const FormSection = (props) => {
   const fetchCities = async () => {
     setIsLoading(true);
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Cities.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Cities.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let cityList = [];
     for (const key in data) {
       const cat = data[key];
       cityList.push(cat);
     }
-
-    console.log(cityList);
 
     if (cityList.length !== 0) {
       setCities(cityList);
@@ -118,18 +114,15 @@ const FormSection = (props) => {
   const fetchSubjects = async () => {
     setIsLoading(true);
     const res = await fetch(
-      "https://saraswati-45e10-default-rtdb.firebaseio.com/Test/HomeTutors/Subjects.json"
+      "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Subjects.json"
     );
     const data = await res.json();
-    console.log("Subjects", data);
 
     let subjectList = [];
     for (const key in data) {
       const sub = data[key];
       subjectList.push(sub);
     }
-
-    console.log(subjectList);
 
     if (subjectList.length !== 0) {
       setSubjects(subjectList);
@@ -164,7 +157,7 @@ const FormSection = (props) => {
       <div className={styles["left"]}>
         <div className={styles["contents"]}>
           <div className={styles["header"]}>
-            <span className={styles["header-title"]}>Ask for a Home Today</span>
+            <span className={styles["header-title"]}>Ask for a Home Tutor Today</span>
           </div>
           <div className={styles["description"]}>
             <p>
@@ -217,7 +210,7 @@ const FormSection = (props) => {
             data={subjects}
           />
           <InputBox3
-            label="Standard"
+            label="Class"
             id="subject"
             type="text"
             value={standard}
