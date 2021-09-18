@@ -45,7 +45,7 @@ const HomeTutorSideDrawer = () => {
               <span className={styles["icon"]}>
                 <FaHome />
               </span>
-              <NavLink href="/home-tutor-dashbaord/profile">Profile</NavLink>
+              <NavLink href="/home-tutor-dashboard/profile">Profile</NavLink>
             </li>
             <li>
               <span className={styles["icon"]}>

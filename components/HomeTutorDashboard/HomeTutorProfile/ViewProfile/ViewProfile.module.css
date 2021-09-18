@@ -1,57 +1,68 @@
-.view-profile{
-    width: 100%;
+.view-profile {
+  width: 100%;
 }
 
-.card{
-    width: 90%;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px #333;
-    margin: auto;
+.card {
+  width: 90%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #333;
+  margin: auto;
 }
 
-.header{
-    width: 100%;
-    display: flex;
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-btn {
+  margin-right: 20px;
+  background-color: #424423;
+  color: white;
+  padding: 5px 30px;
+  border-radius: 5px;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  background-color: #424429;
+}
+
+.header-courses {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.header-title {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.image-container {
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #ccc;
+}
+
+@media (min-width: 768px) {
+  .contents {
+    flex-direction: row;
     justify-content: space-between;
-}
+  }
 
-.edit-btn{
-    margin-right: 20px;
-    background-color: #424423;
-    color: white;
-    padding: 5px 30px;
-    border-radius: 5px;
-}
-
-.edit-btn:hover{
-    cursor: pointer;
-    background-color:  #424429;
-}
-
-.header-courses{
-    width: 100%;
-    margin-top: 30px;
-}
-
-.header-title{
-    display: block;
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
-.contents{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.image-container{
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 1px solid #ccc;
+  .image-container{
+      margin: unset;
+  }
 }
