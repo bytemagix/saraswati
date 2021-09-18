@@ -1,7 +1,6 @@
 import styles from "./HomeTutorDashboard.module.css";
 
 const HomeTutorDashboard = (props) => {
-
   return (
     <>
       <div className={styles["dashboard"]}>
@@ -25,38 +24,32 @@ const HomeTutorDashboard = (props) => {
         </div>
         <div className={styles["section"]}>
           <span className={styles["section-header"]}>
-            Explore Student Dashboard
+            Explore Home Tutor Dashboard
           </span>
           <p>
-            Explore student section of this website. The menu on the left side
-            of you screen shows different services you can use in our website.
+            Our service is currently avaialable in selected cities. If you are
+            from those cities you can register yourself as a Home Tutor. To
+            register under the profile section you need to fill up your basic
+            information. Your application will be reviewed by our team. Once
+            approved your profile will be displayed in our website. If student's
+            requirement matches your profile than you will be able to offer your
+            services to that student.
           </p>
 
           <div className={styles["feature"]}>
-            <span className={styles["feature-header"]}>Profile Section</span>
+            <span className={styles["feature-header"]}>Manage Courses</span>
             <p>
-              You can add your basic details in profile. This helps to use our
-              website conviniently. You don't have type every time your basic
-              detail. Which is much more convinient.
+              Under Manage Courses section, You can manage your courses or
+              subjects you like teach your students.
             </p>
           </div>
 
           <div className={styles["feature"]}>
             <span className={styles["feature-header"]}>
-              Download Study Materials
+              Enrolled Students
             </span>
             <p>
-              You can purchased our handpicked study materials from our website.
-              All the Ordered Materials will be avaialbale in this section to
-              download from here. Its your personal book Library.
-            </p>
-          </div>
-
-          <div className={styles["feature"]}>
-            <span className={styles["feature-header"]}>Ny Enrollments</span>
-            <p>
-              We Provide Online classes for our students. All the enrolled
-              courses information will be shown is this section.
+              Under Enrolled Student section, You will be able to view your currently enrolled students.
             </p>
           </div>
         </div>

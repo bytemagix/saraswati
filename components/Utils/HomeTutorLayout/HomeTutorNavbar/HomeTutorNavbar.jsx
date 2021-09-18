@@ -1,8 +1,8 @@
 import { useState } from "react";
-import styles from "./AdminNavbar.module.css";
-import AdminSideDrawer from "./AdminSideDrawer/AdminSideDrawer";
+import styles from "./HomeTutorNavbar.module.css";
+import AdminSideDrawer from "./HomeTutorSideDrawer/HomeTutorSideDrawer";
 
-const AdminNavbar = (props) => {
+const HomeTutorNavbar = (props) => {
     const [showSideDrawer, setShowSideDrawer] = useState(false);
 
     const showSideDrawerHandler = () => {
@@ -42,4 +42,4 @@ const AdminNavbar = (props) => {
   );
 };
 
-export default AdminNavbar;
+export default HomeTutorNavbar;

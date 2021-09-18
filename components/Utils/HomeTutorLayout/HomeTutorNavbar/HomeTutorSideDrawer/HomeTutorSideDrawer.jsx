@@ -1,8 +1,8 @@
-import styles from "./AdminSideDrawer.module.css";
+import styles from "./HomeTutorSideDrawer.module.css";
 import NavLink from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { adminActions } from "../../../../../store/slices/admin-slice";
+import { homeTutorActions } from "../../../../../store/slices/home-tutor-slice";
 
 import {
   FaHome,
@@ -16,16 +16,17 @@ import {
   FaLock,
 } from "react-icons/fa";
 
-const AdminSideDrawer = () => {
+const HomeTutorSideDrawer = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const auth = useSelector((state) => state.adminSlice.authInfo);
+  const auth = useSelector((state) => state.homeTutorUserSlice.authInfo);
 
   const logoutHandler = () => {
-    dispatch(adminActions.logout());
-    localStorage.removeItem("adminToken");
-    router.push("/admin");
+    dispatch(homeTutorUserActions.logout());
+    localStorage.removeItem("homeTutorId");
+    localStorage.removeItem("homeTutorEmail");
+    router.push("/home-tutor-dashboard");
   };
 
   return (
@@ -37,22 +38,20 @@ const AdminSideDrawer = () => {
               <span className={styles["icon"]}>
                 <FaHome />
               </span>
-              <NavLink href="/admin">Admin Home</NavLink>
+              <NavLink href="/home-tutor-dashboard">Home</NavLink>
             </li>
 
             <li>
               <span className={styles["icon"]}>
                 <FaHome />
               </span>
-              <NavLink href="/admin/manage-study-materials">
-                Manage Study Materials
-              </NavLink>
+              <NavLink href="/home-tutor-dashbaord/profile">Profile</NavLink>
             </li>
             <li>
               <span className={styles["icon"]}>
                 <FaTv />
               </span>
-              <NavLink href="/admin/manage-online-class">
+              <NavLink href="/home-tutor-dashboard/manage-courses">
                 Manage Online Class
               </NavLink>
             </li>
@@ -60,7 +59,9 @@ const AdminSideDrawer = () => {
               <span className={styles["icon"]}>
                 <FaUser />
               </span>
-              <NavLink href="/admin/enrollments">Enrollments</NavLink>
+              <NavLink href="/home-tutor-dashboard/enrollments">
+                Enrolled Students
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -76,4 +77,4 @@ const AdminSideDrawer = () => {
   );
 };
 
-export default AdminSideDrawer;
+export default HomeTutorSideDrawer;

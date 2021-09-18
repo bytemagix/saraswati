@@ -1,0 +1,13 @@
+.item{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.item-label{
+
+}
+
+.item-value{
+    font-weight: bold;
+}

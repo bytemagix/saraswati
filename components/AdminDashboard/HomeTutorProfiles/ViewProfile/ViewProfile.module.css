@@ -1,0 +1,73 @@
+.view-profile{
+    width: 100%;
+}
+
+.card{
+    width: 90%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #333;
+    margin: auto;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-btn{
+    margin-right: 20px;
+    background-color: #424423;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 5px;
+}
+
+.edit-btn:hover{
+    cursor: pointer;
+    background-color:  #424429;
+}
+
+.header-courses{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.header-title{
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.contents{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.image-container{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #ccc;
+}
+
+.actions{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.approve-btn{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px;
+    background-color: #1c9772;
+    color: white;
+    border-radius: 5px;
+}

@@ -1,6 +1,7 @@
 import styles from "./Section3.module.css";
 import { useScrollPercentage } from 'react-scroll-percentage';
 import { useState } from "react";
+import NavLink from "next/link";
 
 const Section3 = (props) => {
   const [ref, percentage] = useScrollPercentage({
@@ -39,7 +40,7 @@ const Section3 = (props) => {
           <p className={styles['description']}>
            Our Coaching institue are currently avaialable in Mangaldai & Guwahati.
           </p>
-          <button className={styles["button"]}>Learn More</button>
+          <button className={styles["button"]}><NavLink href="/classroom-courses">See Address</NavLink></button>
         </div>
       </div>
     </div>

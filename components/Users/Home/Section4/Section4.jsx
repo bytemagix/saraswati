@@ -40,14 +40,10 @@ const Section4 = (props) => {
         </div>
       </div>
       <div className={styles["image-container"]}>
-        <div className={styles["video"]}>
-          <ReactPlayer
-            url="https://www.youtube.com/watch?v=8No-0n4Twbc"
-            playing={false}
-            width="100%"
-            height="100%"
-          />
-        </div>
+        <img
+          className={styles["image"]}
+          src="/images/online_class.jpg"
+        />
       </div>
     </div>
   );

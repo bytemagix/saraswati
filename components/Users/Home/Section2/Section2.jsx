@@ -1,4 +1,5 @@
 import styles from "./Section2.module.css";
+import NavLink from "next/link";
 
 const Section2 = (props) => {
   return (
@@ -19,7 +20,7 @@ const Section2 = (props) => {
             institute has a unique skill set designed to maximize the
             performance of the students.
           </p>
-          <button className={styles["button"]}>Learn More</button>
+          <button className={styles["button"]}><NavLink href="/informations/about-us">Learn More</NavLink></button>
         </div>
       </div>
       <div className={styles["image-container"]}>

@@ -17,7 +17,9 @@ const TutorList = (props) => {
     let tutors = [];
     for (const key in data) {
       const tutor = data[key];
-      tutors.push(tutor);
+      if(tutor.status === "Verified"){
+        tutors.push(tutor);
+      }
     }
     setTutorList(tutors);
   };

@@ -1,13 +1,11 @@
 import styles from "./HomeTutorLayout.module.css";
-import { useSelector } from "react-redux";
-import Footer from "../../Users/Footer/Footer";
 import Sidebar from "./Sidebar/Sidebar";
-import AdminNavbar from "./AdminNavbar/AdminNavbar";
+import HomeTutorNavbar from "./HomeTutorNavbar/HomeTutorNavbar";
 
 const HomeTutorLayout = (props) => {
   return (
     <>
-      <AdminNavbar />
+      <HomeTutorNavbar />
       <div className={styles["main"]}>
         <div className={styles['sidebar']}>
             <Sidebar />
