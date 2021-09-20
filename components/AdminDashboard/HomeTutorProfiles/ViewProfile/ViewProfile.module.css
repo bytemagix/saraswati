@@ -73,6 +73,17 @@
     border-radius: 5px;
 }
 
+.approve-btn:hover{
+    cursor: pointer;
+    background-color: #1b8d6b ;
+}
+
+.grid{
+    margin-top: 20px;
+    display: grid;
+    grid-gap: 10px;
+}
+
 @media (min-width: 768px) {
     .contents {
       flex-direction: row;
@@ -82,5 +93,10 @@
     .image-container{
         margin: unset;
     }
+
+    .grid{
+        grid-template-columns: repeat( auto-fit, minmax(auto,200px));
+    }
+    
   }
   

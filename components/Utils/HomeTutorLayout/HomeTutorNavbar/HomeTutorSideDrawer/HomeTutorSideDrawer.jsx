@@ -43,7 +43,7 @@ const HomeTutorSideDrawer = () => {
 
             <li>
               <span className={styles["icon"]}>
-                <FaHome />
+                <FaUser />
               </span>
               <NavLink href="/home-tutor-dashboard/profile">Profile</NavLink>
             </li>
@@ -52,7 +52,7 @@ const HomeTutorSideDrawer = () => {
                 <FaTv />
               </span>
               <NavLink href="/home-tutor-dashboard/manage-courses">
-                Manage Online Class
+                Manage Courses
               </NavLink>
             </li>
             <li>

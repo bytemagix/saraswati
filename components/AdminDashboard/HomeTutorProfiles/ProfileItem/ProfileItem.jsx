@@ -1,8 +1,10 @@
 import styles from "./ProfileItem.module.css";
 import NavLink from "next/link";
+import { useState } from "react";
 
 const ProfileItem = (props) => {
   const link = `/admin/home-tutor-profiles/${props.tutorId}`;
+  const statusColor = props.status === "New" ? "red" : "green";
 
   return (
     <div className={styles["profile-item"]}>
@@ -16,6 +18,7 @@ const ProfileItem = (props) => {
         <div className={styles['info-items']}>
           <span className={styles['name']}>{props.name}</span>
           <span>{props.mobileNo}</span>
+          <span style={{color: statusColor, fontWeight: "bold"}}>{props.status}</span>
         </div>
         <div className={styles['actions']}>
           <span className={styles['view-btn']}>

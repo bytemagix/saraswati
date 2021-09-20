@@ -76,6 +76,14 @@ const AdminSideDrawer = () => {
               </span>
               <NavLink href="/admin/home-tutor-profiles">Home Tutor Profiles</NavLink>
             </li>
+
+            
+            <li>
+              <span className={styles["icon"]}>
+                <FaUser />
+              </span>
+              <NavLink href="/admin/home-tutor-bookings">Home Tutor Bookings</NavLink>
+            </li>
           </ul>
         </div>
 

@@ -51,5 +51,6 @@ export async function getStaticProps(context) {
     props: {
       profileData : data,
     },
+    revalidate: 10,
   };
 }

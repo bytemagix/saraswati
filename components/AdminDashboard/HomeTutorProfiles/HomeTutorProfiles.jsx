@@ -38,6 +38,7 @@ const HomeTutorProfiles = (props) => {
             name={item.tutorName}
             mobileNo={item.tutorMobileNo}
             imageUrl={item.tutorProfilePhotoUrl}
+            status={item.status}
           />
         ))}
       </div>
