@@ -15,7 +15,7 @@ export default function ProfileDetailPage(props){
     );
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const res = await fetch(
     "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles.json"
   );
@@ -52,5 +52,20 @@ export async function getStaticProps(context) {
       profileData : data,
     },
     revalidate: 10,
+  };
+}*/
+
+export async function getServerSideProps(context){
+  const tutorId = context.params.tutorId;
+
+  const res = await fetch(
+    `https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles/${tutorId}.json`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      profileData : data,
+    }
   };
 }
