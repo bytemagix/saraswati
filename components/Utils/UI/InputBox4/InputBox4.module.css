@@ -6,21 +6,18 @@
 
 .label{
     padding: 3px 0px;
-    color: #222;
     font-weight: 500;
-    color: white;
 }
 
 .input{
     background-color: transparent;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid #666;
     padding: 8px;
     border-radius: 5px;
 }
 
 .input:focus{
-   border: 1px solid white;
+   border: 1px solid #ccc;
 }
 
 .error-msg{

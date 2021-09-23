@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import { baseUrl, localUrl } from "../../../../constants/urls";
 import AddCourseModal from "./AddCourseModal/AddCourseModal";
 import styles from "./Courses.module.css";
-import CourseItem from './CourseItem/CourseItem';
+import CourseItem from "./CourseItem/CourseItem";
 import { useSelector } from "react-redux";
+import NoProfileModal from "./NoProfileModal/NoProfileModal";
 
 const Courses = (props) => {
-  const auth = useSelector(state => state.homeTutorUserSlice.authInfo);
-  
+  const auth = useSelector((state) => state.homeTutorUserSlice.authInfo);
+
   const [allCategories, setAllCategories] = useState([]);
   const [isAddCatModalOpen, setIsAddCatModalOpen] = useState(false);
+  const [profileData, setProfileData] = useState(null);
 
   const getCatgories = async () => {
     const catRes = await fetch(
@@ -21,13 +23,22 @@ const Courses = (props) => {
 
     let categories = [];
     for (const key in catData) {
-      const cat = { ...catData[key], selected: false };
+      const cat = catData[key];
       categories.push(cat);
     }
     setAllCategories(categories);
   };
 
+  const getProfileData = async () => {
+    const res = await fetch(
+      `https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles/${auth.localId}.json`
+    );
+    const data = await res.json();
+    setProfileData(data);
+  };
+
   useEffect(() => {
+    getProfileData();
     getCatgories();
   }, []);
 
@@ -46,7 +57,7 @@ const Courses = (props) => {
 
   const deleteCategory = async (catId) => {
     const formData = new FormData();
-    formData.append('tutorId', auth.localId);
+    formData.append("tutorId", auth.localId);
     formData.append("courseId", catId);
 
     const res = await fetch(`${baseUrl}/home-tutor/delete-course`, {
@@ -88,6 +99,12 @@ const Courses = (props) => {
             onClose={addCatModalCloseHandler}
             ondelete={deleteCatHandler}
           />
+        </div>
+      )}
+
+      {!profileData && (
+        <div className={styles["modal"]}>
+          <NoProfileModal />
         </div>
       )}
     </div>

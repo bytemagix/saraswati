@@ -4,11 +4,15 @@ import { useSelector } from "react-redux";
 import InfoItem from "./InfoItem/InfoItem";
 import { useRouter } from "next/router";
 import CourseItem from "./CourseItem/CourseItem";
+import { useState } from "react";
+import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
 
 const ViewProfile = (props) => {
   const auth = useSelector((state) => state.adminSlice.authInfo);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const profileData = props.profileData;
+  console.log(profileData);
 
   const courses = [];
   for (const key in profileData.Courses) {
@@ -17,6 +21,7 @@ const ViewProfile = (props) => {
   }
 
   const updateProfileStatus = async (status) => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("token", auth.token);
     formData.append("tutorId", profileData.tutorId);
@@ -26,8 +31,26 @@ const ViewProfile = (props) => {
       body: formData,
     });
     const data = await res.json();
+    setIsLoading(false);
 
     if (data.isUpdated) {
+      router.push("/admin/home-tutor-profiles");
+    }
+  };
+
+  const deleteTutorProfile = async () => {
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("token", auth.token);
+    formData.append("tutorId", profileData.tutorId);
+    const res = await fetch(`${baseUrl}/admin/delete-home-tutor`, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await res.json();
+    setIsLoading(false);
+
+    if (data.isDeleted) {
       router.push("/admin/home-tutor-profiles");
     }
   };
@@ -47,6 +70,10 @@ const ViewProfile = (props) => {
             <InfoItem
               label="Qualification"
               value={profileData.tutorQualification}
+            />
+            <InfoItem
+              label="Experience"
+              value={profileData.tutorExperience + "+ Years"}
             />
             <InfoItem label="Status" value={profileData.status} />
           </div>
@@ -77,14 +104,23 @@ const ViewProfile = (props) => {
             ))}
         </div>
 
-        {profileData.status === "New" && (
-          <div className={styles["actions"]}>
+        <div className={styles["actions"]}>
+          <span className={styles["delete-btn"]} onClick={deleteTutorProfile}>
+            Delete Profile
+          </span>
+          {profileData.status === "New" && (
             <span
               className={styles["approve-btn"]}
               onClick={updateProfileStatus.bind(this, "Verified")}
             >
               Approve
             </span>
+          )}
+        </div>
+
+        {isLoading && (
+          <div className={styles["loading"]}>
+            <BlueCircleLoader />
           </div>
         )}
       </div>

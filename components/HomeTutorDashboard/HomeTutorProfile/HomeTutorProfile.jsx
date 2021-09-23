@@ -29,6 +29,12 @@ const HomeTutorProfile = props => {
     setIsEditMode(true);
   }
 
+  const addSuccessHandler = () => {
+    setIsLoading(true);
+    fetchData();
+    setIsEditMode(false);
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -49,7 +55,7 @@ const HomeTutorProfile = props => {
 
         {isEditMode && !isLoading && (
           <div className={styles["form"]}>
-            <AddProfile />
+            <AddProfile onSuccess={addSuccessHandler}  />
           </div>
         )}
       </div>

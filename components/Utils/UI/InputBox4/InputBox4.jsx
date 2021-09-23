@@ -1,6 +1,6 @@
-import styles from "./InputBox2.module.css";
+import styles from "./InputBox4.module.css";
 
-const InputBox2 = (props) => {
+const InputBox4 = (props) => {
   return (
     <div className={styles["input-box"]}>
       <label className={styles["label"]} htmlFor={props.id}>
@@ -13,9 +13,9 @@ const InputBox2 = (props) => {
         value={props.value}
         onChange={props.onChange}
       />
-      {props.hasError && <p className={styles['error-msg']}>{props.errorMsg}</p>}
+      {props.hasError && <span className={styles['error-msg']}>{props.errorMsg}</span>}
     </div>
   );
 };
 
-export default InputBox2;
+export default InputBox4;
