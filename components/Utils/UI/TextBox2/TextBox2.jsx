@@ -1,4 +1,4 @@
-import styles from './Textbox2.module.css';
+import styles from './TextBox2.module.css';
 
 const TextBox2 = props => {
     return (
