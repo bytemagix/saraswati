@@ -25,7 +25,6 @@ const HomeTutorLogin = (props) => {
       returnSecureToken: true,
     };
     const data = JSON.stringify(reqBody);
-    console.log(data);
     userLogin(data);
   };
 
@@ -43,7 +42,6 @@ const HomeTutorLogin = (props) => {
       );
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
         setIsError(true);
@@ -65,7 +63,6 @@ const HomeTutorLogin = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
     }
   };
 
@@ -78,11 +75,9 @@ const HomeTutorLogin = (props) => {
   };
 
   const autoLogin = () => {
-    console.log("AutoLogin");
     const localId = localStorage.getItem('homeTutorId');
     const email = localStorage.getItem('homeTutorEmail');
 
-    console.log(localId);
     if(!localId){
       return;
     }

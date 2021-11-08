@@ -47,7 +47,6 @@ const AddNewCourse = (props) => {
       });
 
       const data = await res.json();
-      console.log(data);
 
       resetForm();
   }

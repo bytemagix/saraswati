@@ -30,7 +30,6 @@ const AddCategoryModal = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     props.onClose();
   }
 

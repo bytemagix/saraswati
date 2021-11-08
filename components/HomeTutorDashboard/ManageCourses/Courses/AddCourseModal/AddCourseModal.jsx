@@ -57,7 +57,6 @@ const AddCourseModal = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     props.onClose();
   };
 
@@ -66,7 +65,6 @@ const AddCourseModal = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Subjects.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let categories = [];
     for (const key in data) {
@@ -86,7 +84,6 @@ const AddCourseModal = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/AgeGroups.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let ageGroups = [];
     for (const key in data) {

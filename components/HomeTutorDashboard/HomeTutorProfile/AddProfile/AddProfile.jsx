@@ -9,7 +9,6 @@ import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoade
 
 const AddProfile = (props) => {
   const auth = useSelector((state) => state.homeTutorUserSlice.authInfo);
-  console.log(auth);
 
   const [isLoading, setIsLoading] = useState(false);
   const [enteredName, setEnteredName] = useState("");
@@ -34,6 +33,11 @@ const AddProfile = (props) => {
   const [isExperienceError, setIsExperienceError] = useState(false);
   const [experienceErrorMsg, setExperienceErrorMsg] = useState("");
 
+  const [enteredSubject, setEnteredSubject] = useState("");
+  const [isSubjectTouched, setIsSubjectTouched] = useState(false);
+  const [isSubjectError, setIsSubjectError] = useState(false);
+  const [subjectErrorMsg, setSubjectErrorMsg] = useState("");
+
   const [choosenProfilePhoto, setChoosenProfilePhoto] = useState(null);
   const [successProfilePhoto, setSuccessProfilePhoto] = useState("");
 
@@ -42,7 +46,6 @@ const AddProfile = (props) => {
   const [profilePhotoUrl, setProfilePhotoUrl] = useState("");
   const [isProfileProtoUpload, setIsProfileProtoUpload] = useState(false);
   const [photoUploadError, setPhotoUploadError] = useState(false);
-
 
   const nameChangeHandler = (event) => {
     const val = event.target.value;
@@ -108,12 +111,26 @@ const AddProfile = (props) => {
     }
   };
 
+  const subjectChangeHandler = (event) => {
+    const val = event.target.value;
+
+    setIsSubjectTouched(true);
+    setEnteredSubject(val);
+
+    if (isSubjectTouched && val.length === 0) {
+      setIsSubjectError(true);
+      setSubjectErrorMsg("Subject field can not be empty");
+    } else {
+      setIsSubjectError(false);
+      setSubjectErrorMsg("");
+    }
+  };
+
   const descriptionChangeHandler = (event) => {
     setEnteredDescription(event.target.value);
   };
 
   const profilePhotoChangeHandler = (event) => {
-    console.log(event.target.files[0]);
     setChoosenProfilePhoto(event.target.files[0]);
   };
 
@@ -135,7 +152,6 @@ const AddProfile = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.isUploaded) {
       setSuccessProfilePhoto("SuccessFully Uploaded");
@@ -196,6 +212,10 @@ const AddProfile = (props) => {
     formData.append("tutorQualification", enteredQualification);
     formData.append("tutorExperience", enteredExperience);
     formData.append("tutorProfilePhotoUrl", profilePhotoUrl);
+    formData.append("displayName", enteredName);
+    formData.append("displayQualification", enteredQualification);
+    formData.append("displayExperience", enteredExperience);
+    formData.append("displaySubject", enteredSubject);
 
     const res = await fetch(`${baseUrl}/home-tutor/add-profile`, {
       method: "POST",
@@ -203,7 +223,6 @@ const AddProfile = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     resetFormHandler();
     setIsLoading(false);
     props.onSuccess();
@@ -215,6 +234,7 @@ const AddProfile = (props) => {
     setEnteredEmail("");
     setEnteredQualification("");
     setEnteredExperience("");
+    setEnteredSubject("");
     setProfilePhotoUrl("");
 
     setChoosenProfilePhoto(null);
@@ -279,6 +299,16 @@ const AddProfile = (props) => {
             onChange={experienceChangeHandler}
             hasError={isExperienceError}
             errorMsg={experienceErrorMsg}
+          />
+
+          <InputBox4
+            label="Expert In ( Subject )"
+            id="expert_in"
+            type="text"
+            value={enteredSubject}
+            onChange={subjectChangeHandler}
+            hasError={isSubjectError}
+            errorMsg={subjectErrorMsg}
           />
 
           <TextBox2

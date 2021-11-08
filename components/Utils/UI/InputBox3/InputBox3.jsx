@@ -11,6 +11,7 @@ const InputBox3 = props => {
         value={props.value}
         onChange={props.onChange}
       />
+      {props.hasError && <p className={styles['error-msg']}>{props.errorMsg}</p>}
     </div>
   );
 };

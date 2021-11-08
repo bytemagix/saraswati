@@ -18,8 +18,6 @@ const Courses = (props) => {
       `https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles/${auth.localId}/Courses.json`
     );
     const catData = await catRes.json();
-    console.log(auth.localId);
-    console.log(catData);
 
     let categories = [];
     for (const key in catData) {
@@ -66,7 +64,6 @@ const Courses = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     getCatgories();
   };
 

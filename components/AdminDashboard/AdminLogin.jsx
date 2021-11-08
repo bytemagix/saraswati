@@ -30,7 +30,6 @@ const Login = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     setIsLoading(false);
 
     if(data.token){
@@ -52,10 +51,8 @@ const Login = (props) => {
   };
 
   const autoLogin = () => {
-    console.log("AutoLogin");
     const token = localStorage.getItem('adminToken');
 
-    console.log(token);
     if(!token){
       return;
     }

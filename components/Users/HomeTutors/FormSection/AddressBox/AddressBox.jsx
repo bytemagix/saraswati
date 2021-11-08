@@ -1,6 +1,6 @@
 import styles from "./AddressBox.module.css";
 
-const AddressBox = props => {
+const AddressBox = (props) => {
   return (
     <div className={styles["address-box"]}>
       <label className={styles["label"]}>{props.label}</label>
@@ -12,6 +12,9 @@ const AddressBox = props => {
         value={props.value}
         onChange={props.onChange}
       />
+      {props.hasError && (
+        <p className={styles["error-msg"]}>{props.errorMsg}</p>
+      )}
     </div>
   );
 };

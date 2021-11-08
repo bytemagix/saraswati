@@ -25,14 +25,12 @@ const AddNewPoster = (props) => {
     setChoosenRedirectUrlId(event.target.value);
 
     const selected = redirectUrls.find((item) => item.rurlId === event.target.value);
-    console.log(selected);
 
     setChoosenRedirectUrl(selected.url);
   };
 
 
   const posterChangeHandler = (event) => {
-    console.log(event.target.files[0]);
     setChoosenPosterFile(event.target.files[0]);
   };
 
@@ -54,7 +52,6 @@ const AddNewPoster = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.isUploaded) {
       setSuccessPosterFile("SuccessFully Uploaded");
@@ -84,7 +81,6 @@ const AddNewPoster = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     resetFormHandler();
     setIsLoading(false);
   };

@@ -26,7 +26,6 @@ const SignUp = (props) => {
       returnSecureToken: true,
     };
     const data = JSON.stringify(reqBody);
-    console.log(data);
     signUp(data);
   };
 
@@ -44,7 +43,6 @@ const SignUp = (props) => {
       );
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
         setIsError(true);
@@ -67,7 +65,6 @@ const SignUp = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
     }
   };
 

@@ -15,7 +15,6 @@ const BookItem = (props) => {
         body : formData
     });
     const data = await res.json();
-    console.log(data);
     props.getBooks();
   }
 

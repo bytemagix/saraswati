@@ -22,7 +22,6 @@ const DownloadMaterials = (props) => {
       `https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Orders/${auth.localId}.json`
     );
     const data = await res.json();
-    console.log(data);
 
     const books = [];
 

@@ -26,8 +26,6 @@ const Section1 = (props) => {
     );
     const data = await res.json();
 
-    console.log(data);
-
     let posters = [];
 
     for (const key in data) {

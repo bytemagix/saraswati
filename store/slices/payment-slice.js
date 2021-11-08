@@ -9,7 +9,6 @@ const paymentSlice = createSlice({
     initialState : initialState,
     reducers : {
         setOrderId(state, action){
-            console.log("Payment Slice "+action.payload);
             state.createdOrderId = action.payload
         }
     }

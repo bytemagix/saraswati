@@ -53,12 +53,10 @@ const AddNewBook = (props) => {
   };
 
   const coverPhotoChangeHandler = (event) => {
-    console.log(event.target.files[0]);
     setChoosenCoverFile(event.target.files[0]);
   };
 
   const bookFileChangeHandler = (event) => {
-    console.log(event.target.files[0]);
     setChoosenBookFile(event.target.files[0]);
   };
 
@@ -80,7 +78,6 @@ const AddNewBook = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.isUploaded) {
       setSuccessCoverFile("SuccessFully Uploaded");
@@ -110,7 +107,6 @@ const AddNewBook = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
 
     if (data.isUploaded) {
       setSuccessBookFile("SuccessFully Uploaded");
@@ -149,7 +145,6 @@ const AddNewBook = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     resetFormHandler();
     setIsLoading(false);
   };
@@ -176,7 +171,6 @@ const AddNewBook = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/StudyMaterials/Categories.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let categories = [];
     for (const key in data) {

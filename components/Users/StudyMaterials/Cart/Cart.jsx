@@ -41,10 +41,8 @@ const Cart = (props) => {
     
     const data = await res.json();
     const jsondata = JSON.parse(data);
-    console.log(jsondata);
 
     if(jsondata.success){
-      console.log(jsondata.payment_request.longurl);
       Instamojo.open(jsondata.payment_request.longurl);
     }
   }
@@ -95,9 +93,6 @@ const Cart = (props) => {
   };
 
   const paymentSuccess = async (response) => {
-    console.log(response.razorpay_payment_id);
-    console.log(response.razorpay_order_id);
-    console.log(response.razorpay_signature);
 
     const formData = new FormData();
     formData.append("paymentId", response.razorpay_payment_id);
@@ -110,8 +105,6 @@ const Cart = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
-
     orderHandler();
   };
 

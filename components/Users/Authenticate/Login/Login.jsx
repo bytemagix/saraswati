@@ -26,7 +26,6 @@ const Login = (props) => {
       returnSecureToken: true,
     };
     const data = JSON.stringify(reqBody);
-    console.log(data);
     userLogin(data);
   };
 
@@ -44,7 +43,6 @@ const Login = (props) => {
       );
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
         setIsError(true);
@@ -66,7 +64,6 @@ const Login = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
     }
   };
 
@@ -79,11 +76,9 @@ const Login = (props) => {
   };
 
   const autoLogin = () => {
-    console.log("AutoLogin");
     const localId = localStorage.getItem('authToken');
     const email = localStorage.getItem('email');
 
-    console.log(localId);
     if(!localId){
       return;
     }

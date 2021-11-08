@@ -48,10 +48,8 @@ const Checkout = (props) => {
     
     const data = await res.json();
     const jsondata = JSON.parse(data);
-    console.log(jsondata);
 
     if(jsondata.success){
-      console.log(jsondata.payment_request.longurl);
       Instamojo.open(jsondata.payment_request.longurl);
     }
   }

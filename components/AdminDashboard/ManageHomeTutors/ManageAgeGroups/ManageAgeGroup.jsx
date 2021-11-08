@@ -53,7 +53,6 @@ const ManageAgeGroup = (props) => {
     });
 
     const data = await res.json();
-    console.log(data);
     getCatgories();
   };
 

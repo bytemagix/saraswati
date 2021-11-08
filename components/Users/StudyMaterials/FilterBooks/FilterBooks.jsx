@@ -14,7 +14,6 @@ const FilterBooks = (props) => {
     }else{
         type = 'ADD_FILTER'
     }
-    console.log(isSelected);
     dispatch(booksActions.toogleCategory({id : id, type : type}));
   };
 

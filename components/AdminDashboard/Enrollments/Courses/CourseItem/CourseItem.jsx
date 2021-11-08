@@ -4,7 +4,6 @@ import NavLink from 'next/link';
 
 const CourseItem = props => {
     const url = `/admin/enrollments/${props.courseId}`;
-    console.log(url);
 
     return (
         <div className={styles['course-item']}>

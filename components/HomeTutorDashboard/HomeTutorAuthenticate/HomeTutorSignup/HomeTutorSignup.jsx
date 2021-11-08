@@ -26,7 +26,6 @@ const HomeTutorSignUp = (props) => {
       returnSecureToken: true,
     };
     const data = JSON.stringify(reqBody);
-    console.log(data);
     signUp(data);
   };
 
@@ -44,7 +43,6 @@ const HomeTutorSignUp = (props) => {
       );
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
         setIsError(true);
@@ -67,7 +65,6 @@ const HomeTutorSignUp = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
     }
   };
 

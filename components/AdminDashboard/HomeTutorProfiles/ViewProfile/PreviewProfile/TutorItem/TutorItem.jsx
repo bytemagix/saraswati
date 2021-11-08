@@ -1,6 +1,10 @@
 import styles from "./TutorItem.module.css";
 
 const TutorItem = props => {
+    let expertIn = "";
+    for(const key in props.courses){
+        expertIn += props.courses[key].course + ", ";
+    }
 
   return (
     <div className={styles['card']}>

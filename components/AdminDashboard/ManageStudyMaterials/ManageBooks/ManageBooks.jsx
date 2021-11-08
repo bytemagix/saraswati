@@ -13,8 +13,6 @@ const ManageBooks = (props) => {
     );
     const booksData = await bookRes.json();
 
-    console.log(booksData);
-
     let books = [];
 
     for (const key in booksData) {

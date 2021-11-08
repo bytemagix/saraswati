@@ -24,14 +24,11 @@ const Enrollments = (props) => {
       for(const userId in data[courseId]){
         if(userId === auth.localId){
           const course = data[courseId][userId];
-          console.log(course);
           enrolledCourses.push(course);
         }
       }
     }
-    console.log(enrolledCourses);
     setCourses(enrolledCourses);
-    console.log(courses);
   };
 
   return (

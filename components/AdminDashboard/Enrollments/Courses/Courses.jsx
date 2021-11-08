@@ -21,7 +21,6 @@ const Courses = (props) => {
       courses.push(course);
     }
 
-    console.log(courses);
     setCourses(courses);
   }
 

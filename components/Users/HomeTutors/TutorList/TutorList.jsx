@@ -12,7 +12,6 @@ const TutorList = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let tutors = [];
     for (const key in data) {
@@ -34,9 +33,9 @@ const TutorList = (props) => {
         {tutorList.map((item) => (
           <TutorItem
             key={item.tutorId}
-            tutorName={item.tutorName}
-            tutorQualification={item.tutorQualification}
-            courses={item.Courses}
+            displayName={item.displayName}
+            displayQualification={item.displayQualification}
+            displaySubject={item.displaySubject}
             tutorProfilePhotoUrl={item.tutorProfilePhotoUrl}
           />
         ))}

@@ -1,0 +1,46 @@
+.booking-detail{
+    width: 100%;
+    
+    .card{
+        width: 95%;
+        margin: auto;
+        box-shadow: 2px 2px 2px 2px #333;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+
+        .header{
+            padding: 10px 0px;
+
+            .header-title{
+                display: block;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 1.3rem;
+                font-weight: 500;
+            }
+        }
+
+        .label-box{
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+
+            .label{
+
+            }
+
+            .value{
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+@media(min-width: 768px){
+    .booking-detail{
+        .card{
+            width: 90%;
+        }
+    }
+}

@@ -10,17 +10,41 @@ import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoade
 
 const FormSection = (props) => {
   const [isLoading, setIsLoading] = useState(true);
+
   const [name, setName] = useState("");
+  const [isNameTouched, setIsNameTouched] = useState(false);
+  const [nameHasError, setNameHasError] = useState(false);
+  const [nameErrorMsg, setNameErrorMsg] = useState("");
+
   const [mobileNo, setMobileNo] = useState("");
+  const [isMobileNoTouched, setIsMobileNoTouched] = useState(false);
+  const [mobileNoHasError, setMobileNoHasError] = useState(false);
+  const [mobileNoErrorMsg, setMobileNoErrorMsg] = useState("");
+
   const [email, setEmail] = useState("");
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [emailHasError, setEmailHasError] = useState(false);
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+
   const [cityId, setCityId] = useState("");
   const [city, setCity] = useState("");
   const [subId, setSubId] = useState("");
   const [subject, setSubject] = useState("");
+
   const [address, setAddress] = useState("");
+  const [isAddressTouched, setIsAddressTouched] = useState(false);
+  const [addressHasError, setAddressHasError] = useState(false);
+  const [addressErrorMsg, setAddressErrorMsg] = useState("");
+
   const [description, setDescription] = useState("");
+
   const [standard, setStandard] = useState("");
+  const [isStandardTouched, setIsStandardTouched] = useState(false);
+  const [standardHasError, setStandardHasError] = useState(false);
+  const [standardErrorMsg, setStandardErrorMsg] = useState("");
+
   const [cities, setCities] = useState([]);
+
   const [subjects, setSubjects] = useState([]);
   const [statusMessage, setStatusMessage] = useState(
     "We recieved your requirements. We will contact you soon. Thank You."
@@ -28,23 +52,73 @@ const FormSection = (props) => {
   const [status, setStatus] = useState("NEW");
 
   const nameChangeHandler = (event) => {
-    setName(event.target.value);
+    const val= event.target.value;
+    setIsNameTouched(true);
+    setName(val);
+
+    if(val.length === 0){
+      setNameHasError(true);
+      setNameErrorMsg("* Name field can not be empty")
+    }else{
+      setNameHasError(false);
+      setNameErrorMsg("");
+    }
   };
 
   const mobileNoChangeHandler = (event) => {
-    setMobileNo(event.target.value);
+    const val= event.target.value;
+    setIsMobileNoTouched(true);
+    setMobileNo(val);
+
+    if(val.length === 0){
+      setMobileNoHasError(true);
+      setMobileNoErrorMsg("* Mobile No field can not be empty")
+    }else{
+      setMobileNoHasError(false);
+      setMobileNoErrorMsg("");
+    }
   };
 
   const emailChangeHandler = (event) => {
-    setEmail(event.target.value);
+    const val= event.target.value;
+    setIsEmailTouched(true);
+    setEmail(val);
+
+    if(val.length === 0){
+      setEmailHasError(true);
+      setEmailErrorMsg("* Email Id field can not be empty")
+    }else{
+      setEmailHasError(false);
+      setEmailErrorMsg("");
+    }
   };
 
   const addressChangeHandler = (event) => {
-    setAddress(event.target.value);
+    const val= event.target.value;
+    setIsAddressTouched(true);
+    setAddress(val);
+
+    if(val.length === 0){
+      setAddressHasError(true);
+      setAddressErrorMsg("* Address field can not be empty")
+    }else{
+      setAddressHasError(false);
+      setAddressErrorMsg("");
+    }
   };
 
   const standardChangeHandler = (event) => {
-    setStandard(event.target.value);
+    const val= event.target.value;
+    setIsStandardTouched(true);
+    setStandard(val);
+
+    if(val.length === 0){
+      setStandardHasError(true);
+      setStandardErrorMsg("* Class field can not be empty")
+    }else{
+      setStandardHasError(false);
+      setStandardErrorMsg("");
+    }
   };
 
   const descriptionChangeHandler = (event) => {
@@ -54,6 +128,42 @@ const FormSection = (props) => {
   const formSubmitHandler = async (event) => {
     setIsLoading(true);
     event.preventDefault();
+
+    if(!isNameTouched || nameHasError){
+      setNameHasError(true);
+      setNameErrorMsg("* Name field can not be empty");
+      setIsLoading(false);
+      return;
+    }
+
+    if(!isMobileNoTouched || mobileNoHasError){
+      setMobileNoHasError(true);
+      setMobileNoErrorMsg("* Mobile No field can not be empty");
+      setIsLoading(false);
+      return;
+    }
+
+    if(!isEmailTouched || emailHasError){
+      setEmailHasError(true);
+      setEmailErrorMsg("* Email Id field can not be empty");
+      setIsLoading(false);
+      return;
+    }
+
+    if(!isStandardTouched || standardHasError){
+      setStandardHasError(true);
+      setStandardErrorMsg("* Class field can not be empty");
+      setIsLoading(false);
+      return;
+    }
+
+
+    if(!isAddressTouched || addressHasError){
+      setAddressHasError(true);
+      setAddressErrorMsg("* Address field can not be empty");
+      setIsLoading(false);
+      return;
+    }
 
     //Validate Data
     const formData = new FormData();
@@ -178,6 +288,8 @@ const FormSection = (props) => {
             type="text"
             value={name}
             onChange={nameChangeHandler}
+            hasError={nameHasError}
+            errorMsg={nameErrorMsg}
           />
           <InputBox3
             label="Mobile No"
@@ -185,6 +297,8 @@ const FormSection = (props) => {
             type="text"
             value={mobileNo}
             onChange={mobileNoChangeHandler}
+            hasError={mobileNoHasError}
+            errorMsg={mobileNoErrorMsg}
           />
         </div>
         <div className={styles["row"]}>
@@ -194,6 +308,8 @@ const FormSection = (props) => {
             type="text"
             value={email}
             onChange={emailChangeHandler}
+            hasError={emailHasError}
+            errorMsg={emailErrorMsg}
           />
           <SelectCityBox
             label="City"
@@ -215,6 +331,8 @@ const FormSection = (props) => {
             type="text"
             value={standard}
             onChange={standardChangeHandler}
+            hasError={standardHasError}
+            errorMsg={standardErrorMsg}
           />
         </div>
         <div className={styles["row"]}>
@@ -224,6 +342,8 @@ const FormSection = (props) => {
             id="address"
             value={address}
             onChange={addressChangeHandler}
+            hasError={addressHasError}
+            errorMsg={addressErrorMsg}
           />
         </div>
         <div className={styles["row"]}>

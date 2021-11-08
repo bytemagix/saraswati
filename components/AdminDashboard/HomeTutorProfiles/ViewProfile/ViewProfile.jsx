@@ -6,13 +6,13 @@ import { useRouter } from "next/router";
 import CourseItem from "./CourseItem/CourseItem";
 import { useState } from "react";
 import BlueCircleLoader from "../../../Utils/UI/BlueCircleLoader/BlueCircleLoader";
+import PreviewProfile from "./PreviewProfile/PreviewProfile";
 
 const ViewProfile = (props) => {
   const auth = useSelector((state) => state.adminSlice.authInfo);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const profileData = props.profileData;
-  console.log(profileData);
 
   const courses = [];
   for (const key in profileData.Courses) {
@@ -34,7 +34,7 @@ const ViewProfile = (props) => {
     setIsLoading(false);
 
     if (data.isUpdated) {
-      router.push("/admin/home-tutor-profiles");
+      reloadPage();
     }
   };
 
@@ -55,6 +55,10 @@ const ViewProfile = (props) => {
     }
   };
 
+  const reloadPage = () => {
+    router.reload();
+  }
+
   return (
     <div className={styles["view-profile"]}>
       <div className={styles["card"]}>
@@ -74,6 +78,10 @@ const ViewProfile = (props) => {
             <InfoItem
               label="Experience"
               value={profileData.tutorExperience + "+ Years"}
+            />
+            <InfoItem
+              label="Expert In ( Subject )"
+              value={profileData.displaySubject}
             />
             <InfoItem label="Status" value={profileData.status} />
           </div>
@@ -124,6 +132,8 @@ const ViewProfile = (props) => {
           </div>
         )}
       </div>
+
+      <PreviewProfile profileData={profileData} reloadPage={reloadPage} />
     </div>
   );
 };

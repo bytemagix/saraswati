@@ -10,7 +10,6 @@ const HomeTutorProfiles = (props) => {
       "https://saraswati-45e10-default-rtdb.firebaseio.com/HomeTutors/Profiles.json"
     );
     const data = await res.json();
-    console.log(data);
 
     let homeTutors = [];
     for (const key in data) {

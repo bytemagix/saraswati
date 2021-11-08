@@ -45,7 +45,6 @@ const userSlice = createSlice({
             }
         },
         buyNow(state,action){
-            console.log(action.payload);
             state.cart.cartItems = [action.payload];
             state.cart.totalPrice = (+action.payload.price);
             state.isCheckoutModalOpen = true;

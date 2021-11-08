@@ -1,0 +1,35 @@
+.card {
+  box-shadow: 2px 2px 2px 2px #333;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions {
+    width: 100%;
+    color: white;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: #507dd1;
+    }
+
+    .view-btn:hover{
+        cursor: pointer;
+        background-color: #406bbb;
+    }
+  }
+}
