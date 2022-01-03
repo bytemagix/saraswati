@@ -14,7 +14,6 @@ const TutorItem = props => {
       ></div>
       <div className={styles['info']}>
           <span className={styles['name']}>{props.displayName}</span>
-          <span className={styles['qualification']}>{props.displayQualification}</span>
           <span className={styles['expertIn']}>{props.displaySubject}</span>
       </div>
     </div>
